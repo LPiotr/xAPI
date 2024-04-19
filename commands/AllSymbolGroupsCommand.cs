@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 
-
 namespace xAPI.Commands
 {
   public class AllSymbolGroupsCommand : BaseCommand

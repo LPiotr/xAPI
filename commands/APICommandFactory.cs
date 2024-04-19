@@ -260,7 +260,7 @@ namespace xAPI.Commands
     [Obsolete("Command not available in API any more")]
     public static AllSymbolGroupsCommand CreateSymbolGroupsCommand(bool prettyPrint = false)
     {
-      return (AllSymbolGroupsCommand) null;
+      return null;
     }
 
     public static SymbolCommand CreateSymbolCommand(string symbol, bool prettyPrint = false)

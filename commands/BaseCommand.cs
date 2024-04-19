@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using xAPI.Errors;
 
-
 namespace xAPI.Commands
 {
   public abstract class BaseCommand

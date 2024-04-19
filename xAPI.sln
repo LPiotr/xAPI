@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xAPI", "xAPI.csproj", "{B9F1BE89-D268-4FE5-B39C-CBABFBB163EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xAPI", "xAPI.csproj", "{B9F1BE89-D268-4FE5-B39C-CBABFBB163EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

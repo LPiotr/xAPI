@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 
-
 namespace xAPI.Commands
 {
   public class CalendarCommand : BaseCommand

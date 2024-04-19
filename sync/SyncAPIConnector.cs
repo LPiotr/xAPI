@@ -32,7 +32,8 @@ namespace xAPI.Sync
       this.Connect(server, lookForBackups);
     }
 
-    private void Connect(Server server, bool lookForBackups = true)
+        [Obsolete]
+        private void Connect(Server server, bool lookForBackups = true)
     {
       this.server = server;
       this.apiSocket = new TcpClient();

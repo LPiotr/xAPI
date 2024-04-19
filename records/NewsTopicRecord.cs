@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace xAPI.Records
 {
-  public class NewsTopicRecord : BaseResponseRecord
+  public record NewsTopicRecord : BaseResponseRecord
   {
     private string body;
     private long? bodylen;
@@ -14,14 +14,14 @@ namespace xAPI.Records
     private string timeString;
     private string title;
 
-    public virtual string Body => this.body;
+    public virtual string Body => body;
 
-    public virtual long? Bodylen => this.bodylen;
+    public virtual long? Bodylen => bodylen;
 
     [Obsolete("Field removed from API")]
     public virtual string Category => (string) null;
 
-    public virtual string Key => this.key;
+    public virtual string Key => key;
 
     [Obsolete("Field removed from API")]
     public virtual LinkedList<string> Keywords => (LinkedList<string>) null;

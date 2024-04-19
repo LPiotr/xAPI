@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace xAPI.Records
 {
-  public class StepRuleRecord : BaseResponseRecord
+  public record StepRuleRecord : BaseResponseRecord
   {
     private int Id { get; set; }
 

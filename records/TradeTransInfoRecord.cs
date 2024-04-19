@@ -5,7 +5,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-  public class TradeTransInfoRecord
+  public record TradeTransInfoRecord
   {
     private TRADE_OPERATION_CODE cmd;
     private string customComment;

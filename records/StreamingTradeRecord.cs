@@ -4,7 +4,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-  public class StreamingTradeRecord : BaseResponseRecord
+  public record StreamingTradeRecord : BaseResponseRecord
   {
     private double? close_price;
     private long? close_time;

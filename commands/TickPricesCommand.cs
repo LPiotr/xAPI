@@ -13,7 +13,7 @@ namespace xAPI.Commands
 
     public override string[] RequiredArguments
     {
-      get => new string[2]{ "symbols", "timestamp" };
+      get => ["symbols", "timestamp"];
     }
   }
 }

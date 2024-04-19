@@ -3,7 +3,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-  public class ChartLastInfoRecord
+  public record ChartLastInfoRecord
   {
     private string symbol;
     private PERIOD_CODE period;

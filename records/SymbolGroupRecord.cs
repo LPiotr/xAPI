@@ -4,7 +4,7 @@ using System;
 
 namespace xAPI.Records
 {
-  public class SymbolGroupRecord : BaseResponseRecord
+  public record SymbolGroupRecord : BaseResponseRecord
   {
     private long? type;
     private string description;

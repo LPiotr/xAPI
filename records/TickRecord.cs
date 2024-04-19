@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-  public class TickRecord : BaseResponseRecord
+  public record TickRecord : BaseResponseRecord
   {
     private double? ask;
     private long? askVolume;

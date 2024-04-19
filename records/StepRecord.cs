@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-  public class StepRecord : BaseResponseRecord
+  public record StepRecord : BaseResponseRecord
   {
     private double FromValue;
     private double Step;

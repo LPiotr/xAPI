@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-  public class StreamingProfitRecord : BaseResponseRecord
+  public record StreamingProfitRecord : BaseResponseRecord
   {
     private long? order;
     private long? order2;

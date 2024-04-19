@@ -3,7 +3,7 @@ using System;
 
 namespace xAPI.Records
 {
-  public class TradeRecord : BaseResponseRecord
+  public record TradeRecord : BaseResponseRecord
   {
     private double? close_price;
     private long? close_time;

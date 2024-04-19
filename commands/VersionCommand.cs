@@ -11,6 +11,6 @@ namespace xAPI.Commands
 
     public override string CommandName => "getVersion";
 
-    public override string[] RequiredArguments => new string[0];
+    public override string[] RequiredArguments => [];
   }
 }

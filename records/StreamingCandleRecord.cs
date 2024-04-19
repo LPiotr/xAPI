@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-  public class StreamingCandleRecord : BaseResponseRecord
+  public record StreamingCandleRecord : BaseResponseRecord
   {
     public double? Close { get; set; }
 

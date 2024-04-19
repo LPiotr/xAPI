@@ -57,8 +57,10 @@ namespace xAPI.Commands
                 loginJsonObject.Add("password", (JToken)credentials.Password);
                 loginJsonObject.Add("type", (JToken)"dotNET");
                 loginJsonObject.Add("version", (JToken)"2.5.0");
+                
                 if (credentials.AppId != null)
                     loginJsonObject.Add("appId", (JToken)credentials.AppId);
+                
                 if (credentials.AppName != null)
                     loginJsonObject.Add("appName", (JToken)credentials.AppName);
             }
@@ -143,12 +145,13 @@ namespace xAPI.Commands
         {
           nameof (symbol),
           (JToken) symbol
-        },
+                },
         {
           nameof (volume),
           (JToken) volume
-        }
-      }, prettyPrint);
+                }
+            }, 
+            prettyPrint);
         }
 
         public static LogoutCommand CreateLogoutCommand() => new LogoutCommand();

@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-  public class SpreadRecord : BaseResponseRecord
+  public record SpreadRecord : BaseResponseRecord
   {
     private long? precision;
     private string symbol;

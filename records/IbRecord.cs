@@ -3,24 +3,16 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-    public class IbRecord : BaseResponseRecord
+    public record IbRecord : BaseResponseRecord
     {
         public double ClosePrice { get; set; }
-
         public string Login { get; set; }
-
         public double Nominal { get; set; }
-
         public double OpenPrice { get; set; }
-
         public Side Side { get; set; }
-
         public string Surname { get; set; }
-
         public string Symbol { get; set; }
-
         public long Timestamp { get; set; }
-
         public double Volume { get; set; }
 
         public IbRecord()

@@ -16,9 +16,9 @@ namespace xAPI.Records
 
     public void FieldsFromJSONObject(JObject value)
     {
-      this.day = (long?) value["day"];
-      this.fromT = (long?) value["fromT"];
-      this.toT = (long?) value["toT"];
+      day = (long?) value["day"];
+      fromT = (long?) value["fromT"];
+      toT = (long?) value["toT"];
     }
 
     public override string ToString()

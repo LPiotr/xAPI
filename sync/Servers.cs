@@ -1,23 +1,16 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: xAPI.Sync.Servers
-// Assembly: xAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 9383CE98-29AB-4755-8B1A-45B976BB72F4
-// Assembly location: C:\Users\Piotr\Downloads\xAPI25-XTB-net\xAPI25-XTB-net\src\xAPITest\bin\Release\xAPI.dll
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using xAPI.Errors;
-
 
 namespace xAPI.Sync
 {
   public static class Servers
   {
-    private static Servers.PortSet DEMO_PORTS = new Servers.PortSet(5124, 5125);
-    private static Servers.PortSet REAL_PORTS = new Servers.PortSet(5112, 5113);
+    private static PortSet DEMO_PORTS = new PortSet(5124, 5125);
+    private static PortSet REAL_PORTS = new PortSet(5112, 5113);
     private static List<Server> demoServers;
     private static List<Server> realServers;
-    private static List<Servers.ApiAddress> addresses;
+    private static List<ApiAddress> addresses;
 
     private static List<Servers.ApiAddress> ADDRESSES
     {

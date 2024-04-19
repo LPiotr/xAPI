@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace xAPI.Codes
 {
   public class BaseCode

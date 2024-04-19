@@ -5,7 +5,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-    public class SymbolRecord : BaseResponseRecord
+    public record SymbolRecord : BaseResponseRecord
     {
         private double? ask;
         private double? bid;
@@ -53,38 +53,38 @@ namespace xAPI.Records
 
         public virtual double? Ask
         {
-            get => this.ask;
-            set => this.ask = value;
+            get => ask;
+            set => ask = value;
         }
 
         public virtual double? Bid
         {
-            get => this.bid;
-            set => this.bid = value;
+            get => bid;
+            set => bid = value;
         }
 
         public virtual string CategoryName
         {
-            get => this.categoryName;
-            set => this.categoryName = value;
+            get => categoryName;
+            set => categoryName = value;
         }
 
         public virtual long? ContractSize
         {
-            get => this.contractSize;
-            set => this.contractSize = value;
+            get => contractSize;
+            set => contractSize = value;
         }
 
         public virtual string Currency
         {
-            get => this.currency;
-            set => this.currency = value;
+            get => currency;
+            set => currency = value;
         }
 
         public virtual bool? CurrencyPair
         {
-            get => this.currencyPair;
-            set => this.currencyPair = value;
+            get => currencyPair;
+            set => currencyPair = value;
         }
 
         [Obsolete("Use Precision instead")]
@@ -92,44 +92,44 @@ namespace xAPI.Records
 
         public string CurrencyProfit
         {
-            get => this.currencyProfit;
-            set => this.currencyProfit = value;
+            get => currencyProfit;
+            set => currencyProfit = value;
         }
 
         public virtual string Description
         {
-            get => this.description;
-            set => this.description = value;
+            get => description;
+            set => description = value;
         }
 
         public virtual long? Expiration
         {
-            get => this.expiration;
-            set => this.expiration = value;
+            get => expiration;
+            set => expiration = value;
         }
 
         public virtual string GroupName
         {
-            get => this.groupName;
-            set => this.groupName = value;
+            get => groupName;
+            set => groupName = value;
         }
 
         public virtual double? High
         {
-            get => this.high;
-            set => this.high = value;
+            get => high;
+            set => high = value;
         }
 
         public virtual long? InitialMargin
         {
-            get => this.initialMargin;
-            set => this.initialMargin = value;
+            get => initialMargin;
+            set => initialMargin = value;
         }
 
         public virtual long? InstantMaxVolume
         {
-            get => this.instantMaxVolume;
-            set => this.instantMaxVolume = value;
+            get => instantMaxVolume;
+            set => instantMaxVolume = value;
         }
 
         public virtual double? Leverage
@@ -170,20 +170,20 @@ namespace xAPI.Records
 
         public virtual long? MarginHedged
         {
-            get => this.marginHedged;
+            get => marginHedged;
             set => this.marginHedged = value;
         }
 
         public virtual bool? MarginHedgedStrong
         {
-            get => this.marginHedgedStrong;
-            set => this.marginHedgedStrong = value;
+            get => marginHedgedStrong;
+            set => marginHedgedStrong = value;
         }
 
         public virtual long? MarginMaintenance
         {
-            get => this.marginMaintenance;
-            set => this.marginMaintenance = value;
+            get => marginMaintenance;
+            set => marginMaintenance = value;
         }
 
         public virtual MARGIN_MODE MarginMode
@@ -212,8 +212,8 @@ namespace xAPI.Records
 
         public long? QuoteId
         {
-            get => this.quoteId;
-            set => this.quoteId = value;
+            get => quoteId;
+            set => quoteId = value;
         }
 
         public virtual double? SpreadRaw
@@ -224,14 +224,14 @@ namespace xAPI.Records
 
         public virtual double? SpreadTable
         {
-            get => this.spreadTable;
-            set => this.spreadTable = value;
+            get => spreadTable;
+            set => spreadTable = value;
         }
 
         public virtual long? Starting
         {
-            get => this.starting;
-            set => this.starting = value;
+            get => starting;
+            set => starting = value;
         }
 
         public virtual long? StepRuleId
@@ -242,74 +242,74 @@ namespace xAPI.Records
 
         public virtual long? StopsLevel
         {
-            get => this.stopsLevel;
-            set => this.stopsLevel = value;
+            get => stopsLevel;
+            set => stopsLevel = value;
         }
 
         public virtual bool? SwapEnable
         {
-            get => this.swapEnable;
-            set => this.swapEnable = value;
+            get => swapEnable;
+            set => swapEnable = value;
         }
 
         public virtual double? SwapLong
         {
-            get => this.swapLong;
-            set => this.swapLong = value;
+            get => swapLong;
+            set => swapLong = value;
         }
 
         public virtual double? SwapShort
         {
-            get => this.swapShort;
-            set => this.swapShort = value;
+            get => swapShort;
+            set => swapShort = value;
         }
 
         public virtual SWAP_TYPE SwapType
         {
-            get => this.swapType;
-            set => this.swapType = value;
+            get => swapType;
+            set => swapType = value;
         }
 
         public virtual SWAP_ROLLOVER_TYPE SwapRollover
         {
-            get => this.swapRollover;
-            set => this.swapRollover = value;
+            get => swapRollover;
+            set => swapRollover = value;
         }
 
         public virtual string Symbol
         {
-            get => this.symbol;
-            set => this.symbol = value;
+            get => symbol;
+            set => symbol = value;
         }
 
         public virtual double? TickSize
         {
-            get => this.tickSize;
-            set => this.tickSize = value;
+            get => tickSize;
+            set => tickSize = value;
         }
 
         public virtual double? TickValue
         {
-            get => this.tickValue;
-            set => this.tickValue = value;
+            get => tickValue;
+            set => tickValue = value;
         }
 
         public virtual long? Time
         {
-            get => this.time;
-            set => this.time = value;
+            get => time;
+            set => time = value;
         }
 
         public virtual string TimeString
         {
-            get => this.timeString;
-            set => this.timeString = value;
+            get => timeString;
+            set => timeString = value;
         }
 
         public virtual long? Type
         {
-            get => this.type;
-            set => this.type = value;
+            get => type;
+            set => type = value;
         }
 
         public void FieldsFromJSONObject(JObject value)

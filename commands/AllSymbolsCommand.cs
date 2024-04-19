@@ -9,6 +9,6 @@
 
     public override string CommandName => "getAllSymbols";
 
-    public override string[] RequiredArguments => new string[0];
+    public override string[] RequiredArguments => [];
   }
 }

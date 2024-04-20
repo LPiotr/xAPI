@@ -2,15 +2,15 @@
 
 namespace xAPI.Commands
 {
-  public class CalendarCommand : BaseCommand
-  {
-    public CalendarCommand(bool prettyPrint)
-      : base(new JObject(), new bool?(prettyPrint))
+    public class CalendarCommand : BaseCommand
     {
+        public CalendarCommand(bool prettyPrint)
+          : base(new JObject(), new bool?(prettyPrint))
+        {
+        }
+
+        public override string CommandName => "getCalendar";
+
+        public override string[] RequiredArguments => new string[0];
     }
-
-    public override string CommandName => "getCalendar";
-
-    public override string[] RequiredArguments => new string[0];
-  }
 }

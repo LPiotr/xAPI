@@ -2,15 +2,15 @@
 
 namespace xAPI.Records
 {
-  public record StreamingKeepAliveRecord : BaseResponseRecord
-  {
-    public long? Timestamp { get; set; }
-
-    public void FieldsFromJSONObject(JObject value) => this.Timestamp = (long?) value["timestamp"];
-
-    public override string ToString()
+    public record StreamingKeepAliveRecord : BaseResponseRecord
     {
-      return "StreamingKeepAliveRecord{timestamp=" + (object) this.Timestamp + (object) '}';
+        public long? Timestamp { get; set; }
+
+        public void FieldsFromJSONObject(JObject value) => this.Timestamp = (long?)value["timestamp"];
+
+        public override string ToString()
+        {
+            return "StreamingKeepAliveRecord{timestamp=" + (object)this.Timestamp + (object)'}';
+        }
     }
-  }
 }

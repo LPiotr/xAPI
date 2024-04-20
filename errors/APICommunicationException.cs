@@ -2,15 +2,15 @@
 
 namespace xAPI.Errors
 {
-  public class APICommunicationException : Exception
-  {
-    public APICommunicationException()
+    public class APICommunicationException : Exception
     {
-    }
+        public APICommunicationException()
+        {
+        }
 
-    public APICommunicationException(string msg)
-      : base(msg)
-    {
+        public APICommunicationException(string msg)
+          : base(msg)
+        {
+        }
     }
-  }
 }

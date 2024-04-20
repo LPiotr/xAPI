@@ -2,20 +2,20 @@
 
 namespace xAPI.Streaming
 {
-  internal class CandleRecordsSubscribe
-  {
-    private string symbol;
-    private string streamSessionId;
-
-    public CandleRecordsSubscribe(string symbol, string streamSessionId)
+    internal class CandleRecordsSubscribe
     {
-      this.streamSessionId = streamSessionId;
-      this.symbol = symbol;
-    }
+        private string symbol;
+        private string streamSessionId;
 
-    public override string ToString()
-    {
-      return new JObject()
+        public CandleRecordsSubscribe(string symbol, string streamSessionId)
+        {
+            this.streamSessionId = streamSessionId;
+            this.symbol = symbol;
+        }
+
+        public override string ToString()
+        {
+            return new JObject()
       {
         {
           "command",
@@ -30,6 +30,6 @@ namespace xAPI.Streaming
           (JToken) this.symbol
         }
       }.ToString();
+        }
     }
-  }
 }

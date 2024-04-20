@@ -5,21 +5,21 @@ using xAPI.Records;
 
 namespace xAPI.Responses
 {
-  public class SpreadsResponse : BaseResponse
-  {
-    private LinkedList<SpreadRecord> spreadRecords = new LinkedList<SpreadRecord>();
-
-    public SpreadsResponse(string body)
-      : base(body)
+    public class SpreadsResponse : BaseResponse
     {
-      foreach (JObject jobject in (IEnumerable<JToken>) this.ReturnData)
-      {
-        SpreadRecord spreadRecord = new SpreadRecord();
-        spreadRecord.FieldsFromJSONObject(jobject);
-        this.spreadRecords.AddLast(spreadRecord);
-      }
-    }
+        private LinkedList<SpreadRecord> spreadRecords = new LinkedList<SpreadRecord>();
 
-    public virtual LinkedList<SpreadRecord> SpreadRecords => this.spreadRecords;
-  }
+        public SpreadsResponse(string body)
+          : base(body)
+        {
+            foreach (JObject jobject in (IEnumerable<JToken>)this.ReturnData)
+            {
+                SpreadRecord spreadRecord = new SpreadRecord();
+                spreadRecord.FieldsFromJSONObject(jobject);
+                this.spreadRecords.AddLast(spreadRecord);
+            }
+        }
+
+        public virtual LinkedList<SpreadRecord> SpreadRecords => this.spreadRecords;
+    }
 }

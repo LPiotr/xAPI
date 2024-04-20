@@ -2,15 +2,15 @@
 
 namespace xAPI.Streaming
 {
-  internal class KeepAliveSubscribe
-  {
-    private string streamSessionId;
-
-    public KeepAliveSubscribe(string streamSessionId) => this.streamSessionId = streamSessionId;
-
-    public override string ToString()
+    internal class KeepAliveSubscribe
     {
-      return new JObject()
+        private string streamSessionId;
+
+        public KeepAliveSubscribe(string streamSessionId) => this.streamSessionId = streamSessionId;
+
+        public override string ToString()
+        {
+            return new JObject()
       {
         {
           "command",
@@ -21,6 +21,6 @@ namespace xAPI.Streaming
           (JToken) this.streamSessionId
         }
       }.ToString();
+        }
     }
-  }
 }

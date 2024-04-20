@@ -2,17 +2,17 @@
 
 namespace xAPI.Streaming
 {
-  internal class NewsStop
-  {
-    public override string ToString()
+    internal class NewsStop
     {
-      return new JObject()
-      {
+        public override string ToString()
         {
-          "command",
-          (JToken) "stopNews"
+            return new JObject()
+            {
+                {
+                    "command",
+                    (JToken) "stopNews"
+                }
+            }.ToString();
         }
-      }.ToString();
     }
-  }
 }

@@ -2,18 +2,18 @@
 
 namespace xAPI.Commands
 {
-  public class SymbolCommand : BaseCommand
-  {
-    public SymbolCommand(JObject arguments, bool prettyPrint)
-      : base(arguments, new bool?(prettyPrint))
+    public class SymbolCommand : BaseCommand
     {
-    }
+        public SymbolCommand(JObject arguments, bool prettyPrint)
+          : base(arguments, new bool?(prettyPrint))
+        {
+        }
 
-    public override string CommandName => "getSymbol";
+        public override string CommandName => "getSymbol";
 
-    public override string[] RequiredArguments
-    {
-      get => ["symbol"];
+        public override string[] RequiredArguments
+        {
+            get => ["symbol"];
+        }
     }
-  }
 }

@@ -2,15 +2,15 @@
 
 namespace xAPI.Errors
 {
-  public class APICommandConstructionException : Exception
-  {
-    public APICommandConstructionException()
+    public class APICommandConstructionException : Exception
     {
-    }
+        public APICommandConstructionException()
+        {
+        }
 
-    public APICommandConstructionException(string msg)
-      : base(msg)
-    {
+        public APICommandConstructionException(string msg)
+          : base(msg)
+        {
+        }
     }
-  }
 }

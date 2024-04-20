@@ -2,17 +2,17 @@
 
 namespace xAPI.Streaming
 {
-  internal class KeepAliveStop
-  {
-    public override string ToString()
+    internal class KeepAliveStop
     {
-      return new JObject()
+        public override string ToString()
+        {
+            return new JObject()
       {
         {
           "command",
           (JToken) "stopKeepAlive"
         }
       }.ToString();
+        }
     }
-  }
 }

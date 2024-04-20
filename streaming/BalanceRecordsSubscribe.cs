@@ -3,18 +3,18 @@
 
 namespace xAPI.Streaming
 {
-  internal class BalanceRecordsSubscribe
-  {
-    private string streamSessionId;
-
-    public BalanceRecordsSubscribe(string streamSessionId)
+    internal class BalanceRecordsSubscribe
     {
-      this.streamSessionId = streamSessionId;
-    }
+        private string streamSessionId;
 
-    public override string ToString()
-    {
-      return new JObject()
+        public BalanceRecordsSubscribe(string streamSessionId)
+        {
+            this.streamSessionId = streamSessionId;
+        }
+
+        public override string ToString()
+        {
+            return new JObject()
       {
         {
           "command",
@@ -25,6 +25,6 @@ namespace xAPI.Streaming
           (JToken) this.streamSessionId
         }
       }.ToString();
+        }
     }
-  }
 }

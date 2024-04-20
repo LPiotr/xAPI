@@ -3,22 +3,22 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-  public record ChartLastInfoRecord
-  {
-    private string symbol;
-    private PERIOD_CODE period;
-    private long? start;
-
-    public ChartLastInfoRecord(string symbol, PERIOD_CODE period, long? start)
+    public record ChartLastInfoRecord
     {
-      this.symbol = symbol;
-      this.period = period;
-      this.start = start;
-    }
+        private string symbol;
+        private PERIOD_CODE period;
+        private long? start;
 
-    public virtual JObject toJSONObject()
-    {
-      return new JObject()
+        public ChartLastInfoRecord(string symbol, PERIOD_CODE period, long? start)
+        {
+            this.symbol = symbol;
+            this.period = period;
+            this.start = start;
+        }
+
+        public virtual JObject toJSONObject()
+        {
+            return new JObject()
       {
         {
           "symbol",
@@ -33,6 +33,6 @@ namespace xAPI.Records
           (JToken) this.start
         }
       };
+        }
     }
-  }
 }

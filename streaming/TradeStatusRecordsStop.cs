@@ -2,17 +2,17 @@
 
 namespace xAPI.Streaming
 {
-  internal class TradeStatusRecordsStop
-  {
-    public override string ToString()
+    internal class TradeStatusRecordsStop
     {
-      return new JObject()
+        public override string ToString()
+        {
+            return new JObject()
       {
         {
           "command",
           (JToken) "stopTradeStatus"
         }
       }.ToString();
+        }
     }
-  }
 }

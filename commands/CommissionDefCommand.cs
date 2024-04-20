@@ -2,16 +2,16 @@
 
 namespace xAPI.Commands
 {
-  public class CommissionDefCommand : BaseCommand
-  {
-    public CommissionDefCommand(JObject arguments, bool prettyPrint)
-      : base(arguments, new bool?(prettyPrint))
+    public class CommissionDefCommand : BaseCommand
     {
-    }
+        public CommissionDefCommand(JObject arguments, bool prettyPrint)
+          : base(arguments, new bool?(prettyPrint))
+        {
+        }
 
-    public override string ToJSONString()
-    {
-      return new JObject()
+        public override string ToJSONString()
+        {
+            return new JObject()
       {
         {
           "command",
@@ -30,13 +30,13 @@ namespace xAPI.Commands
           (JToken) true
         }
       }.ToString();
-    }
+        }
 
-    public override string CommandName => "getCommissionDef";
+        public override string CommandName => "getCommissionDef";
 
-    public override string[] RequiredArguments
-    {
-      get => ["symbol", "volume"];
+        public override string[] RequiredArguments
+        {
+            get => ["symbol", "volume"];
+        }
     }
-  }
 }

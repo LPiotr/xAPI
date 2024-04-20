@@ -17,35 +17,34 @@ namespace xAPI.Commands
         public static LoginCommand CreateLoginCommand(string userId, string password, bool prettyPrint = false)
         {
             return new LoginCommand(new JObject()
-      {
-        {
-          nameof (userId),
-          (JToken) userId
-        },
-        {
-          nameof (password),
-          (JToken) password
-        },
-        {
-          "type",
-          (JToken) "dotNET"
-        },
-        {
-          "version",
-          (JToken) "2.5.0"
-        }
-      }, prettyPrint);
+            {
+                {
+                    nameof (userId),
+                    (JToken) userId
+                },
+
+                {
+                    nameof (password),
+                    (JToken) password
+                },
+
+                {
+                    "type",
+                    (JToken) "dotNET"
+                },
+
+                {
+                    "version",
+                    (JToken) "2.5.0"
+                }
+            }, 
+            prettyPrint);
         }
 
-        [Obsolete("Up from 2.3.3 login is not a long, but string")]
-        public static LoginCommand CreateLoginCommand(long? userId, string password, bool prettyPrint = false)
-        {
-            return APICommandFactory.CreateLoginCommand(userId.Value.ToString(), password, prettyPrint);
-        }
 
         public static LoginCommand CreateLoginCommand(Credentials credentials, bool prettyPrint = false)
         {
-            return new LoginCommand(APICommandFactory.CreateLoginJsonObject(credentials), prettyPrint);
+            return new LoginCommand(CreateLoginJsonObject(credentials), prettyPrint);
         }
 
         private static JObject CreateLoginJsonObject(Credentials credentials)
@@ -87,7 +86,7 @@ namespace xAPI.Commands
       {
         {
           "info",
-          (JToken) new ChartLastInfoRecord(symbol, period, start).toJSONObject()
+           new ChartLastInfoRecord(symbol, period, start).toJSONObject()
         }
       }, prettyPrint);
         }

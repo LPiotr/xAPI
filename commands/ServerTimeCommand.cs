@@ -2,15 +2,15 @@
 
 namespace xAPI.Commands
 {
-  public class ServerTimeCommand : BaseCommand
-  {
-    public ServerTimeCommand(bool? prettyPrint)
-      : base(new JObject(), prettyPrint)
+    public class ServerTimeCommand : BaseCommand
     {
+        public ServerTimeCommand(bool? prettyPrint)
+          : base(new JObject(), prettyPrint)
+        {
+        }
+
+        public override string CommandName => "getServerTime";
+
+        public override string[] RequiredArguments => new string[0];
     }
-
-    public override string CommandName => "getServerTime";
-
-    public override string[] RequiredArguments => new string[0];
-  }
 }

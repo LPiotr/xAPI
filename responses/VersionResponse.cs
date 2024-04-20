@@ -3,16 +3,16 @@
 
 namespace xAPI.Responses
 {
-  public class VersionResponse : BaseResponse
-  {
-    private string version;
-
-    public VersionResponse(string body)
-      : base(body)
+    public class VersionResponse : BaseResponse
     {
-      this.version = (string) ((JObject) this.ReturnData)[nameof (version)];
-    }
+        private string version;
 
-    public virtual string Version => this.version;
-  }
+        public VersionResponse(string body)
+          : base(body)
+        {
+            this.version = (string)((JObject)this.ReturnData)[nameof(version)];
+        }
+
+        public virtual string Version => this.version;
+    }
 }

@@ -4,15 +4,15 @@ using xAPI.Records;
 
 namespace xAPI.Responses
 {
-  public class IbsHistoryResponse : BaseResponse
-  {
-    public LinkedList<IbRecord> IbRecords { get; set; }
-
-    public IbsHistoryResponse(string body)
-      : base(body)
+    public class IbsHistoryResponse : BaseResponse
     {
-      foreach (JObject jobject in (IEnumerable<JToken>) this.ReturnData)
-        this.IbRecords.AddLast(new IbRecord(jobject));
+        public LinkedList<IbRecord> IbRecords { get; set; }
+
+        public IbsHistoryResponse(string body)
+          : base(body)
+        {
+            foreach (JObject jobject in (IEnumerable<JToken>)this.ReturnData)
+                this.IbRecords.AddLast(new IbRecord(jobject));
+        }
     }
-  }
 }

@@ -5,132 +5,132 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-  public record TradeTransInfoRecord
-  {
-    private TRADE_OPERATION_CODE cmd;
-    private string customComment;
-    private long? expiration;
-    private long? order;
-    private double? price;
-    private double? sl;
-    private string symbol;
-    private double? tp;
-    private TRADE_TRANSACTION_TYPE type;
-    private double? volume;
-
-    public TRADE_OPERATION_CODE Cmd
+    public record TradeTransInfoRecord
     {
-      get => this.cmd;
-      set => this.cmd = value;
-    }
+        private TRADE_OPERATION_CODE cmd;
+        private string customComment;
+        private long? expiration;
+        private long? order;
+        private double? price;
+        private double? sl;
+        private string symbol;
+        private double? tp;
+        private TRADE_TRANSACTION_TYPE type;
+        private double? volume;
 
-    public string CustomComment
-    {
-      get => this.customComment;
-      set => this.customComment = value;
-    }
+        public TRADE_OPERATION_CODE Cmd
+        {
+            get => this.cmd;
+            set => this.cmd = value;
+        }
 
-    public long? Expiration
-    {
-      get => this.expiration;
-      set => this.expiration = value;
-    }
+        public string CustomComment
+        {
+            get => this.customComment;
+            set => this.customComment = value;
+        }
 
-    public long? Order
-    {
-      get => this.order;
-      set => this.order = value;
-    }
+        public long? Expiration
+        {
+            get => this.expiration;
+            set => this.expiration = value;
+        }
 
-    public double? Price
-    {
-      get => this.price;
-      set => this.price = value;
-    }
+        public long? Order
+        {
+            get => this.order;
+            set => this.order = value;
+        }
 
-    public double? Sl
-    {
-      get => this.sl;
-      set => this.sl = value;
-    }
+        public double? Price
+        {
+            get => this.price;
+            set => this.price = value;
+        }
 
-    public string Symbol
-    {
-      get => this.symbol;
-      set => this.symbol = value;
-    }
+        public double? Sl
+        {
+            get => this.sl;
+            set => this.sl = value;
+        }
 
-    public double? Tp
-    {
-      get => this.tp;
-      set => this.tp = value;
-    }
+        public string Symbol
+        {
+            get => this.symbol;
+            set => this.symbol = value;
+        }
 
-    public TRADE_TRANSACTION_TYPE Type
-    {
-      get => this.type;
-      set => this.type = value;
-    }
+        public double? Tp
+        {
+            get => this.tp;
+            set => this.tp = value;
+        }
 
-    public double? Volume
-    {
-      get => this.volume;
-      set => this.volume = value;
-    }
+        public TRADE_TRANSACTION_TYPE Type
+        {
+            get => this.type;
+            set => this.type = value;
+        }
 
-    public TradeTransInfoRecord(
-      TRADE_OPERATION_CODE cmd,
-      TRADE_TRANSACTION_TYPE type,
-      double? price,
-      double? sl,
-      double? tp,
-      string symbol,
-      double? volume,
-      long? order,
-      string customComment,
-      long? expiration)
-    {
-      this.cmd = cmd;
-      this.type = type;
-      this.price = price;
-      this.sl = sl;
-      this.tp = tp;
-      this.symbol = symbol;
-      this.volume = volume;
-      this.order = order;
-      this.customComment = customComment;
-      this.expiration = expiration;
-    }
+        public double? Volume
+        {
+            get => this.volume;
+            set => this.volume = value;
+        }
 
-    [Obsolete("Fields ie_devation and comment are not used anymore. Use another constructor instead.")]
-    public TradeTransInfoRecord(
-      TRADE_OPERATION_CODE cmd,
-      TRADE_TRANSACTION_TYPE type,
-      double? price,
-      double? sl,
-      double? tp,
-      string symbol,
-      double? volume,
-      long? ie_deviation,
-      long? order,
-      string comment,
-      long? expiration)
-    {
-      this.cmd = cmd;
-      this.type = type;
-      this.price = price;
-      this.sl = sl;
-      this.tp = tp;
-      this.symbol = symbol;
-      this.volume = volume;
-      this.order = order;
-      this.expiration = expiration;
-      this.customComment = comment;
-    }
+        public TradeTransInfoRecord(
+          TRADE_OPERATION_CODE cmd,
+          TRADE_TRANSACTION_TYPE type,
+          double? price,
+          double? sl,
+          double? tp,
+          string symbol,
+          double? volume,
+          long? order,
+          string customComment,
+          long? expiration)
+        {
+            this.cmd = cmd;
+            this.type = type;
+            this.price = price;
+            this.sl = sl;
+            this.tp = tp;
+            this.symbol = symbol;
+            this.volume = volume;
+            this.order = order;
+            this.customComment = customComment;
+            this.expiration = expiration;
+        }
 
-    public virtual JObject toJSONObject()
-    {
-      return new JObject()
+        [Obsolete("Fields ie_devation and comment are not used anymore. Use another constructor instead.")]
+        public TradeTransInfoRecord(
+          TRADE_OPERATION_CODE cmd,
+          TRADE_TRANSACTION_TYPE type,
+          double? price,
+          double? sl,
+          double? tp,
+          string symbol,
+          double? volume,
+          long? ie_deviation,
+          long? order,
+          string comment,
+          long? expiration)
+        {
+            this.cmd = cmd;
+            this.type = type;
+            this.price = price;
+            this.sl = sl;
+            this.tp = tp;
+            this.symbol = symbol;
+            this.volume = volume;
+            this.order = order;
+            this.expiration = expiration;
+            this.customComment = comment;
+        }
+
+        public virtual JObject toJSONObject()
+        {
+            return new JObject()
       {
         {
           "cmd",
@@ -173,11 +173,11 @@ namespace xAPI.Records
           (JToken) this.expiration
         }
       };
-    }
+        }
 
-    public override string ToString()
-    {
-      return "TradeTransInfo [" + this.cmd.ToString() + ", " + this.type.ToString() + ", " + this.price.ToString() + ", " + this.sl.ToString() + ", " + this.tp.ToString() + ", " + this.symbol.ToString() + ", " + this.volume.ToString() + this.order.ToString() + ", " + this.customComment.ToString() + ", " + this.expiration.ToString() + ", ]";
+        public override string ToString()
+        {
+            return "TradeTransInfo [" + this.cmd.ToString() + ", " + this.type.ToString() + ", " + this.price.ToString() + ", " + this.sl.ToString() + ", " + this.tp.ToString() + ", " + this.symbol.ToString() + ", " + this.volume.ToString() + this.order.ToString() + ", " + this.customComment.ToString() + ", " + this.expiration.ToString() + ", ]";
+        }
     }
-  }
 }

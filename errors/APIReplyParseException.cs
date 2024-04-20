@@ -2,15 +2,15 @@
 
 namespace xAPI.Errors
 {
-  public class APIReplyParseException : Exception
-  {
-    public APIReplyParseException()
+    public class APIReplyParseException : Exception
     {
-    }
+        public APIReplyParseException()
+        {
+        }
 
-    public APIReplyParseException(string msg)
-      : base(msg)
-    {
+        public APIReplyParseException(string msg)
+          : base(msg)
+        {
+        }
     }
-  }
 }

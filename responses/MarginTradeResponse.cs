@@ -2,16 +2,16 @@
 
 namespace xAPI.Responses
 {
-  public class MarginTradeResponse : BaseResponse
-  {
-    private double? margin;
-
-    public MarginTradeResponse(string body)
-      : base(body)
+    public class MarginTradeResponse : BaseResponse
     {
-      this.margin = (double?) ((JObject) this.ReturnData)[nameof (margin)];
-    }
+        private double? margin;
 
-    public virtual double? Margin => this.margin;
-  }
+        public MarginTradeResponse(string body)
+          : base(body)
+        {
+            this.margin = (double?)((JObject)this.ReturnData)[nameof(margin)];
+        }
+
+        public virtual double? Margin => this.margin;
+    }
 }

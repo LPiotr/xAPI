@@ -20,7 +20,7 @@ namespace xAPI.Sync
         };
         private static Dictionary<string, string> xapiList;
 
-        public ServerData() => ServerData.SetUpList();
+        public ServerData() => SetUpList();
 
         private static void SetUpList()
         {
@@ -33,7 +33,7 @@ namespace xAPI.Sync
         {
             get
             {
-                return ServerData.AddServers(ServerData.AddServers(new Dictionary<string, Server>(), ServerData.PORTS_DEMO, "DEMO"), ServerData.PORTS_REAL, "REAL");
+                return AddServers(AddServers(new Dictionary<string, Server>(), ServerData.PORTS_DEMO, "DEMO"), PORTS_REAL, "REAL");
             }
         }
 

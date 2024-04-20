@@ -514,7 +514,7 @@ namespace xAPI.Commands
           bool prettyPrint = false)
         {
             LoginCommand loginCommand = CreateLoginCommand(credentials, prettyPrint);
-            LoginResponse loginResponse = new LoginResponse(connector.ExecuteCommand((BaseCommand)loginCommand).ToString());
+            LoginResponse loginResponse = new LoginResponse(connector.ExecuteCommand(loginCommand).ToString());
             redirectCounter = 0;
 
             for (; loginResponse.RedirectRecord != null; loginResponse = new LoginResponse(connector.ExecuteCommand(loginCommand).ToString()))
@@ -679,7 +679,7 @@ namespace xAPI.Commands
           long? expiration,
           bool prettyPrint = false)
         {
-            return new TradeTransactionResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradeTransactionCommand(cmd, type, price, sl, tp, symbol, volume, order, "", expiration, prettyPrint)).ToString());
+            return new TradeTransactionResponse(connector.ExecuteCommand(CreateTradeTransactionCommand(cmd, type, price, sl, tp, symbol, volume, order, "", expiration, prettyPrint)).ToString());
         }
 
         public static TradeTransactionStatusResponse ExecuteTradeTransactionStatusCommand(
@@ -687,7 +687,7 @@ namespace xAPI.Commands
           long? order,
           bool prettyPrint = false)
         {
-            return new TradeTransactionStatusResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradeTransactionStatusCommand(order, prettyPrint)).ToString());
+            return new TradeTransactionStatusResponse(connector.ExecuteCommand(CreateTradeTransactionStatusCommand(order, prettyPrint)).ToString());
         }
 
         public static TradesResponse ExecuteTradesCommand(
@@ -695,7 +695,7 @@ namespace xAPI.Commands
           bool openedOnly,
           bool prettyPrint = false)
         {
-            return new TradesResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradesCommand(openedOnly, prettyPrint)).ToString());
+            return new TradesResponse(connector.ExecuteCommand(CreateTradesCommand(openedOnly, prettyPrint)).ToString());
         }
 
         public static TradesHistoryResponse ExecuteTradesHistoryCommand(
@@ -704,7 +704,7 @@ namespace xAPI.Commands
           long? end,
           bool prettyPrint = false)
         {
-            return new TradesHistoryResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradesHistoryCommand(start, end, prettyPrint)).ToString());
+            return new TradesHistoryResponse(connector.ExecuteCommand(CreateTradesHistoryCommand(start, end, prettyPrint)).ToString());
         }
 
         public static TradingHoursResponse ExecuteTradingHoursCommand(

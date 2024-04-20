@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-
 namespace SyncAPIConnect.Utils
 {
     internal class ExecuteWithTimeLimit
@@ -10,7 +9,7 @@ namespace SyncAPIConnect.Utils
         {
             try
             {
-                Task task = Task.Factory.StartNew((Action)(() => codeBlock()));
+                Task task = Task.Factory.StartNew(() => codeBlock()));
                 task.Wait(timeSpan);
                 return task.IsCompleted;
             }

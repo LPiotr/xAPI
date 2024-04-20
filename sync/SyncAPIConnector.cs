@@ -30,7 +30,7 @@ namespace xAPI.Sync
         
         public SyncAPIConnector(Server server, bool lookForBackups = true)
         {
-            this.Connect(server, lookForBackups);
+            Connect(server, lookForBackups);
         }
 
         [Obsolete]
@@ -48,7 +48,7 @@ namespace xAPI.Sync
                     if (lookForBackups)
                     {
                         this.server = Servers.GetBackup(this.server);
-                        this.apiSocket = new TcpClient();
+                        apiSocket = new TcpClient();
                     }
                     else
                         throw new APICommunicationException("Cannot connect to: " + server.Address + ":" + (object)server.MainPort);
@@ -56,32 +56,33 @@ namespace xAPI.Sync
             }
             if (server.Secure)
             {
-                SslStream sl = new SslStream((Stream)this.apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
+                SslStream sl = new SslStream(apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
                 
                 if (!ExecuteWithTimeLimit.Execute(TimeSpan.FromMilliseconds(5000.0), (Action)(() => 
                     sl.AuthenticateAsClient(server.Address, new X509CertificateCollection(), SslProtocols.Default, false))))
                     
                     throw new APICommunicationException("Error during SSL handshaking (timed out?)");
                 
-                apiWriteStream = new StreamWriter((Stream)sl);
-                apiReadStream = new StreamReader((Stream)sl);
+                apiWriteStream = new StreamWriter(sl);
+                apiReadStream = new StreamReader(sl);
             }
             else
             {
-                NetworkStream stream = this.apiSocket.GetStream();
+                NetworkStream stream = apiSocket.GetStream();
                 apiWriteStream = new StreamWriter(stream);
                 apiReadStream = new StreamReader(stream);
             }
-            this.apiConnected = true;
-            if (this.OnConnected != null)
-                this.OnConnected(this.server);
-            this.streamingConnector = new StreamingAPIConnector(this.server);
+            apiConnected = true;
+
+            OnConnected?.Invoke(this.server);
+
+            streamingConnector = new StreamingAPIConnector(this.server);
         }
 
         public void Connect()
         {
             if (server != null)
-                Connect(this.server);
+                Connect(server);
             throw new APICommunicationException("No server to connect to");
         }
 
@@ -93,11 +94,12 @@ namespace xAPI.Sync
 
         public void Redirect(Server server)
         {
-            if (this.OnRedirected != null)
-                this.OnRedirected(server);
-            if (this.apiConnected)
-                this.Disconnect(true);
-            this.Connect(server);
+            OnRedirected?.Invoke(server);
+
+            if (apiConnected)
+                Disconnect(true);
+            
+            Connect(server);
         }
 
         public JObject ExecuteCommand(BaseCommand cmd)
@@ -136,21 +138,21 @@ namespace xAPI.Sync
         [Obsolete("Use Streaming.Connect() instead")]
         public StreamingAPIConnector ConnectStreaming()
         {
-            if (this.streamingConnector != null)
-                this.streamingConnector.Disconnect();
-            this.streamingConnector = new StreamingAPIConnector(this.server);
-            return this.streamingConnector;
+            if (streamingConnector != null)
+                streamingConnector.Disconnect();
+            streamingConnector = new StreamingAPIConnector(server);
+            return streamingConnector;
         }
 
         [Obsolete("Use Streaming.Disconnect() instead")]
         public void DisconnectStreaming()
         {
-            if (this.streamingConnector == null)
+            if (streamingConnector == null)
                 return;
-            this.streamingConnector.Disconnect();
+            streamingConnector.Disconnect();
         }
 
-        public StreamingAPIConnector Streaming => this.streamingConnector;
+        public StreamingAPIConnector Streaming => streamingConnector;
 
         public string StreamSessionId { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace xAPI.Records
 {
@@ -13,16 +14,16 @@ namespace xAPI.Records
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.Id = (int)value["id"];
-            this.Name = (string)value["name"];
-            this.Steps = new LinkedList<StepRecord>();
+            Id = (int)value["id"];
+            Name = (string)value["name"];
+            Steps = new LinkedList<StepRecord>();
             if (value["steps"] == null)
                 return;
-            foreach (JObject jobject in (IEnumerable<JToken>)value["steps"])
+            foreach (JObject jobject in ((IEnumerable<JToken>)value["steps"]).Cast<JObject>())
             {
-                StepRecord stepRecord = new StepRecord();
+                StepRecord stepRecord = new ();
                 stepRecord.FieldsFromJSONObject(jobject);
-                this.Steps.AddLast(stepRecord);
+                Steps.AddLast(stepRecord);
             }
         }
     }

@@ -14,8 +14,8 @@ namespace xAPI.Sync
         protected StreamReader apiReadStream;
         protected volatile bool apiConnected;
         protected Server server;
-        private object writeLocker = new();
-
+        private readonly object writeLocker = new();
+        private bool disposedValue = false;
         public event OnReceiveMessageCallback OnMessageReceived;
 
         public event OnSendMessageCallback OnMessageSended;
@@ -37,12 +37,12 @@ namespace xAPI.Sync
                     }
                     catch (IOException ex)
                     {
-                        this.Disconnect();
+                        Disconnect();
                         throw new APICommunicationException("Error while sending the data: " + ex.Message);
                     }
                     if (this.OnMessageSended == null)
                         return;
-                    this.OnMessageSended(message);
+                    OnMessageSended(message);
                 }
                 else
                 {
@@ -66,23 +66,26 @@ namespace xAPI.Sync
                     if (!(str == "") || ch != '}')
                     {
                         if (str.Length != 0)
-                            ch = str[str.Length - 1];
+                            ch = str[^1];
                     }
                     else
                         break;
                 }
+
                 if (str == null)
                 {
                     Disconnect();
                     throw new APICommunicationException("Disconnected from server");
                 }
-                if (OnMessageReceived != null)
-                    OnMessageReceived(stringBuilder.ToString());
+
+                OnMessageReceived?.Invoke(stringBuilder.ToString());
+                
                 return stringBuilder.ToString();
             }
             catch (Exception ex)
             {
                 Disconnect();
+
                 throw new APICommunicationException("Disconnected from server: " + ex.Message);
             }
         }
@@ -102,9 +105,24 @@ namespace xAPI.Sync
 
         public void Dispose()
         {
-            apiReadStream.Close();
-            apiWriteStream.Close();
-            apiSocket.Close();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Disconnect(silent: true);
+                    apiReadStream.Dispose();
+                    apiWriteStream.Dispose();
+                    apiSocket.Dispose();
+                }
+
+                disposedValue = true;
+            }
         }
 
         public delegate void OnReceiveMessageCallback(string response);

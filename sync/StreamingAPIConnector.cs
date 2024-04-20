@@ -20,28 +20,28 @@ namespace xAPI.Sync
         [Obsolete("Used only in older method")]
         private bool running = false;
 
-        public event StreamingAPIConnector.OnConnectedCallback OnConnected;
+        public event OnConnectedCallback OnConnected;
 
-        public event StreamingAPIConnector.OnTick TickRecordReceived;
+        public event OnTick TickRecordReceived;
 
-        public event StreamingAPIConnector.OnTrade TradeRecordReceived;
+        public event OnTrade TradeRecordReceived;
 
-        public event StreamingAPIConnector.OnBalance BalanceRecordReceived;
+        public event OnBalance BalanceRecordReceived;
 
-        public event StreamingAPIConnector.OnTradeStatus TradeStatusRecordReceived;
+        public event OnTradeStatus TradeStatusRecordReceived;
 
-        public event StreamingAPIConnector.OnProfit ProfitRecordReceived;
+        public event OnProfit ProfitRecordReceived;
 
-        public event StreamingAPIConnector.OnNews NewsRecordReceived;
+        public event OnNews NewsRecordReceived;
 
-        public event StreamingAPIConnector.OnKeepAlive KeepAliveRecordReceived;
+        public event OnKeepAlive KeepAliveRecordReceived;
 
-        public event StreamingAPIConnector.OnCandle CandleRecordReceived;
+        public event OnCandle CandleRecordReceived;
 
         public StreamingAPIConnector(Server server)
         {
             this.server = server;
-            this.apiConnected = false;
+            apiConnected = false;
         }
 
         public StreamingAPIConnector(
@@ -51,52 +51,53 @@ namespace xAPI.Sync
         {
             this.server = server;
             this.streamSessionId = streamSessionId;
-            this.Connect(streamingListner, streamSessionId);
+            Connect(streamingListner, streamSessionId);
         }
 
         public void Connect(StreamingListener streamingListener)
         {
-            this.Connect(streamingListener, this.streamSessionId);
+            Connect(streamingListener, this.streamSessionId);
         }
 
-        public void Connect() => this.Connect((StreamingListener)null, this.streamSessionId);
+        public void Connect() => Connect((StreamingListener)null, this.streamSessionId);
 
         public void Connect(StreamingListener streamingListener, string streamSessionId)
         {
             this.streamSessionId = streamSessionId;
             if (this.streamSessionId == null)
                 throw new APICommunicationException("please login first");
-            if (this.Connected())
+            if (Connected())
                 throw new APICommunicationException("stream already connected");
-            this.sl = streamingListener;
-            this.apiSocket = new TcpClient(this.server.Address, this.server.StreamingPort);
-            this.apiConnected = true;
-            if (this.OnConnected != null)
-                this.OnConnected(this.server);
-            if (this.server.Secure)
+            
+            sl = streamingListener;
+            apiSocket = new TcpClient(server.Address, server.StreamingPort);
+            apiConnected = true;
+            OnConnected?.Invoke(server);
+            
+            if (server.Secure)
             {
-                SslStream sslStream = new SslStream((Stream)this.apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
-                sslStream.AuthenticateAsClient(this.server.Address);
-                this.apiWriteStream = new StreamWriter((Stream)sslStream);
-                this.apiReadStream = new StreamReader((Stream)sslStream);
+                SslStream sslStream = new(apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
+                sslStream.AuthenticateAsClient(server.Address);
+                apiWriteStream = new StreamWriter(sslStream);
+                apiReadStream = new StreamReader(sslStream);
             }
             else
             {
                 NetworkStream stream = this.apiSocket.GetStream();
-                this.apiWriteStream = new StreamWriter((Stream)stream);
-                this.apiReadStream = new StreamReader((Stream)stream);
+                apiWriteStream = new StreamWriter(stream);
+                apiReadStream = new StreamReader(stream);
             }
             new Thread((ThreadStart)(() =>
             {
-                while (this.Connected())
-                    this.ReadStreamMessage();
+                while (Connected())
+                    ReadStreamMessage();
             })).Start();
         }
 
         public string StreamSessionId
         {
-            get => this.streamSessionId;
-            set => this.streamSessionId = value;
+            get => streamSessionId;
+            set => streamSessionId = value;
         }
 
         [Obsolete("Use StreamingAPIConnector(Server server) instead")]
@@ -107,31 +108,31 @@ namespace xAPI.Sync
           LoginResponse lr,
           bool secure)
         {
-            this.running = true;
+            running = true;
             this.sl = sl;
-            this.streamSessionId = lr.StreamSessionId;
-            this.apiSocket = new TcpClient(ip, port);
+            streamSessionId = lr.StreamSessionId;
+            apiSocket = new TcpClient(ip, port);
             if (secure)
             {
-                SslStream sslStream = new SslStream((Stream)this.apiSocket.GetStream());
+                SslStream sslStream = new(apiSocket.GetStream());
                 sslStream.AuthenticateAsClient(ip);
-                this.apiWriteStream = new StreamWriter((Stream)sslStream);
-                this.apiReadStream = new StreamReader((Stream)sslStream);
+                apiWriteStream = new StreamWriter(sslStream);
+                apiReadStream = new StreamReader(sslStream);
             }
             else
             {
-                NetworkStream stream = this.apiSocket.GetStream();
-                this.apiWriteStream = new StreamWriter((Stream)stream);
-                this.apiReadStream = new StreamReader((Stream)stream);
+                NetworkStream stream = apiSocket.GetStream();
+                apiWriteStream = new StreamWriter(stream);
+                apiReadStream = new StreamReader(stream);
             }
-            new Thread((ThreadStart)(() =>
+            new Thread(() =>
             {
-                while (this.running)
+                while (running)
                 {
-                    this.ReadStreamMessage();
+                    ReadStreamMessage();
                     Thread.Sleep(50);
                 }
-            })).Start();
+            }).Start();
         }
 
         [Obsolete("Use StreamingAPIConnector(Server server) instead")]
@@ -150,7 +151,7 @@ namespace xAPI.Sync
         {
             try
             {
-                string json = this.ReadMessage();
+                string json = ReadMessage();
                 if (json == null)
                     return;
                 JObject jobject = JObject.Parse(json);
@@ -159,88 +160,88 @@ namespace xAPI.Sync
                     case "tickPrices":
                         StreamingTickRecord tickRecord = new StreamingTickRecord();
                         tickRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.TickRecordReceived != null)
-                            this.TickRecordReceived(tickRecord);
-                        if (this.sl != null)
+                        if (TickRecordReceived != null)
+                            TickRecordReceived(tickRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveTickRecord(tickRecord);
+                            sl.ReceiveTickRecord(tickRecord);
                             break;
                         }
                         break;
                     case "trade":
-                        StreamingTradeRecord tradeRecord = new StreamingTradeRecord();
+                        StreamingTradeRecord tradeRecord = new();
                         tradeRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.TradeRecordReceived != null)
-                            this.TradeRecordReceived(tradeRecord);
-                        if (this.sl != null)
+                        if (TradeRecordReceived != null)
+                            TradeRecordReceived(tradeRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveTradeRecord(tradeRecord);
+                            sl.ReceiveTradeRecord(tradeRecord);
                             break;
                         }
                         break;
                     case "balance":
                         StreamingBalanceRecord balanceRecord = new StreamingBalanceRecord();
                         balanceRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.BalanceRecordReceived != null)
-                            this.BalanceRecordReceived(balanceRecord);
-                        if (this.sl != null)
+                        if (BalanceRecordReceived != null)
+                            BalanceRecordReceived(balanceRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveBalanceRecord(balanceRecord);
+                            sl.ReceiveBalanceRecord(balanceRecord);
                             break;
                         }
                         break;
                     case "tradeStatus":
                         StreamingTradeStatusRecord tradeStatusRecord = new StreamingTradeStatusRecord();
                         tradeStatusRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.TradeStatusRecordReceived != null)
-                            this.TradeStatusRecordReceived(tradeStatusRecord);
-                        if (this.sl != null)
+                        if (TradeStatusRecordReceived != null)
+                            TradeStatusRecordReceived(tradeStatusRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveTradeStatusRecord(tradeStatusRecord);
+                            sl.ReceiveTradeStatusRecord(tradeStatusRecord);
                             break;
                         }
                         break;
                     case "profit":
                         StreamingProfitRecord profitRecord = new StreamingProfitRecord();
                         profitRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.ProfitRecordReceived != null)
-                            this.ProfitRecordReceived(profitRecord);
-                        if (this.sl != null)
+                        if (ProfitRecordReceived != null)
+                            ProfitRecordReceived(profitRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveProfitRecord(profitRecord);
+                            sl.ReceiveProfitRecord(profitRecord);
                             break;
                         }
                         break;
                     case "news":
                         StreamingNewsRecord newsRecord = new StreamingNewsRecord();
                         newsRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.NewsRecordReceived != null)
-                            this.NewsRecordReceived(newsRecord);
-                        if (this.sl != null)
+                        if (NewsRecordReceived != null)
+                            NewsRecordReceived(newsRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveNewsRecord(newsRecord);
+                            sl.ReceiveNewsRecord(newsRecord);
                             break;
                         }
                         break;
                     case "keepAlive":
                         StreamingKeepAliveRecord keepAliveRecord = new StreamingKeepAliveRecord();
                         keepAliveRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.KeepAliveRecordReceived != null)
-                            this.KeepAliveRecordReceived(keepAliveRecord);
-                        if (this.sl != null)
+                        if (KeepAliveRecordReceived != null)
+                            KeepAliveRecordReceived(keepAliveRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveKeepAliveRecord(keepAliveRecord);
+                            sl.ReceiveKeepAliveRecord(keepAliveRecord);
                             break;
                         }
                         break;
                     case "candle":
                         StreamingCandleRecord candleRecord = new StreamingCandleRecord();
                         candleRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (this.CandleRecordReceived != null)
-                            this.CandleRecordReceived(candleRecord);
-                        if (this.sl != null)
+                        if (CandleRecordReceived != null)
+                            CandleRecordReceived(candleRecord);
+                        if (sl != null)
                         {
-                            this.sl.ReceiveCandleRecord(candleRecord);
+                            sl.ReceiveCandleRecord(candleRecord);
                             break;
                         }
                         break;
@@ -255,88 +256,88 @@ namespace xAPI.Sync
 
         public void SubscribePrice(string symbol, long? minArrivalTime = null, long? maxLevel = null)
         {
-            this.WriteMessage(new TickPricesSubscribe(symbol, this.streamSessionId, minArrivalTime, maxLevel).ToString());
+            WriteMessage(new TickPricesSubscribe(symbol, streamSessionId, minArrivalTime, maxLevel).ToString());
         }
 
         public void UnsubscribePrice(string symbol)
         {
-            this.WriteMessage(new TickPricesStop(symbol).ToString());
+            WriteMessage(new TickPricesStop(symbol).ToString());
         }
 
         public void SubscribePrices(IEnumerable<string> symbols)
         {
             foreach (string symbol in symbols)
-                this.SubscribePrice(symbol);
+                SubscribePrice(symbol);
         }
 
         public void UnsubscribePrices(LinkedList<string> symbols)
         {
             foreach (string symbol in symbols)
-                this.UnsubscribePrice(symbol);
+                UnsubscribePrice(symbol);
         }
 
         public void SubscribeTrades()
         {
-            this.WriteMessage(new TradeRecordsSubscribe(this.streamSessionId).ToString());
+            WriteMessage(new TradeRecordsSubscribe(streamSessionId).ToString());
         }
 
-        public void UnsubscribeTrades() => this.WriteMessage(new TradeRecordsStop().ToString());
+        public void UnsubscribeTrades() => WriteMessage(new TradeRecordsStop().ToString());
 
         public void SubscribeBalance()
         {
-            this.WriteMessage(new BalanceRecordsSubscribe(this.streamSessionId).ToString());
+            WriteMessage(new BalanceRecordsSubscribe(streamSessionId).ToString());
         }
 
-        public void UnsubscribeBalance() => this.WriteMessage(new BalanceRecordsStop().ToString());
+        public void UnsubscribeBalance() => WriteMessage(new BalanceRecordsStop().ToString());
 
         [Obsolete("Use SubscribeTradeStatus instead")]
-        public void SubscribeReqStatus() => this.SubscribeTradeStatus();
+        public void SubscribeReqStatus() => SubscribeTradeStatus();
 
         [Obsolete("Use UnsubscribeTradeStatus instead")]
         public void UnsubscribeReqStatus()
         {
-            this.WriteMessage(new TradeStatusRecordsStop().ToString());
+            WriteMessage(new TradeStatusRecordsStop().ToString());
         }
 
         public void SubscribeTradeStatus()
         {
-            this.WriteMessage(new TradeStatusRecordsSubscribe(this.streamSessionId).ToString());
+            WriteMessage(new TradeStatusRecordsSubscribe(streamSessionId).ToString());
         }
 
         public void UnsubscribeTradeStatus()
         {
-            this.WriteMessage(new TradeStatusRecordsStop().ToString());
+            WriteMessage(new TradeStatusRecordsStop().ToString());
         }
 
         public void SubscribeProfits()
         {
-            this.WriteMessage(new ProfitsSubscribe(this.streamSessionId).ToString());
+            WriteMessage(new ProfitsSubscribe(streamSessionId).ToString());
         }
 
-        public void UnsubscribeProfits() => this.WriteMessage(new ProfitsStop().ToString());
+        public void UnsubscribeProfits() => WriteMessage(new ProfitsStop().ToString());
 
         public void SubscribeNews()
         {
-            this.WriteMessage(new NewsSubscribe(this.streamSessionId).ToString());
+            WriteMessage(new NewsSubscribe(streamSessionId).ToString());
         }
 
-        public void UnsubscribeNews() => this.WriteMessage(new NewsStop().ToString());
+        public void UnsubscribeNews() => WriteMessage(new NewsStop().ToString());
 
         public void SubscribeKeepAlive()
         {
-            this.WriteMessage(new KeepAliveSubscribe(this.streamSessionId).ToString());
+            WriteMessage(new KeepAliveSubscribe(streamSessionId).ToString());
         }
 
-        public void UnsubscribeKeepAlive() => this.WriteMessage(new KeepAliveStop().ToString());
+        public void UnsubscribeKeepAlive() => WriteMessage(new KeepAliveStop().ToString());
 
         public void SubscribeCandles(string symbol)
         {
-            this.WriteMessage(new CandleRecordsSubscribe(symbol, this.streamSessionId).ToString());
+            WriteMessage(new CandleRecordsSubscribe(symbol, streamSessionId).ToString());
         }
 
         public void UnsubscribeCandles(string symbol)
         {
-            this.WriteMessage(new CandleRecordsStop(symbol).ToString());
+            WriteMessage(new CandleRecordsStop(symbol).ToString());
         }
 
         public delegate void OnConnectedCallback(Server server);

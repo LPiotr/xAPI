@@ -27,6 +27,7 @@ namespace xAPI.Sync
 
         public event OnRedirectedCallback OnRedirected;
 
+        
         public SyncAPIConnector(Server server, bool lookForBackups = true)
         {
             this.Connect(server, lookForBackups);
@@ -79,8 +80,8 @@ namespace xAPI.Sync
 
         public void Connect()
         {
-            if (this.server != null)
-                this.Connect(this.server);
+            if (server != null)
+                Connect(this.server);
             throw new APICommunicationException("No server to connect to");
         }
 

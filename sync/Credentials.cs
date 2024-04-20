@@ -32,9 +32,9 @@ namespace xAPI.Sync
             this.appName = appName;
         }
 
-        public string Login => this.login;
+        public string Login => login;
 
-        public string Password => this.password;
+        public string Password => password;
 
         public string AppId
         {

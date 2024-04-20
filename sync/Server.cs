@@ -1,60 +1,60 @@
 ﻿namespace xAPI.Sync
 {
-  public class Server
-  {
-    private string address;
-    private int mainPort;
-    private int streamingPort;
-    private string description;
-    private bool secure;
-
-    public Server(
-      string address,
-      int mainPort,
-      int streamingPort,
-      bool secure,
-      string description)
+    public class Server
     {
-      this.address = address;
-      this.mainPort = mainPort;
-      this.streamingPort = streamingPort;
-      this.secure = secure;
-      this.description = description;
-    }
+        private string address;
+        private int mainPort;
+        private int streamingPort;
+        private string description;
+        private bool secure;
 
-    public string Address
-    {
-      get => this.address;
-      set => this.address = value;
-    }
+        public Server(
+          string address,
+          int mainPort,
+          int streamingPort,
+          bool secure,
+          string description)
+        {
+            this.address = address;
+            this.mainPort = mainPort;
+            this.streamingPort = streamingPort;
+            this.secure = secure;
+            this.description = description;
+        }
 
-    public string Description
-    {
-      get => this.description;
-      set => this.description = value;
-    }
+        public string Address
+        {
+            get => address;
+            set => address = value;
+        }
 
-    public int MainPort
-    {
-      get => this.mainPort;
-      set => this.mainPort = value;
-    }
+        public string Description
+        {
+            get => description;
+            set => description = value;
+        }
 
-    public int StreamingPort
-    {
-      get => this.streamingPort;
-      set => this.streamingPort = value;
-    }
+        public int MainPort
+        {
+            get => mainPort;
+            set => mainPort = value;
+        }
 
-    public bool Secure
-    {
-      get => this.secure;
-      set => this.secure = value;
-    }
+        public int StreamingPort
+        {
+            get => streamingPort;
+            set => streamingPort = value;
+        }
 
-    public override string ToString()
-    {
-      return this.Description + " (" + this.Address + ":" + (object) this.MainPort + "/" + (object) this.StreamingPort + ")";
+        public bool Secure
+        {
+            get => secure;
+            set => secure = value;
+        }
+
+        public override string ToString()
+        {
+            return Description + " (" + Address + ":" + MainPort + "/" + StreamingPort + ")";
+        }
     }
-  }
 }

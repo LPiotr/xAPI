@@ -36,12 +36,12 @@ namespace xAPI.Sync
         {
             get
             {
-                if (Servers.demoServers == null)
+                if (demoServers == null)
                 {
-                    Servers.demoServers = new List<Server>();
-                    foreach (Servers.ApiAddress apiAddress in Servers.ADDRESSES)
-                        Servers.demoServers.Add(new Server(apiAddress.Address, Servers.DEMO_PORTS.MainPort, Servers.DEMO_PORTS.StreamingPort, true, apiAddress.Name + " DEMO SSL"));
-                    Servers.demoServers.Shuffle<Server>();
+                    demoServers = new List<Server>();
+                    foreach (ApiAddress apiAddress in ADDRESSES)
+                        demoServers.Add(new Server(apiAddress.Address, DEMO_PORTS.MainPort, DEMO_PORTS.StreamingPort, true, apiAddress.Name + " DEMO SSL"));
+                    demoServers.Shuffle<Server>();
                 }
                 return Servers.demoServers;
             }
@@ -55,7 +55,7 @@ namespace xAPI.Sync
                 {
                     realServers = new List<Server>();
                     foreach (ApiAddress apiAddress in Servers.ADDRESSES)
-                        realServers.Add(new Server(apiAddress.Address, Servers.REAL_PORTS.MainPort, Servers.REAL_PORTS.StreamingPort, true, apiAddress.Name + " REAL SSL"));
+                        realServers.Add(new Server(apiAddress.Address, REAL_PORTS.MainPort, REAL_PORTS.StreamingPort, true, apiAddress.Name + " REAL SSL"));
                         realServers.Shuffle();
                 }
                 return realServers;
@@ -64,7 +64,7 @@ namespace xAPI.Sync
 
         public static Server GetBackup(Server server)
         {
-            ApiAddress nextAddress = Servers.GetNextAddress(server.Address);
+            ApiAddress nextAddress = GetNextAddress(server.Address);
             return new Server(nextAddress.Address, server.MainPort, server.StreamingPort, server.Secure, nextAddress.Name);
         }
 
@@ -76,7 +76,7 @@ namespace xAPI.Sync
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            Random random = new Random();
+            Random random = new();
             int count = list.Count;
             while (count > 1)
             {
@@ -99,9 +99,9 @@ namespace xAPI.Sync
                 this.streamingPort = streamingPort;
             }
 
-            public int MainPort => this.mainPort;
+            public int MainPort => mainPort;
 
-            public int StreamingPort => this.streamingPort;
+            public int StreamingPort => streamingPort;
         }
 
         public class ApiAddress
@@ -115,9 +115,9 @@ namespace xAPI.Sync
                 this.name = name;
             }
 
-            public string Address => this.address;
+            public string Address => address;
 
-            public string Name => this.name;
+            public string Name => name;
         }
     }
 }

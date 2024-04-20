@@ -12,6 +12,6 @@
         {
         }
 
-        public override string ToString() => this.Code.ToString();
+        public override string ToString() => Code.ToString();
     }
 }

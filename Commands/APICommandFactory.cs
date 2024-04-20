@@ -41,7 +41,6 @@ namespace xAPI.Commands
             prettyPrint);
         }
 
-
         public static LoginCommand CreateLoginCommand(Credentials credentials, bool prettyPrint = false)
         {
             return new LoginCommand(CreateLoginJsonObject(credentials), prettyPrint);
@@ -468,7 +467,7 @@ namespace xAPI.Commands
           long? ticks,
           bool prettyPrint = false)
         {
-            return new ChartRangeResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateChartRangeCommand(symbol, period, start, end, ticks, prettyPrint)).ToString());
+            return new ChartRangeResponse(connector.ExecuteCommand(CreateChartRangeCommand(symbol, period, start, end, ticks, prettyPrint)).ToString());
         }
 
         public static CommissionDefResponse ExecuteCommissionDefCommand(
@@ -477,7 +476,7 @@ namespace xAPI.Commands
           double? volume,
           bool prettyPrint = false)
         {
-            return new CommissionDefResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateCommissionDefCommand(symbol, volume, prettyPrint)).ToString());
+            return new CommissionDefResponse(connector.ExecuteCommand(CreateCommissionDefCommand(symbol, volume, prettyPrint)).ToString());
         }
 
         public static IbsHistoryResponse ExecuteIbsHistoryCommand(
@@ -486,7 +485,7 @@ namespace xAPI.Commands
           long end,
           bool prettyPrint = false)
         {
-            return new IbsHistoryResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateGetIbsHistoryCommand(start, end, prettyPrint)).ToString());
+            return new IbsHistoryResponse(connector.ExecuteCommand(CreateGetIbsHistoryCommand(start, end, prettyPrint)).ToString());
         }
 
         [Obsolete("Up from 2.3.3 login is not a long, but string")]
@@ -496,7 +495,7 @@ namespace xAPI.Commands
           string password,
           bool prettyPrint = false)
         {
-            return APICommandFactory.ExecuteLoginCommand(connector, userId.ToString(), password, prettyPrint);
+            return ExecuteLoginCommand(connector, userId.ToString(), password, prettyPrint);
         }
 
         public static LoginResponse ExecuteLoginCommand(
@@ -505,8 +504,8 @@ namespace xAPI.Commands
           string password,
           bool prettyPrint = false)
         {
-            Credentials credentials = new Credentials(userId, password);
-            return APICommandFactory.ExecuteLoginCommand(connector, credentials, prettyPrint);
+            Credentials credentials = new(userId, password);
+            return ExecuteLoginCommand(connector, credentials, prettyPrint);
         }
 
         public static LoginResponse ExecuteLoginCommand(
@@ -514,16 +513,24 @@ namespace xAPI.Commands
           Credentials credentials,
           bool prettyPrint = false)
         {
-            LoginCommand loginCommand = APICommandFactory.CreateLoginCommand(credentials, prettyPrint);
+            LoginCommand loginCommand = CreateLoginCommand(credentials, prettyPrint);
             LoginResponse loginResponse = new LoginResponse(connector.ExecuteCommand((BaseCommand)loginCommand).ToString());
-            APICommandFactory.redirectCounter = 0;
-            for (; loginResponse.RedirectRecord != null; loginResponse = new LoginResponse(connector.ExecuteCommand((BaseCommand)loginCommand).ToString()))
+            redirectCounter = 0;
+
+            for (; loginResponse.RedirectRecord != null; loginResponse = new LoginResponse(connector.ExecuteCommand(loginCommand).ToString()))
             {
-                if (APICommandFactory.redirectCounter >= 3)
+                if (redirectCounter >= 3)
                     throw new APICommunicationException("too many redirects");
-                Server server = new Server(loginResponse.RedirectRecord.Address, loginResponse.RedirectRecord.MainPort, loginResponse.RedirectRecord.StreamingPort, true, "Redirected to: " + loginResponse.RedirectRecord.Address + ":" + (object)loginResponse.RedirectRecord.MainPort + "/" + (object)loginResponse.RedirectRecord.StreamingPort);
+                Server server = new Server(
+                    loginResponse.RedirectRecord.Address, 
+                    loginResponse.RedirectRecord.MainPort, 
+                    loginResponse.RedirectRecord.StreamingPort, 
+                    true, "Redirected to: " + loginResponse.RedirectRecord.Address  
+                    + ":" + loginResponse.RedirectRecord.MainPort 
+                    + "/" + loginResponse.RedirectRecord.StreamingPort);
+                
                 connector.Redirect(server);
-                ++APICommandFactory.redirectCounter;
+                ++redirectCounter;
             }
             if (loginResponse.StreamSessionId != null)
                 connector.Streaming.StreamSessionId = loginResponse.StreamSessionId;
@@ -532,14 +539,14 @@ namespace xAPI.Commands
 
         public static LogoutResponse ExecuteLogoutCommand(SyncAPIConnector connector)
         {
-            return new LogoutResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateLogoutCommand()).ToString());
+            return new LogoutResponse(connector.ExecuteCommand(CreateLogoutCommand()).ToString());
         }
 
         public static MarginLevelResponse ExecuteMarginLevelCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new MarginLevelResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateMarginLevelCommand(prettyPrint)).ToString());
+            return new MarginLevelResponse(connector.ExecuteCommand(CreateMarginLevelCommand(prettyPrint)).ToString());
         }
 
         public static MarginTradeResponse ExecuteMarginTradeCommand(
@@ -548,7 +555,7 @@ namespace xAPI.Commands
           double? volume,
           bool prettyPrint)
         {
-            return new MarginTradeResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateMarginTradeCommand(symbol, volume, prettyPrint)).ToString());
+            return new MarginTradeResponse(connector.ExecuteCommand(CreateMarginTradeCommand(symbol, volume, prettyPrint)).ToString());
         }
 
         public static NewsResponse ExecuteNewsCommand(
@@ -557,26 +564,26 @@ namespace xAPI.Commands
           long? end,
           bool prettyPrint = false)
         {
-            return new NewsResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateNewsCommand(start, end, prettyPrint)).ToString());
+            return new NewsResponse(connector.ExecuteCommand(CreateNewsCommand(start, end, prettyPrint)).ToString());
         }
 
         public static ServerTimeResponse ExecuteServerTimeCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new ServerTimeResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateServerTimeCommand(prettyPrint)).ToString());
+            return new ServerTimeResponse(connector.ExecuteCommand(CreateServerTimeCommand(prettyPrint)).ToString());
         }
 
         public static CurrentUserDataResponse ExecuteCurrentUserDataCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new CurrentUserDataResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateCurrentUserDataCommand(prettyPrint)).ToString());
+            return new CurrentUserDataResponse(connector.ExecuteCommand(CreateCurrentUserDataCommand(prettyPrint)).ToString());
         }
 
         public static PingResponse ExecutePingCommand(SyncAPIConnector connector, bool prettyPrint = false)
         {
-            return new PingResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreatePingCommand(prettyPrint)).ToString());
+            return new PingResponse(connector.ExecuteCommand(CreatePingCommand(prettyPrint)).ToString());
         }
 
         public static ProfitCalculationResponse ExecuteProfitCalculationCommand(
@@ -588,7 +595,7 @@ namespace xAPI.Commands
           double? closePrice,
           bool prettyPrint = false)
         {
-            return new ProfitCalculationResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateProfitCalculationCommand(symbol, volume, cmd, openPrice, closePrice, prettyPrint)).ToString());
+            return new ProfitCalculationResponse(connector.ExecuteCommand(CreateProfitCalculationCommand(symbol, volume, cmd, openPrice, closePrice, prettyPrint)).ToString());
         }
 
         [Obsolete("Command not available in API any more")]
@@ -596,14 +603,14 @@ namespace xAPI.Commands
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return (AllSymbolGroupsResponse)null;
+            return null;
         }
 
         public static StepRulesResponse ExecuteStepRulesCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new StepRulesResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateStepRulesCommand(prettyPrint)).ToString());
+            return new StepRulesResponse(connector.ExecuteCommand(CreateStepRulesCommand(prettyPrint)).ToString());
         }
 
         public static SymbolResponse ExecuteSymbolCommand(
@@ -611,7 +618,7 @@ namespace xAPI.Commands
           string symbol,
           bool prettyPrint = false)
         {
-            return new SymbolResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateSymbolCommand(symbol, prettyPrint)).ToString());
+            return new SymbolResponse(connector.ExecuteCommand(CreateSymbolCommand(symbol, prettyPrint)).ToString());
         }
 
         public static TickPricesResponse ExecuteTickPricesCommand(
@@ -620,7 +627,7 @@ namespace xAPI.Commands
           long? timestamp,
           bool prettyPrint = false)
         {
-            return new TickPricesResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTickPricesCommand(symbols, timestamp, prettyPrint)).ToString());
+            return new TickPricesResponse(connector.ExecuteCommand(CreateTickPricesCommand(symbols, timestamp, prettyPrint)).ToString());
         }
 
         public static TradeRecordsResponse ExecuteTradeRecordsCommand(
@@ -628,7 +635,7 @@ namespace xAPI.Commands
           LinkedList<long?> orders,
           bool prettyPrint = false)
         {
-            return new TradeRecordsResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradeRecordsCommand(orders, prettyPrint)).ToString());
+            return new TradeRecordsResponse(connector.ExecuteCommand(CreateTradeRecordsCommand(orders, prettyPrint)).ToString());
         }
 
         public static TradeTransactionResponse ExecuteTradeTransactionCommand(
@@ -636,7 +643,7 @@ namespace xAPI.Commands
           TradeTransInfoRecord tradeTransInfo,
           bool prettyPrint = false)
         {
-            return new TradeTransactionResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradeTransactionCommand(tradeTransInfo, prettyPrint)).ToString());
+            return new TradeTransactionResponse(connector.ExecuteCommand(CreateTradeTransactionCommand(tradeTransInfo, prettyPrint)).ToString());
         }
 
         public static TradeTransactionResponse ExecuteTradeTransactionCommand(
@@ -653,7 +660,7 @@ namespace xAPI.Commands
           long? expiration,
           bool prettyPrint = false)
         {
-            return new TradeTransactionResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradeTransactionCommand(cmd, type, price, sl, tp, symbol, volume, order, customComment, expiration, prettyPrint)).ToString());
+            return new TradeTransactionResponse(connector.ExecuteCommand(CreateTradeTransactionCommand(cmd, type, price, sl, tp, symbol, volume, order, customComment, expiration, prettyPrint)).ToString());
         }
 
         [Obsolete("Method outdated. ie_deviation is not available any more")]
@@ -705,14 +712,14 @@ namespace xAPI.Commands
           List<string> symbols,
           bool prettyPrint = false)
         {
-            return new TradingHoursResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateTradingHoursCommand(symbols, prettyPrint)).ToString());
+            return new TradingHoursResponse(connector.ExecuteCommand(CreateTradingHoursCommand(symbols, prettyPrint)).ToString());
         }
 
         public static VersionResponse ExecuteVersionCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new VersionResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateVersionCommand(prettyPrint)).ToString());
+            return new VersionResponse(connector.ExecuteCommand(CreateVersionCommand(prettyPrint)).ToString());
         }
     }
 }

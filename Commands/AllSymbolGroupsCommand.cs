@@ -6,8 +6,7 @@ namespace xAPI.Commands
     public class AllSymbolGroupsCommand : BaseCommand
     {
         [Obsolete("Not available in API any more")]
-        public AllSymbolGroupsCommand(bool? prettyPrint)
-          : base(new JObject(), prettyPrint)
+        public AllSymbolGroupsCommand(bool? prettyPrint) : base(new JObject(), prettyPrint)
         {
         }
 

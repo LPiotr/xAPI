@@ -1,6 +1,6 @@
 ﻿namespace xAPI.Sync
 {
-    public enum APISocketOperation
+    public enum APISocketOperationEnum
     {
         READ,
         WRITE,

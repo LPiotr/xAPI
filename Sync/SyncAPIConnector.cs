@@ -27,7 +27,6 @@ namespace xAPI.Sync
 
         public event OnRedirectedCallback OnRedirected;
 
-        
         public SyncAPIConnector(Server server, bool lookForBackups = true)
         {
             Connect(server, lookForBackups);

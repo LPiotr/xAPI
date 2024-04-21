@@ -48,7 +48,7 @@ namespace xAPI.Commands
 
         private static JObject CreateLoginJsonObject(Credentials credentials)
         {
-            JObject loginJsonObject = new JObject();
+            JObject loginJsonObject = [];
             if (credentials != null)
             {
                 loginJsonObject.Add("userId", (JToken)credentials.Login);
@@ -285,8 +285,8 @@ namespace xAPI.Commands
           long? timestamp,
           bool prettyPrint = false)
         {
-            JObject arguments = new JObject();
-            JArray jarray = new JArray();
+            JObject arguments = [];
+            JArray jarray = [];
             foreach (string symbol in symbols)
                 jarray.Add((JToken)symbol);
             arguments.Add(nameof(symbols), (JToken)jarray);
@@ -298,8 +298,8 @@ namespace xAPI.Commands
           LinkedList<long?> orders,
           bool prettyPrint = false)
         {
-            JObject arguments = new JObject();
-            JArray jarray = new JArray();
+            JObject arguments = [];
+            JArray jarray = [];
             foreach (long? order in orders)
                 jarray.Add((JToken)order);
             arguments.Add(nameof(orders), (JToken)jarray);
@@ -405,31 +405,31 @@ namespace xAPI.Commands
           List<string> symbols,
           bool prettyPrint = false)
         {
-            JObject arguments = new JObject();
-            JArray jarray = new JArray();
+            JObject arguments = [];
+            JArray jarray = [];
             foreach (string symbol in symbols)
                 jarray.Add((JToken)symbol);
-            arguments.Add(nameof(symbols), (JToken)jarray);
+            arguments.Add(nameof(symbols), jarray);
             return new TradingHoursCommand(arguments, prettyPrint);
         }
 
         public static VersionCommand CreateVersionCommand(bool prettyPrint = false)
         {
-            return new VersionCommand(new JObject(), prettyPrint);
+            return new VersionCommand([], prettyPrint);
         }
 
         public static AllSymbolsResponse ExecuteAllSymbolsCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new AllSymbolsResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateAllSymbolsCommand(prettyPrint)).ToString());
+            return new AllSymbolsResponse(connector.ExecuteCommand(CreateAllSymbolsCommand(prettyPrint)).ToString());
         }
 
         public static CalendarResponse ExecuteCalendarCommand(
           SyncAPIConnector connector,
           bool prettyPrint = false)
         {
-            return new CalendarResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateCalendarCommand(prettyPrint)).ToString());
+            return new CalendarResponse(connector.ExecuteCommand(CreateCalendarCommand(prettyPrint)).ToString());
         }
 
         public static ChartLastResponse ExecuteChartLastCommand(
@@ -437,7 +437,7 @@ namespace xAPI.Commands
           ChartLastInfoRecord info,
           bool prettyPrint = false)
         {
-            return new ChartLastResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateChartLastCommand(info, prettyPrint)).ToString());
+            return new ChartLastResponse(connector.ExecuteCommand(CreateChartLastCommand(info, prettyPrint)).ToString());
         }
 
         public static ChartLastResponse ExecuteChartLastCommand(
@@ -447,7 +447,7 @@ namespace xAPI.Commands
           long? start,
           bool prettyPrint = false)
         {
-            return new ChartLastResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateChartLastCommand(symbol, period, start, prettyPrint)).ToString());
+            return new ChartLastResponse(connector.ExecuteCommand(CreateChartLastCommand(symbol, period, start, prettyPrint)).ToString());
         }
 
         public static ChartRangeResponse ExecuteChartRangeCommand(
@@ -455,7 +455,7 @@ namespace xAPI.Commands
           ChartRangeInfoRecord info,
           bool prettyPrint = false)
         {
-            return new ChartRangeResponse(connector.ExecuteCommand((BaseCommand)APICommandFactory.CreateChartRangeCommand(info, prettyPrint)).ToString());
+            return new ChartRangeResponse(connector.ExecuteCommand(CreateChartRangeCommand(info, prettyPrint)).ToString());
         }
 
         public static ChartRangeResponse ExecuteChartRangeCommand(

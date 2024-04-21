@@ -21,7 +21,7 @@ namespace xAPI.Sync
         private const int TIMEOUT = 5000;
         private StreamingAPIConnector streamingConnector;
         private long lastCommandTimestamp = 0;
-        private object locker = new();
+        private readonly object locker = new();
 
         public event OnConnectedCallback OnConnected;
 

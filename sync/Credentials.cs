@@ -4,8 +4,8 @@ namespace xAPI.Sync
 {
     public class Credentials
     {
-        private string login;
-        private string password;
+        private readonly string login;
+        private readonly string password;
         private string appId;
         private string appName;
 

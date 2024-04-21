@@ -6,7 +6,7 @@ namespace xAPI.Responses
 {
     public class SymbolResponse : BaseResponse
     {
-        private SymbolRecord symbol;
+        private readonly SymbolRecord symbol;
 
         public SymbolResponse(string body)
           : base(body)

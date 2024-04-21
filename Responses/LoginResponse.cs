@@ -5,8 +5,8 @@ namespace xAPI.Responses
 {
     public class LoginResponse : BaseResponse
     {
-        private string streamSessionId;
-        private RedirectRecord redirectRecord;
+        private readonly string streamSessionId;
+        private readonly RedirectRecord redirectRecord;
 
         public LoginResponse(string body)
           : base(body)

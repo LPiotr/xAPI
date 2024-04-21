@@ -6,14 +6,14 @@ namespace xAPI.Sync
     [Obsolete("Use Servers class instead")]
     public class ServerData
     {
-        private static string XAPI_A = "xapi.xtb.com";
-        private static string XAPI_B = "xapi.xtb.com";
-        private static int[] PORTS_REAL = new int[2]
+        private static readonly string XAPI_A = "xapi.xtb.com";
+        private static readonly string XAPI_B = "xapi.xtb.com";
+        private static readonly int[] PORTS_REAL = new int[2]
         {
       5112,
       5113
         };
-        private static int[] PORTS_DEMO = new int[2]
+        private static readonly int[] PORTS_DEMO = new int[2]
         {
       5124,
       5125

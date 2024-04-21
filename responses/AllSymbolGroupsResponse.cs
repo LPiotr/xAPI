@@ -6,7 +6,7 @@ namespace xAPI.Responses
 {
     public class AllSymbolGroupsResponse(string body) : BaseResponse(body)
     {
-        private LinkedList<SymbolGroupRecord> symbolGroupRecords = new();
+        private readonly LinkedList<SymbolGroupRecord> symbolGroupRecords = new();
 
         public virtual LinkedList<SymbolGroupRecord> SymbolGroupRecords => symbolGroupRecords;
     }

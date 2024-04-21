@@ -6,11 +6,11 @@ namespace xAPI.Responses
 {
     public class BaseResponse
     {
-        private bool? status;
-        private string errorDescr;
-        private ERR_CODE errCode;
-        private JContainer returnData;
-        private string customTag;
+        private readonly bool? status;
+        private readonly string errorDescr;
+        private readonly ERR_CODE errCode;
+        private readonly JContainer returnData;
+        private readonly string customTag;
 
         public BaseResponse(string body)
         {

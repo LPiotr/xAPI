@@ -8,7 +8,7 @@ namespace xAPI.Responses
 {
     public class NewsResponse : BaseResponse
     {
-        private LinkedList<NewsTopicRecord> newsTopicRecords = new();
+        private readonly LinkedList<NewsTopicRecord> newsTopicRecords = new();
 
         public NewsResponse(string body)
           : base(body)

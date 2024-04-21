@@ -90,8 +90,8 @@ namespace xAPI.Sync
 
         public class PortSet(int mainPort, int streamingPort)
         {
-            private int mainPort = mainPort;
-            private int streamingPort = streamingPort;
+            private readonly int mainPort = mainPort;
+            private readonly int streamingPort = streamingPort;
 
             public int MainPort => mainPort;
 
@@ -100,8 +100,8 @@ namespace xAPI.Sync
 
         public class ApiAddress(string address, string name)
         {
-            private string address = address;
-            private string name = name;
+            private readonly string address = address;
+            private readonly string name = name;
 
             public string Address => address;
 

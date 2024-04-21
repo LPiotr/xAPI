@@ -4,8 +4,8 @@ namespace xAPI.Streaming
 {
     internal class CandleRecordsSubscribe(string symbol, string streamSessionId)
     {
-        private string symbol = symbol;
-        private string streamSessionId = streamSessionId;
+        private readonly string symbol = symbol;
+        private readonly string streamSessionId = streamSessionId;
 
         public override string ToString()
         {

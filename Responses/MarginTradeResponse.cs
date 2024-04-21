@@ -4,7 +4,7 @@ namespace xAPI.Responses
 {
     public class MarginTradeResponse : BaseResponse
     {
-        private double? margin;
+        private readonly double? margin;
 
         public MarginTradeResponse(string body)
           : base(body)

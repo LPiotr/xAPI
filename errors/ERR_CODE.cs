@@ -31,7 +31,7 @@
         public static readonly ERR_CODE COMMAND_NOT_EXIST = new("BE104");
         public static readonly ERR_CODE INTERNAL_ERROR = new("EX001");
         public static readonly ERR_CODE OTHER_ERROR = new("BE099");
-        private string stringCode = code;
+        private readonly string stringCode = code;
 
         public virtual string StringValue => stringCode == null ? "" : stringCode;
 

@@ -4,8 +4,8 @@ namespace xAPI.Responses
 {
     public class CommissionDefResponse : BaseResponse
     {
-        private double? commission;
-        private double? rateOfExchange;
+        private readonly double? commission;
+        private readonly double? rateOfExchange;
 
         public CommissionDefResponse(string body)
           : base(body)

@@ -7,7 +7,7 @@ namespace xAPI.Responses
 {
     public class TradingHoursResponse : BaseResponse
     {
-        private LinkedList<TradingHoursRecord> tradingHoursRecords = new();
+        private readonly LinkedList<TradingHoursRecord> tradingHoursRecords = new();
 
         public TradingHoursResponse(string body)
           : base(body)

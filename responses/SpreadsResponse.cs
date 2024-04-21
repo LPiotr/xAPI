@@ -8,7 +8,7 @@ namespace xAPI.Responses
 {
     public class SpreadsResponse : BaseResponse
     {
-        private LinkedList<SpreadRecord> spreadRecords = new();
+        private readonly LinkedList<SpreadRecord> spreadRecords = new();
 
         public SpreadsResponse(string body) : base(body)
         {

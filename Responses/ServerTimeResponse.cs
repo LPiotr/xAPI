@@ -4,8 +4,8 @@ namespace xAPI.Responses
 {
     public class ServerTimeResponse : BaseResponse
     {
-        private long? time;
-        private string timeString;
+        private readonly long? time;
+        private readonly string timeString;
 
         public ServerTimeResponse(string body)
           : base(body)

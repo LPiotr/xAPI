@@ -8,7 +8,7 @@ namespace xAPI.Responses
 {
     public class TradesHistoryResponse : BaseResponse
     {
-        private LinkedList<TradeRecord> tradeRecords = new();
+        private readonly LinkedList<TradeRecord> tradeRecords = new();
 
         public TradesHistoryResponse(string body)
           : base(body)

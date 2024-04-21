@@ -13,7 +13,7 @@ namespace xAPI.Responses
         public TickPricesResponse(string body)
           : base(body)
         {
-            foreach (JObject jobject in ((IEnumerable<JToken>)((JObject)ReturnData)["quotations"]).Cast<JObject>())
+            foreach (JObject jobject in ((JObject)ReturnData)["quotations"].Cast<JObject>())
             {
                 TickRecord tickRecord = new();
                 tickRecord.FieldsFromJSONObject(jobject);

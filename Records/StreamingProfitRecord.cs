@@ -41,7 +41,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingProfitRecord{profit=" + (object)profit + ", order=" + (object)order + (object)'}';
+            return "StreamingProfitRecord{profit=" + profit + ", order=" + order + '}';
         }
     }
 }

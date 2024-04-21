@@ -56,7 +56,7 @@ namespace xAPI.Commands
         },
         {
           "arguments",
-          (JToken) arguments
+           arguments
         },
         {
           "customTag",

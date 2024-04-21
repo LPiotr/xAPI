@@ -16,7 +16,7 @@ namespace xAPI.Responses
         {
             JObject returnData = (JObject)ReturnData;
             digits = (long?)returnData[nameof(digits)];
-            foreach (JObject jobject in ((IEnumerable<JToken>)returnData[nameof(rateInfos)]).Cast<JObject>())
+            foreach (JObject jobject in returnData[nameof(rateInfos)].Cast<JObject>())
             {
                 RateInfoRecord rateInfoRecord = new();
                 rateInfoRecord.FieldsFromJSONObject(jobject);

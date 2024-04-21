@@ -23,7 +23,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "RedirectRecord [mainPort=" + (object)mainPort + ", streamingPort=" + (object)streamingPort + ", address=" + address + "]";
+            return "RedirectRecord [mainPort=" + mainPort + ", streamingPort=" + streamingPort + ", address=" + address + "]";
         }
     }
 }

@@ -23,7 +23,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "HoursRecord{day=" + (object)day + ", fromT=" + (object)fromT + ", toT=" + (object)toT + (object)'}';
+            return "HoursRecord{day=" + day + ", fromT=" + fromT + ", toT=" + toT + '}';
         }
     }
 }

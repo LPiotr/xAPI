@@ -124,7 +124,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "TradeRecord{close_price=" + (object)close_price + ", close_time=" + (object)close_time + ", closed=" + (object)closed + ", cmd=" + (object)cmd + ", comment=" + comment + ", commission=" + (object)commission + ", commission_agent=" + (object)commission_agent + ", customComment=" + customComment + ", digits=" + (object)digits + ", expiration=" + (object)expiration + ", expirationString=" + expirationString + ", margin_rate=" + (object)margin_rate + ", open_price=" + (object)open_price + ", open_time=" + (object)open_time + ", order=" + (object)order + ", order2=" + (object)Order2 + ", position=" + (object)Position + ", profit=" + (object)profit + ", sl=" + (object)sl + ", storage=" + (object)storage + ", symbol=" + symbol + ", timestamp=" + (object)timestamp + ", tp=" + (object)tp + ", value_date=" + (object)value_date + ", volume=" + (object)volume + (object)'}';
+            return "TradeRecord{close_price=" + close_price + ", close_time=" + close_time + ", closed=" + closed + ", cmd=" + cmd + ", comment=" + comment + ", commission=" + commission + ", commission_agent=" + commission_agent + ", customComment=" + customComment + ", digits=" + digits + ", expiration=" + expiration + ", expirationString=" + expirationString + ", margin_rate=" + margin_rate + ", open_price=" + open_price + ", open_time=" + open_time + ", order=" + order + ", order2=" + Order2 + ", position=" + Position + ", profit=" + profit + ", sl=" + sl + ", storage=" + storage + ", symbol=" + symbol + ", timestamp=" + timestamp + ", tp=" + tp + ", value_date=" + value_date + ", volume=" + volume + '}';
         }
     }
 }

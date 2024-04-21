@@ -59,7 +59,7 @@ namespace xAPI.Sync
             Connect(streamingListener, streamSessionId);
         }
 
-        public void Connect() => Connect((StreamingListener)null, streamSessionId);
+        public void Connect() => Connect(null, streamSessionId);
 
         public void Connect(StreamingListener streamingListener, string streamSessionId)
         {
@@ -87,11 +87,11 @@ namespace xAPI.Sync
                 apiWriteStream = new StreamWriter(stream);
                 apiReadStream = new StreamReader(stream);
             }
-            new Thread((ThreadStart)(() =>
+            new Thread(() =>
             {
                 while (Connected())
                     ReadStreamMessage();
-            })).Start();
+            }).Start();
         }
 
         public string StreamSessionId

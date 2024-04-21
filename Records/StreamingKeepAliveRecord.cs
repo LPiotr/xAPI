@@ -10,7 +10,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingKeepAliveRecord{timestamp=" + (object)Timestamp + (object)'}';
+            return "StreamingKeepAliveRecord{timestamp=" + Timestamp + '}';
         }
     }
 }

@@ -98,7 +98,7 @@ namespace xAPI.Commands
       {
         {
           nameof (info),
-          (JToken) info.toJSONObject()
+           info.toJSONObject()
         }
       }, prettyPrint);
         }
@@ -111,7 +111,7 @@ namespace xAPI.Commands
       {
         {
           nameof (info),
-          (JToken) info.toJSONObject()
+           info.toJSONObject()
         }
       }, prettyPrint);
         }
@@ -128,7 +128,7 @@ namespace xAPI.Commands
       {
         {
           "info",
-          (JToken) new ChartRangeInfoRecord(symbol, period, start, end, ticks).toJSONObject()
+           new ChartRangeInfoRecord(symbol, period, start, end, ticks).toJSONObject()
         }
       }, prettyPrint);
         }
@@ -289,7 +289,7 @@ namespace xAPI.Commands
             JArray jarray = [];
             foreach (string symbol in symbols)
                 jarray.Add((JToken)symbol);
-            arguments.Add(nameof(symbols), (JToken)jarray);
+            arguments.Add(nameof(symbols), jarray);
             arguments.Add(nameof(timestamp), (JToken)timestamp);
             return new TickPricesCommand(arguments, prettyPrint);
         }
@@ -302,7 +302,7 @@ namespace xAPI.Commands
             JArray jarray = [];
             foreach (long? order in orders)
                 jarray.Add((JToken)order);
-            arguments.Add(nameof(orders), (JToken)jarray);
+            arguments.Add(nameof(orders), jarray);
             return new TradeRecordsCommand(arguments, prettyPrint);
         }
 
@@ -314,7 +314,7 @@ namespace xAPI.Commands
       {
         {
           nameof (tradeTransInfo),
-          (JToken) tradeTransInfo.toJSONObject()
+           tradeTransInfo.toJSONObject()
         }
       }, prettyPrint);
         }

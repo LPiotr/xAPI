@@ -18,7 +18,7 @@ namespace xAPI.Records
 
         public void FieldsFromJSONObject(JObject value)
         {
-            FieldsFromJSONObject(value, (string)null);
+            FieldsFromJSONObject(value, null);
         }
 
         public bool FieldsFromJSONObject(JObject value, string str)
@@ -51,7 +51,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "TradingHoursRecord{symbol=" + symbol + ", quotes=" + quotes.ToString() + ", trading=" + trading.ToString() + (object)'}';
+            return "TradingHoursRecord{symbol=" + symbol + ", quotes=" + quotes.ToString() + ", trading=" + trading.ToString() + '}';
         }
     }
 }

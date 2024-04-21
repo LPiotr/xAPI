@@ -52,7 +52,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingTradeStatusRecord{customComment=" + customComment + "message=" + message + ", order=" + (object)order + ", requestStatus=" + (object)requestStatus.Code + ", price=" + (object)price + (object)'}';
+            return "StreamingTradeStatusRecord{customComment=" + customComment + "message=" + message + ", order=" + order + ", requestStatus=" + requestStatus.Code + ", price=" + price + '}';
         }
     }
 }

@@ -59,7 +59,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingBalanceRecord{balance=" + (object)Balance + ", margin=" + (object)Margin + ", marginFree=" + (object)MarginFree + ", marginLevel=" + (object)MarginLevel + ", equity=" + (object)Equity + ", credit=" + (object)Credit + (object)'}';
+            return "StreamingBalanceRecord{balance=" + Balance + ", margin=" + Margin + ", marginFree=" + MarginFree + ", marginLevel=" + MarginLevel + ", equity=" + Equity + ", credit=" + Credit + '}';
         }
     }
 }

@@ -7,7 +7,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <AssemblyTitle>xAPI</AssemblyTitle>
     <Product>xAPI</Product>
-    <Copyright>Copyright © xStore.pro 2013</Copyright>
+    <Copyright>Piotr Lebelt</Copyright>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>

@@ -130,6 +130,7 @@ namespace xAPI.Sync
                     Disconnect();
                     throw new APICommunicationException("Server not responding");
                 }
+                
                 return str;
             }
         }
@@ -137,9 +138,9 @@ namespace xAPI.Sync
         [Obsolete("Use Streaming.Connect() instead")]
         public StreamingAPIConnector ConnectStreaming()
         {
-            if (streamingConnector != null)
-                streamingConnector.Disconnect();
+            streamingConnector?.Disconnect();
             streamingConnector = new StreamingAPIConnector(server);
+            
             return streamingConnector;
         }
 

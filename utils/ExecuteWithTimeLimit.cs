@@ -9,7 +9,7 @@ namespace SyncAPIConnect.Utils
         {
             try
             {
-                Task task = Task.Factory.StartNew(() => codeBlock()));
+                Task task = Task.Factory.StartNew(() => codeBlock());
                 task.Wait(timeSpan);
                 return task.IsCompleted;
             }

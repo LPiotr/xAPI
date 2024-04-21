@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace xAPI.Records
 {
@@ -26,9 +27,9 @@ namespace xAPI.Records
             quotes = new LinkedList<HoursRecord>();
             if (value["quotes"] != null)
             {
-                foreach (JObject jobject in (IEnumerable<JToken>)value["quotes"])
+                foreach (JObject jobject in value["quotes"].Cast<JObject>())
                 {
-                    HoursRecord hoursRecord = new HoursRecord();
+                    HoursRecord hoursRecord = new();
                     hoursRecord.FieldsFromJSONObject(jobject);
                     quotes.AddLast(hoursRecord);
                 }
@@ -38,7 +39,7 @@ namespace xAPI.Records
             
             if (value["trading"] != null)
             {
-                foreach (JObject jobject in (IEnumerable<JToken>)value["trading"])
+                foreach (JObject jobject in value["trading"].Cast<JObject>())
                 {
                     HoursRecord hoursRecord = new();
                     hoursRecord.FieldsFromJSONObject(jobject);

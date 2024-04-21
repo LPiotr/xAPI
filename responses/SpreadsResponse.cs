@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using xAPI.Records;
 
 
@@ -9,10 +10,9 @@ namespace xAPI.Responses
     {
         private LinkedList<SpreadRecord> spreadRecords = new LinkedList<SpreadRecord>();
 
-        public SpreadsResponse(string body)
-          : base(body)
+        public SpreadsResponse(string body) : base(body)
         {
-            foreach (JObject jobject in (IEnumerable<JToken>)this.ReturnData)
+            foreach (JObject jobject in ((IEnumerable<JToken>)ReturnData).Cast<JObject>())
             {
                 SpreadRecord spreadRecord = new SpreadRecord();
                 spreadRecord.FieldsFromJSONObject(jobject);

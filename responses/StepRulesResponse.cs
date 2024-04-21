@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using xAPI.Records;
 
 
@@ -7,19 +8,19 @@ namespace xAPI.Responses
 {
     public class StepRulesResponse : BaseResponse
     {
-        private LinkedList<StepRuleRecord> stepRulesRecords = new LinkedList<StepRuleRecord>();
+        private LinkedList<StepRuleRecord> stepRulesRecords = new();
 
         public StepRulesResponse(string body)
           : base(body)
         {
-            foreach (JObject jobject in (IEnumerable<JToken>)this.ReturnData)
+            foreach (JObject jobject in ((IEnumerable<JToken>)ReturnData).Cast<JObject>())
             {
-                StepRuleRecord stepRuleRecord = new StepRuleRecord();
+                StepRuleRecord stepRuleRecord = new();
                 stepRuleRecord.FieldsFromJSONObject(jobject);
-                this.stepRulesRecords.AddLast(stepRuleRecord);
+                stepRulesRecords.AddLast(stepRuleRecord);
             }
         }
 
-        public virtual LinkedList<StepRuleRecord> StepRulesRecords => this.stepRulesRecords;
+        public virtual LinkedList<StepRuleRecord> StepRulesRecords => stepRulesRecords;
     }
 }

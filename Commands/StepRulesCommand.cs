@@ -5,7 +5,7 @@ namespace xAPI.Commands
     public class StepRulesCommand : BaseCommand
     {
         public StepRulesCommand()
-          : base(new JObject(), new bool?(false))
+          : base([], new bool?(false))
         {
         }
 

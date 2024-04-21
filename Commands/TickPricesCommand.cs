@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class TickPricesCommand : BaseCommand
+    public class TickPricesCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public TickPricesCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getTickPrices";
 
         public override string[] RequiredArguments

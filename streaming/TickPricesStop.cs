@@ -2,11 +2,9 @@
 
 namespace xAPI.Streaming
 {
-    internal class TickPricesStop
+    internal class TickPricesStop(string symbol)
     {
-        private string symbol;
-
-        public TickPricesStop(string symbol) => this.symbol = symbol;
+        private string symbol = symbol;
 
         public override string ToString()
         {
@@ -18,7 +16,7 @@ namespace xAPI.Streaming
         },
         {
           "symbol",
-          (JToken) this.symbol
+          (JToken) symbol
         }
       }.ToString();
         }

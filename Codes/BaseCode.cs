@@ -2,11 +2,9 @@
 
 namespace xAPI.Codes
 {
-    public class BaseCode
+    public class BaseCode(long code)
     {
-        private long code;
-
-        public BaseCode(long code) => this.code = code;
+        private long code = code;
 
         public long Code
         {
@@ -33,7 +31,7 @@ namespace xAPI.Codes
 
             BaseCode baseCode = target as BaseCode;
 
-            return (object)baseCode != null && this.Code == baseCode.Code;
+            return (object)baseCode != null && Code == baseCode.Code;
         }
 
         public override int GetHashCode() => base.GetHashCode();

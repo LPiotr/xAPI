@@ -1,10 +1,6 @@
 ﻿namespace xAPI.Responses
 {
-    public class LogoutResponse : BaseResponse
+    public class LogoutResponse(string body) : BaseResponse(body)
     {
-        public LogoutResponse(string body)
-          : base(body)
-        {
-        }
     }
 }

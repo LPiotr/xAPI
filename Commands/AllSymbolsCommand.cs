@@ -1,12 +1,7 @@
 ﻿namespace xAPI.Commands
 {
-    public class AllSymbolsCommand : BaseCommand
+    public class AllSymbolsCommand(bool prettyPrint) : BaseCommand(new bool?(prettyPrint))
     {
-        public AllSymbolsCommand(bool prettyPrint)
-          : base(new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getAllSymbols";
 
         public override string[] RequiredArguments => [];

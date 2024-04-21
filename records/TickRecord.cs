@@ -16,52 +16,52 @@ namespace xAPI.Records
         private string symbol;
         private long? timestamp;
 
-        public virtual double? Ask => this.ask;
+        public virtual double? Ask => ask;
 
-        public virtual long? AskVolume => this.askVolume;
+        public virtual long? AskVolume => askVolume;
 
-        public virtual double? Bid => this.bid;
+        public virtual double? Bid => bid;
 
-        public virtual long? BidVolume => this.bidVolume;
+        public virtual long? BidVolume => bidVolume;
 
-        public virtual double? High => this.high;
+        public virtual double? High => high;
 
-        public virtual long? Level => this.level;
+        public virtual long? Level => level;
 
-        public virtual double? Low => this.low;
+        public virtual double? Low => low;
 
-        public virtual double? SpreadRaw => this.spreadRaw;
+        public virtual double? SpreadRaw => spreadRaw;
 
-        public virtual double? SpreadTable => this.spreadTable;
+        public virtual double? SpreadTable => spreadTable;
 
-        public virtual string Symbol => this.symbol;
+        public virtual string Symbol => symbol;
 
-        public virtual long? Timestamp => this.timestamp;
+        public virtual long? Timestamp => timestamp;
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.FieldsFromJSONObject(value, (string)null);
+            FieldsFromJSONObject(value, (string)null);
         }
 
         public bool FieldsFromJSONObject(JObject value, string str)
         {
-            this.ask = (double?)value["ask"];
-            this.askVolume = (long?)value["askVolume"];
-            this.bid = (double?)value["bid"];
-            this.bidVolume = (long?)value["bidVolume"];
-            this.high = (double?)value["high"];
-            this.level = (long?)value["level"];
-            this.low = (double?)value["low"];
-            this.spreadRaw = (double?)value["spreadRaw"];
-            this.spreadTable = (double?)value["spreadTable"];
-            this.symbol = (string)value["symbol"];
-            this.timestamp = (long?)value["timestamp"];
-            return this.ask.HasValue && this.bid.HasValue && this.symbol != null && this.timestamp.HasValue;
+            ask = (double?)value["ask"];
+            askVolume = (long?)value["askVolume"];
+            bid = (double?)value["bid"];
+            bidVolume = (long?)value["bidVolume"];
+            high = (double?)value["high"];
+            level = (long?)value["level"];
+            low = (double?)value["low"];
+            spreadRaw = (double?)value["spreadRaw"];
+            spreadTable = (double?)value["spreadTable"];
+            symbol = (string)value["symbol"];
+            timestamp = (long?)value["timestamp"];
+            return ask.HasValue && bid.HasValue && symbol != null && timestamp.HasValue;
         }
 
         public override string ToString()
         {
-            return "TickRecord{ask=" + (object)this.ask + ", bid=" + (object)this.bid + ", askVolume=" + (object)this.askVolume + ", bidVolume=" + (object)this.bidVolume + ", high=" + (object)this.high + ", low=" + (object)this.low + ", symbol=" + this.symbol + ", timestamp=" + (object)this.timestamp + ", level=" + (object)this.level + ", spreadRaw=" + (object)this.spreadRaw + ", spreadTable=" + (object)this.spreadTable + (object)'}';
+            return "TickRecord{ask=" + (object)ask + ", bid=" + (object)bid + ", askVolume=" + (object)askVolume + ", bidVolume=" + (object)bidVolume + ", high=" + (object)high + ", low=" + (object)low + ", symbol=" + symbol + ", timestamp=" + (object)timestamp + ", level=" + (object)level + ", spreadRaw=" + (object)spreadRaw + ", spreadTable=" + (object)spreadTable + (object)'}';
         }
     }
 }

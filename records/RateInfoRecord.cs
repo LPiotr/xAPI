@@ -13,48 +13,48 @@ namespace xAPI.Records
 
         public virtual long? Ctm
         {
-            get => this.ctm;
-            set => this.ctm = value;
+            get => ctm;
+            set => ctm = value;
         }
 
         public virtual double? Open
         {
-            get => this.open;
-            set => this.open = value;
+            get => open;
+            set => open = value;
         }
 
         public virtual double? High
         {
-            get => this.high;
-            set => this.high = value;
+            get => high;
+            set => high = value;
         }
 
         public virtual double? Low
         {
-            get => this.low;
-            set => this.low = value;
+            get => low;
+            set => low = value;
         }
 
         public virtual double? Close
         {
-            get => this.close;
-            set => this.close = value;
+            get => close;
+            set => close = value;
         }
 
         public virtual double? Vol
         {
-            get => this.vol;
-            set => this.vol = value;
+            get => vol;
+            set => vol = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.Close = (double?)value["close"];
-            this.Ctm = (long?)value["ctm"];
-            this.High = (double?)value["high"];
-            this.Low = (double?)value["low"];
-            this.Open = (double?)value["open"];
-            this.Vol = (double?)value["vol"];
+            Close = (double?)value["close"];
+            Ctm = (long?)value["ctm"];
+            High = (double?)value["high"];
+            Low = (double?)value["low"];
+            Open = (double?)value["open"];
+            Vol = (double?)value["vol"];
         }
     }
 }

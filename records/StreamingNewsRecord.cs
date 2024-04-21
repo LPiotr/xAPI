@@ -14,10 +14,10 @@ namespace xAPI.Records
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.Body = (string)value["body"];
-            this.Key = (string)value["key"];
-            this.Time = (long?)value["time"];
-            this.Title = (string)value["title"];
+            Body = (string)value["body"];
+            Key = (string)value["key"];
+            Time = (long?)value["time"];
+            Title = (string)value["title"];
         }
     }
 }

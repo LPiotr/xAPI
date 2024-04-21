@@ -19,7 +19,7 @@ namespace xAPI.Records
         {
         }
 
-        public IbRecord(JObject value) => this.FieldsFromJSONObject(value);
+        public IbRecord(JObject value) => FieldsFromJSONObject(value);
 
         public void FieldsFromJSONObject(JObject value)
         {

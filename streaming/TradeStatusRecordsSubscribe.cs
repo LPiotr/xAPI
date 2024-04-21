@@ -2,14 +2,9 @@
 
 namespace xAPI.Streaming
 {
-    internal class TradeStatusRecordsSubscribe
+    internal class TradeStatusRecordsSubscribe(string streamSessionId)
     {
-        private string streamSessionId;
-
-        public TradeStatusRecordsSubscribe(string streamSessionId)
-        {
-            this.streamSessionId = streamSessionId;
-        }
+        private string streamSessionId = streamSessionId;
 
         public override string ToString()
         {
@@ -21,7 +16,7 @@ namespace xAPI.Streaming
         },
         {
           "streamSessionId",
-          (JToken) this.streamSessionId
+          (JToken) streamSessionId
         }
       }.ToString();
         }

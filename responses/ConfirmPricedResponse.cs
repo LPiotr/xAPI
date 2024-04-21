@@ -8,9 +8,9 @@ namespace xAPI.Responses
 
         public ConfirmPricedResponse(string body) : base(body)
         {
-            this.newRequestId = (long?)((JObject)this.ReturnData)["requestId"];
+            newRequestId = (long?)((JObject)ReturnData)["requestId"];
         }
 
-        public virtual long? NewRequestId => this.newRequestId;
+        public virtual long? NewRequestId => newRequestId;
     }
 }

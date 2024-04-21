@@ -38,7 +38,7 @@ namespace xAPI.Sync
             {
                 if (demoServers == null)
                 {
-                    demoServers = new List<Server>();
+                    demoServers = [];
                     foreach (ApiAddress apiAddress in ADDRESSES)
                         demoServers.Add(new Server(apiAddress.Address, DEMO_PORTS.MainPort, DEMO_PORTS.StreamingPort, true, apiAddress.Name + " DEMO SSL"));
                     demoServers.Shuffle<Server>();
@@ -53,7 +53,7 @@ namespace xAPI.Sync
             {
                 if (realServers == null)
                 {
-                    realServers = new List<Server>();
+                    realServers = [];
                     foreach (ApiAddress apiAddress in Servers.ADDRESSES)
                         realServers.Add(new Server(apiAddress.Address, REAL_PORTS.MainPort, REAL_PORTS.StreamingPort, true, apiAddress.Name + " REAL SSL"));
                         realServers.Shuffle();
@@ -88,32 +88,20 @@ namespace xAPI.Sync
             }
         }
 
-        public class PortSet
+        public class PortSet(int mainPort, int streamingPort)
         {
-            private int mainPort;
-            private int streamingPort;
-
-            public PortSet(int mainPort, int streamingPort)
-            {
-                this.mainPort = mainPort;
-                this.streamingPort = streamingPort;
-            }
+            private int mainPort = mainPort;
+            private int streamingPort = streamingPort;
 
             public int MainPort => mainPort;
 
             public int StreamingPort => streamingPort;
         }
 
-        public class ApiAddress
+        public class ApiAddress(string address, string name)
         {
-            private string address;
-            private string name;
-
-            public ApiAddress(string address, string name)
-            {
-                this.address = address;
-                this.name = name;
-            }
+            private string address = address;
+            private string name = name;
 
             public string Address => address;
 

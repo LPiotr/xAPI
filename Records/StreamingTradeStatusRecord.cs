@@ -13,46 +13,46 @@ namespace xAPI.Records
 
         public string CustomComment
         {
-            get => this.customComment;
-            set => this.customComment = value;
+            get => customComment;
+            set => customComment = value;
         }
 
         public string Message
         {
-            get => this.message;
-            set => this.message = value;
+            get => message;
+            set => message = value;
         }
 
         public long? Order
         {
-            get => this.order;
-            set => this.order = value;
+            get => order;
+            set => order = value;
         }
 
         public double? Price
         {
-            get => this.price;
-            set => this.price = value;
+            get => price;
+            set => price = value;
         }
 
         public REQUEST_STATUS RequestStatus
         {
-            get => this.requestStatus;
-            set => this.requestStatus = value;
+            get => requestStatus;
+            set => requestStatus = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.customComment = (string)value["customComment"];
-            this.message = (string)value["message"];
-            this.order = (long?)value["order"];
-            this.price = (double?)value["price"];
-            this.requestStatus = new REQUEST_STATUS((long)value["requestStatus"]);
+            customComment = (string)value["customComment"];
+            message = (string)value["message"];
+            order = (long?)value["order"];
+            price = (double?)value["price"];
+            requestStatus = new REQUEST_STATUS((long)value["requestStatus"]);
         }
 
         public override string ToString()
         {
-            return "StreamingTradeStatusRecord{customComment=" + this.customComment + "message=" + this.message + ", order=" + (object)this.order + ", requestStatus=" + (object)this.requestStatus.Code + ", price=" + (object)this.price + (object)'}';
+            return "StreamingTradeStatusRecord{customComment=" + customComment + "message=" + message + ", order=" + (object)order + ", requestStatus=" + (object)requestStatus.Code + ", price=" + (object)price + (object)'}';
         }
     }
 }

@@ -2,28 +2,23 @@
 
 namespace xAPI.Commands
 {
-    public class CommissionDefCommand : BaseCommand
+    public class CommissionDefCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public CommissionDefCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string ToJSONString()
         {
             return new JObject()
       {
         {
           "command",
-          (JToken) this.commandName
+          (JToken) commandName
         },
         {
           "prettyPrint",
-          (JToken) this.prettyPrint
+          (JToken) prettyPrint
         },
         {
           "arguments",
-          (JToken) this.arguments
+          (JToken) arguments
         },
         {
           "extended",

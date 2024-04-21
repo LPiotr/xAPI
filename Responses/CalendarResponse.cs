@@ -1,24 +1,25 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using xAPI.Records;
 
 namespace xAPI.Responses
 {
     public class CalendarResponse : BaseResponse
     {
-        private List<CalendarRecord> calendarRecords = new List<CalendarRecord>();
+        private List<CalendarRecord> calendarRecords = [];
 
         public CalendarResponse(string body)
           : base(body)
         {
-            foreach (JObject jobject in (IEnumerable<JToken>)this.ReturnData)
+            foreach (JObject jobject in ((IEnumerable<JToken>)ReturnData).Cast<JObject>())
             {
-                CalendarRecord calendarRecord = new CalendarRecord();
+                CalendarRecord calendarRecord = new();
                 calendarRecord.FieldsFromJSONObject(jobject);
-                this.calendarRecords.Add(calendarRecord);
+                calendarRecords.Add(calendarRecord);
             }
         }
 
-        public List<CalendarRecord> CalendarRecords => this.calendarRecords;
+        public List<CalendarRecord> CalendarRecords => calendarRecords;
     }
 }

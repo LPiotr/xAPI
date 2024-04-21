@@ -2,16 +2,10 @@
 
 namespace xAPI.Streaming
 {
-    internal class CandleRecordsSubscribe
+    internal class CandleRecordsSubscribe(string symbol, string streamSessionId)
     {
-        private string symbol;
-        private string streamSessionId;
-
-        public CandleRecordsSubscribe(string symbol, string streamSessionId)
-        {
-            this.streamSessionId = streamSessionId;
-            this.symbol = symbol;
-        }
+        private string symbol = symbol;
+        private string streamSessionId = streamSessionId;
 
         public override string ToString()
         {
@@ -23,11 +17,11 @@ namespace xAPI.Streaming
         },
         {
           "streamSessionId",
-          (JToken) this.streamSessionId
+          (JToken) streamSessionId
         },
         {
           "symbol",
-          (JToken) this.symbol
+          (JToken) symbol
         }
       }.ToString();
         }

@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class TradesHistoryCommand : BaseCommand
+    public class TradesHistoryCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public TradesHistoryCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getTradesHistory";
 
         public override string[] RequiredArguments

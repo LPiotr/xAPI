@@ -4,15 +4,10 @@ using xAPI.Records;
 
 namespace xAPI.Responses
 {
-    public class AllSymbolGroupsResponse : BaseResponse
+    public class AllSymbolGroupsResponse(string body) : BaseResponse(body)
     {
-        private LinkedList<SymbolGroupRecord> symbolGroupRecords = new LinkedList<SymbolGroupRecord>();
+        private LinkedList<SymbolGroupRecord> symbolGroupRecords = new();
 
-        public AllSymbolGroupsResponse(string body)
-          : base(body)
-        {
-        }
-
-        public virtual LinkedList<SymbolGroupRecord> SymbolGroupRecords => this.symbolGroupRecords;
+        public virtual LinkedList<SymbolGroupRecord> SymbolGroupRecords => symbolGroupRecords;
     }
 }

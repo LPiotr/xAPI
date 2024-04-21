@@ -9,9 +9,9 @@ namespace xAPI.Responses
         public MarginTradeResponse(string body)
           : base(body)
         {
-            this.margin = (double?)((JObject)this.ReturnData)[nameof(margin)];
+            margin = (double?)((JObject)ReturnData)[nameof(margin)];
         }
 
-        public virtual double? Margin => this.margin;
+        public virtual double? Margin => margin;
     }
 }

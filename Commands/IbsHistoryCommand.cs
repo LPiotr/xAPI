@@ -3,13 +3,8 @@
 
 namespace xAPI.Commands
 {
-    public class IbsHistoryCommand : BaseCommand
+    public class IbsHistoryCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public IbsHistoryCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getIbsHistory";
 
         public override string[] RequiredArguments

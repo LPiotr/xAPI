@@ -10,9 +10,9 @@ namespace xAPI.Responses
         public ProfitCalculationResponse(string body)
           : base(body)
         {
-            this.profit = (double?)((JObject)this.ReturnData)[nameof(profit)];
+            profit = (double?)((JObject)ReturnData)[nameof(profit)];
         }
 
-        public virtual double? Profit => this.profit;
+        public virtual double? Profit => profit;
     }
 }

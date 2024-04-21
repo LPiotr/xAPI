@@ -8,16 +8,16 @@ namespace xAPI.Responses
 {
     public class AllSymbolsResponse : BaseResponse
     {
-        private LinkedList<SymbolRecord> symbolRecords = new LinkedList<SymbolRecord>();
+        private LinkedList<SymbolRecord> symbolRecords = new();
 
         public AllSymbolsResponse(string body)
           : base(body)
         {
-            foreach (JObject jobject in (IEnumerable<JToken>)ReturnData)
+            foreach (JObject jobject in ((IEnumerable<JToken>)ReturnData).Cast<JObject>())
             {
-                SymbolRecord symbolRecord = new SymbolRecord();
+                SymbolRecord symbolRecord = new();
                 symbolRecord.FieldsFromJSONObject(jobject);
-                this.symbolRecords.AddLast(symbolRecord);
+                symbolRecords.AddLast(symbolRecord);
             }
         }
 

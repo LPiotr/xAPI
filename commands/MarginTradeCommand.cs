@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class MarginTradeCommand : BaseCommand
+    public class MarginTradeCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public MarginTradeCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getMarginTrade";
 
         public override string[] RequiredArguments

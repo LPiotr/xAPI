@@ -10,15 +10,15 @@ namespace xAPI.Records
         private LinkedList<HoursRecord> quotes = new();
         private LinkedList<HoursRecord> trading = new();
 
-        public virtual string Symbol => this.symbol;
+        public virtual string Symbol => symbol;
 
-        public virtual LinkedList<HoursRecord> Quotes => this.quotes;
+        public virtual LinkedList<HoursRecord> Quotes => quotes;
 
-        public virtual LinkedList<HoursRecord> Trading => this.trading;
+        public virtual LinkedList<HoursRecord> Trading => trading;
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.FieldsFromJSONObject(value, (string)null);
+            FieldsFromJSONObject(value, (string)null);
         }
 
         public bool FieldsFromJSONObject(JObject value, string str)

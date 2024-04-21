@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class ChartLastCommand : BaseCommand
+    public class ChartLastCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public ChartLastCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getChartLastRequest";
 
         public override string[] RequiredArguments

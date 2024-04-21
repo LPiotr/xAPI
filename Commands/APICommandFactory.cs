@@ -152,7 +152,7 @@ namespace xAPI.Commands
             prettyPrint);
         }
 
-        public static LogoutCommand CreateLogoutCommand() => new LogoutCommand();
+        public static LogoutCommand CreateLogoutCommand() => new();
 
         public static MarginLevelCommand CreateMarginLevelCommand(bool prettyPrint = false)
         {
@@ -336,7 +336,7 @@ namespace xAPI.Commands
       {
         {
           "tradeTransInfo",
-          (JToken) new TradeTransInfoRecord(cmd, type, price, sl, tp, symbol, volume, order, customComment, expiration).toJSONObject()
+          new TradeTransInfoRecord(cmd, type, price, sl, tp, symbol, volume, order, customComment, expiration).toJSONObject()
         }
       }, prettyPrint);
         }
@@ -356,7 +356,7 @@ namespace xAPI.Commands
           long? expiration,
           bool prettyPrint = false)
         {
-            return APICommandFactory.CreateTradeTransactionCommand(cmd, type, price, sl, tp, symbol, volume, order, "", expiration);
+            return CreateTradeTransactionCommand(cmd, type, price, sl, tp, symbol, volume, order, "", expiration);
         }
 
         public static TradeTransactionStatusCommand CreateTradeTransactionStatusCommand(
@@ -514,14 +514,14 @@ namespace xAPI.Commands
           bool prettyPrint = false)
         {
             LoginCommand loginCommand = CreateLoginCommand(credentials, prettyPrint);
-            LoginResponse loginResponse = new LoginResponse(connector.ExecuteCommand(loginCommand).ToString());
+            LoginResponse loginResponse = new(connector.ExecuteCommand(loginCommand).ToString());
             redirectCounter = 0;
 
             for (; loginResponse.RedirectRecord != null; loginResponse = new LoginResponse(connector.ExecuteCommand(loginCommand).ToString()))
             {
                 if (redirectCounter >= 3)
                     throw new APICommunicationException("too many redirects");
-                Server server = new Server(
+                Server server = new(
                     loginResponse.RedirectRecord.Address, 
                     loginResponse.RedirectRecord.MainPort, 
                     loginResponse.RedirectRecord.StreamingPort, 

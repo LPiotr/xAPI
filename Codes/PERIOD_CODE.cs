@@ -1,6 +1,6 @@
 ﻿namespace xAPI.Codes
 {
-    public class PERIOD_CODE : BaseCode
+    public class PERIOD_CODE(long code) : BaseCode(code)
     {
         public static readonly PERIOD_CODE PERIOD_M1 = new(1L);
         public static readonly PERIOD_CODE PERIOD_M5 = new(5L);
@@ -11,10 +11,5 @@
         public static readonly PERIOD_CODE PERIOD_D1 = new(1440L);
         public static readonly PERIOD_CODE PERIOD_W1 = new(10080L);
         public static readonly PERIOD_CODE PERIOD_MN1 = new(43200L);
-
-        public PERIOD_CODE(long code)
-          : base(code)
-        {
-        }
     }
 }

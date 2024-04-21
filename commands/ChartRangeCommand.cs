@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class ChartRangeCommand : BaseCommand
+    public class ChartRangeCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public ChartRangeCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getChartRangeRequest";
 
         public override string[] RequiredArguments

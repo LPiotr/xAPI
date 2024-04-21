@@ -11,34 +11,34 @@ namespace xAPI.Records
 
         public virtual long? Precision
         {
-            get => this.precision;
-            set => this.precision = value;
+            get => precision;
+            set => precision = value;
         }
 
         public virtual string Symbol
         {
-            get => this.symbol;
-            set => this.symbol = value;
+            get => symbol;
+            set => symbol = value;
         }
 
         public virtual long? QuoteId
         {
-            get => this.quoteId;
-            set => this.quoteId = value;
+            get => quoteId;
+            set => quoteId = value;
         }
 
         public virtual long? Value
         {
-            get => this.value;
+            get => value;
             set => this.value = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.Symbol = (string)value["symbol"];
-            this.Precision = (long?)value["precision"];
-            this.Value = (long?)value[nameof(value)];
-            this.QuoteId = (long?)value["quoteId"];
+            Symbol = (string)value["symbol"];
+            Precision = (long?)value["precision"];
+            Value = (long?)value[nameof(value)];
+            QuoteId = (long?)value["quoteId"];
         }
     }
 }

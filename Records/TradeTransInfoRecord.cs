@@ -20,62 +20,62 @@ namespace xAPI.Records
 
         public TRADE_OPERATION_CODE Cmd
         {
-            get => this.cmd;
-            set => this.cmd = value;
+            get => cmd;
+            set => cmd = value;
         }
 
         public string CustomComment
         {
-            get => this.customComment;
-            set => this.customComment = value;
+            get => customComment;
+            set => customComment = value;
         }
 
         public long? Expiration
         {
-            get => this.expiration;
-            set => this.expiration = value;
+            get => expiration;
+            set => expiration = value;
         }
 
         public long? Order
         {
-            get => this.order;
-            set => this.order = value;
+            get => order;
+            set => order = value;
         }
 
         public double? Price
         {
-            get => this.price;
-            set => this.price = value;
+            get => price;
+            set => price = value;
         }
 
         public double? Sl
         {
-            get => this.sl;
-            set => this.sl = value;
+            get => sl;
+            set => sl = value;
         }
 
         public string Symbol
         {
-            get => this.symbol;
-            set => this.symbol = value;
+            get => symbol;
+            set => symbol = value;
         }
 
         public double? Tp
         {
-            get => this.tp;
-            set => this.tp = value;
+            get => tp;
+            set => tp = value;
         }
 
         public TRADE_TRANSACTION_TYPE Type
         {
-            get => this.type;
-            set => this.type = value;
+            get => type;
+            set => type = value;
         }
 
         public double? Volume
         {
-            get => this.volume;
-            set => this.volume = value;
+            get => volume;
+            set => volume = value;
         }
 
         public TradeTransInfoRecord(
@@ -125,7 +125,7 @@ namespace xAPI.Records
             this.volume = volume;
             this.order = order;
             this.expiration = expiration;
-            this.customComment = comment;
+            customComment = comment;
         }
 
         public virtual JObject toJSONObject()
@@ -134,50 +134,50 @@ namespace xAPI.Records
       {
         {
           "cmd",
-          (JToken) this.cmd.Code
+          (JToken) cmd.Code
         },
         {
           "type",
-          (JToken) this.type.Code
+          (JToken) type.Code
         },
         {
           "price",
-          (JToken) this.price
+          (JToken) price
         },
         {
           "sl",
-          (JToken) this.sl
+          (JToken) sl
         },
         {
           "tp",
-          (JToken) this.tp
+          (JToken) tp
         },
         {
           "symbol",
-          (JToken) this.symbol
+          (JToken) symbol
         },
         {
           "volume",
-          (JToken) this.volume
+          (JToken) volume
         },
         {
           "order",
-          (JToken) this.order
+          (JToken) order
         },
         {
           "customComment",
-          (JToken) this.customComment
+          (JToken) customComment
         },
         {
           "expiration",
-          (JToken) this.expiration
+          (JToken) expiration
         }
       };
         }
 
         public override string ToString()
         {
-            return "TradeTransInfo [" + this.cmd.ToString() + ", " + this.type.ToString() + ", " + this.price.ToString() + ", " + this.sl.ToString() + ", " + this.tp.ToString() + ", " + this.symbol.ToString() + ", " + this.volume.ToString() + this.order.ToString() + ", " + this.customComment.ToString() + ", " + this.expiration.ToString() + ", ]";
+            return "TradeTransInfo [" + cmd.ToString() + ", " + type.ToString() + ", " + price.ToString() + ", " + sl.ToString() + ", " + tp.ToString() + ", " + symbol.ToString() + ", " + volume.ToString() + order.ToString() + ", " + customComment.ToString() + ", " + expiration.ToString() + ", ]";
         }
     }
 }

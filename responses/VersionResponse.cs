@@ -10,9 +10,9 @@ namespace xAPI.Responses
         public VersionResponse(string body)
           : base(body)
         {
-            this.version = (string)((JObject)this.ReturnData)[nameof(version)];
+            version = (string)((JObject)ReturnData)[nameof(version)];
         }
 
-        public virtual string Version => this.version;
+        public virtual string Version => version;
     }
 }

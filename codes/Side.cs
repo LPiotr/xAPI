@@ -2,8 +2,8 @@
 {
     public class Side : BaseCode
     {
-        public static readonly Side BUY = new Side(0);
-        public static readonly Side SELL = new Side(1);
+        public static readonly Side BUY = new(0);
+        public static readonly Side SELL = new(1);
 
         public static Side FromCode(int code)
         {

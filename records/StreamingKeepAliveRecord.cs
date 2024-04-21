@@ -6,11 +6,11 @@ namespace xAPI.Records
     {
         public long? Timestamp { get; set; }
 
-        public void FieldsFromJSONObject(JObject value) => this.Timestamp = (long?)value["timestamp"];
+        public void FieldsFromJSONObject(JObject value) => Timestamp = (long?)value["timestamp"];
 
         public override string ToString()
         {
-            return "StreamingKeepAliveRecord{timestamp=" + (object)this.Timestamp + (object)'}';
+            return "StreamingKeepAliveRecord{timestamp=" + (object)Timestamp + (object)'}';
         }
     }
 }

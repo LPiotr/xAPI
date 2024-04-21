@@ -88,7 +88,7 @@ namespace xAPI.Records
         }
 
         [Obsolete("Use Precision instead")]
-        public virtual long? Digits => this.Precision;
+        public virtual long? Digits => Precision;
 
         public string CurrencyProfit
         {
@@ -134,44 +134,44 @@ namespace xAPI.Records
 
         public virtual double? Leverage
         {
-            get => this.leverage;
-            set => this.leverage = value;
+            get => leverage;
+            set => leverage = value;
         }
 
         public virtual bool? LongOnly
         {
-            get => this.longOnly;
-            set => this.longOnly = value;
+            get => longOnly;
+            set => longOnly = value;
         }
 
         public virtual double? LotMax
         {
-            get => this.lotMax;
-            set => this.lotMax = value;
+            get => lotMax;
+            set => lotMax = value;
         }
 
         public virtual double? LotMin
         {
-            get => this.lotMin;
-            set => this.lotMin = value;
+            get => lotMin;
+            set => lotMin = value;
         }
 
         public virtual double? LotStep
         {
-            get => this.lotStep;
-            set => this.lotStep = value;
+            get => lotStep;
+            set => lotStep = value;
         }
 
         public virtual double? Low
         {
-            get => this.low;
-            set => this.low = value;
+            get => low;
+            set => low = value;
         }
 
         public virtual long? MarginHedged
         {
             get => marginHedged;
-            set => this.marginHedged = value;
+            set => marginHedged = value;
         }
 
         public virtual bool? MarginHedgedStrong
@@ -188,26 +188,26 @@ namespace xAPI.Records
 
         public virtual MARGIN_MODE MarginMode
         {
-            get => this.marginMode;
-            set => this.marginMode = value;
+            get => marginMode;
+            set => marginMode = value;
         }
 
         public virtual long? Precision
         {
-            get => this.precision;
-            set => this.precision = value;
+            get => precision;
+            set => precision = value;
         }
 
         public virtual double? Percentage
         {
-            get => this.percentage;
-            set => this.percentage = value;
+            get => percentage;
+            set => percentage = value;
         }
 
         public virtual PROFIT_MODE ProfitMode
         {
-            get => this.profitMode;
-            set => this.profitMode = value;
+            get => profitMode;
+            set => profitMode = value;
         }
 
         public long? QuoteId
@@ -218,8 +218,8 @@ namespace xAPI.Records
 
         public virtual double? SpreadRaw
         {
-            get => this.spreadRaw;
-            set => this.spreadTable = value;
+            get => spreadRaw;
+            set => spreadTable = value;
         }
 
         public virtual double? SpreadTable
@@ -236,8 +236,8 @@ namespace xAPI.Records
 
         public virtual long? StepRuleId
         {
-            get => this.stepRuleId;
-            set => this.stepRuleId = value;
+            get => stepRuleId;
+            set => stepRuleId = value;
         }
 
         public virtual long? StopsLevel

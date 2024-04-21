@@ -23,6 +23,7 @@ namespace xAPI.Responses
             {
                 throw new APIReplyParseException("JSON Parse exception: " + body + "\n" + ex.Message);
             }
+
             status = jobject != null ? (bool?)jobject[nameof(status)] : throw new APIReplyParseException("JSON Parse exception: " + body);
             errCode = new ERR_CODE((string)jobject["errorCode"]);
             errorDescr = (string)jobject[nameof(errorDescr)];
@@ -33,7 +34,9 @@ namespace xAPI.Responses
                 Console.Error.WriteLine(body);
                 throw new APIReplyParseException("JSON Parse error: \"status\" is null!");
             }
+
             int num;
+
             if (status.HasValue)
             {
                 bool? status = this.status;
@@ -42,7 +45,7 @@ namespace xAPI.Responses
             else
                 num = 0;
             if (num == 0 && jobject["redirect"] == null)
-                errorDescr = errorDescr == null ? ERR_CODE.getErrorDescription(errCode.StringValue) : throw new APIErrorResponse(errCode, errorDescr, body);
+                errorDescr = errorDescr == null ? ERR_CODE.GetErrorDescription(errCode.StringValue) : throw new APIErrorResponse(errCode, errorDescr, body);
         }
 
         public virtual object ReturnData => returnData;

@@ -33,14 +33,14 @@
         public static readonly ERR_CODE OTHER_ERROR = new("BE099");
         private readonly string stringCode = code;
 
-        public virtual string StringValue => stringCode == null ? "" : stringCode;
+        public virtual string StringValue => stringCode ?? "";
 
-        public static string getErrorDescription(string errorCode)
+        public static string GetErrorDescription(string errorCode)
         {
-            return new ERR_CODE(errorCode).getDescription();
+            return new ERR_CODE(errorCode).GetDescription();
         }
 
-        public string getDescription()
+        public string GetDescription()
         {
             if (stringCode.Equals(""))
                 return "";

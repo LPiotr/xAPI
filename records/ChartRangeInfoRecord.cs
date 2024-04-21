@@ -5,11 +5,11 @@ namespace xAPI.Records
 {
     public record ChartRangeInfoRecord
     {
-        private string symbol;
-        private PERIOD_CODE period;
-        private long? start;
-        private long? end;
-        private long? ticks;
+        private readonly string symbol;
+        private readonly PERIOD_CODE period;
+        private readonly long? start;
+        private readonly long? end;
+        private readonly long? ticks;
 
         public ChartRangeInfoRecord(
           string symbol,

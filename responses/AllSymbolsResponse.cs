@@ -8,7 +8,7 @@ namespace xAPI.Responses
 {
     public class AllSymbolsResponse : BaseResponse
     {
-        private LinkedList<SymbolRecord> symbolRecords = new();
+        private readonly LinkedList<SymbolRecord> symbolRecords = new();
 
         public AllSymbolsResponse(string body)
           : base(body)

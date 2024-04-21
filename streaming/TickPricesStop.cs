@@ -4,7 +4,7 @@ namespace xAPI.Streaming
 {
     internal class TickPricesStop(string symbol)
     {
-        private string symbol = symbol;
+        private readonly string symbol = symbol;
 
         public override string ToString()
         {

@@ -34,7 +34,7 @@ namespace xAPI.Records
         private double? percentage;
         private PROFIT_MODE profitMode;
         private long? quoteId;
-        private double? spreadRaw;
+        private readonly double? spreadRaw;
         private double? spreadTable;
         private long? starting;
         private long? stepRuleId;

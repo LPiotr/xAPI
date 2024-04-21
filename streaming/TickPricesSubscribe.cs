@@ -8,10 +8,10 @@ namespace xAPI.Streaming
       long? minArrivalTime = null,
       long? maxLevel = null)
     {
-        private string symbol = symbol;
-        private long? minArrivalTime = minArrivalTime;
-        private long? maxLevel = maxLevel;
-        private string streamSessionId = streamSessionId;
+        private readonly string symbol = symbol;
+        private readonly long? minArrivalTime = minArrivalTime;
+        private readonly long? maxLevel = maxLevel;
+        private readonly string streamSessionId = streamSessionId;
 
         public override string ToString()
         {

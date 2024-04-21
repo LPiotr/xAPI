@@ -4,7 +4,7 @@ namespace xAPI.Responses
 {
     public class ConfirmPricedResponse : BaseResponse
     {
-        private long? newRequestId;
+        private readonly long? newRequestId;
 
         public ConfirmPricedResponse(string body) : base(body)
         {

@@ -8,7 +8,7 @@ namespace xAPI.Responses
 {
     public class TickPricesResponse : BaseResponse
     {
-        private LinkedList<TickRecord> ticks = new();
+        private readonly LinkedList<TickRecord> ticks = new();
 
         public TickPricesResponse(string body)
           : base(body)

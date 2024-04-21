@@ -8,7 +8,7 @@ namespace xAPI.Responses
 {
     public class StepRulesResponse : BaseResponse
     {
-        private LinkedList<StepRuleRecord> stepRulesRecords = new();
+        private readonly LinkedList<StepRuleRecord> stepRulesRecords = new();
 
         public StepRulesResponse(string body)
           : base(body)

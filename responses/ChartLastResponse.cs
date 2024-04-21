@@ -8,8 +8,8 @@ namespace xAPI.Responses
 {
     public class ChartLastResponse : BaseResponse
     {
-        private long? digits;
-        private LinkedList<RateInfoRecord> rateInfos = new();
+        private readonly long? digits;
+        private readonly LinkedList<RateInfoRecord> rateInfos = new();
 
         public ChartLastResponse(string body)
           : base(body)

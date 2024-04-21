@@ -3,8 +3,8 @@
     internal abstract class CustomTag
     {
         private static int lastTag = 0;
-        private static int maxTag = 1000000;
-        private static object locker = new();
+        private static readonly int maxTag = 1000000;
+        private static readonly object locker = new();
 
         public static string Next()
         {

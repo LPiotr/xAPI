@@ -5,9 +5,9 @@ namespace xAPI.Records
 {
     public record ChartLastInfoRecord
     {
-        private string symbol;
-        private PERIOD_CODE period;
-        private long? start;
+        private readonly string symbol;
+        private readonly PERIOD_CODE period;
+        private readonly long? start;
 
         public ChartLastInfoRecord(string symbol, PERIOD_CODE period, long? start)
         {

@@ -5,7 +5,7 @@ namespace xAPI.Responses
 {
     public class VersionResponse : BaseResponse
     {
-        private string version;
+        private readonly string version;
 
         public VersionResponse(string body)
           : base(body)

@@ -18,7 +18,7 @@ namespace xAPI.Sync
         private StreamingListener sl;
         private string streamSessionId;
         [Obsolete("Used only in older method")]
-        private bool running = false;
+        private readonly bool running = false;
 
         public event OnConnectedCallback OnConnected;
 

@@ -5,13 +5,13 @@ namespace xAPI.Responses
 {
     public class CurrentUserDataResponse : BaseResponse
     {
-        private string currency;
-        private long? leverage;
-        private double? leverageMultiplier;
-        private string group;
-        private int? companyUnit;
-        private string spreadType;
-        private bool? ibAccount;
+        private readonly string currency;
+        private readonly long? leverage;
+        private readonly double? leverageMultiplier;
+        private readonly string group;
+        private readonly int? companyUnit;
+        private readonly string spreadType;
+        private readonly bool? ibAccount;
 
         public CurrentUserDataResponse(string body)
           : base(body)

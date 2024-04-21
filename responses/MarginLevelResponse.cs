@@ -4,13 +4,13 @@ namespace xAPI.Responses
 {
     public class MarginLevelResponse : BaseResponse
     {
-        private double? balance;
-        private double? equity;
-        private double? margin;
-        private double? margin_free;
-        private double? margin_level;
-        private string currency;
-        private double? credit;
+        private readonly double? balance;
+        private readonly double? equity;
+        private readonly double? margin;
+        private readonly double? margin_free;
+        private readonly double? margin_level;
+        private readonly string currency;
+        private readonly double? credit;
 
         public MarginLevelResponse(string body)
           : base(body)

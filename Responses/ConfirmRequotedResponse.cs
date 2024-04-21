@@ -4,7 +4,7 @@ namespace xAPI.Responses
 {
     public class ConfirmRequotedResponse : BaseResponse
     {
-        private long? newRequestId;
+        private readonly long? newRequestId;
 
         public ConfirmRequotedResponse(string body) : base(body)
         {

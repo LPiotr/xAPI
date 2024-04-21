@@ -4,7 +4,7 @@ namespace xAPI.Streaming
 {
     internal class TradeStatusRecordsSubscribe(string streamSessionId)
     {
-        private string streamSessionId = streamSessionId;
+        private readonly string streamSessionId = streamSessionId;
 
         public override string ToString()
         {

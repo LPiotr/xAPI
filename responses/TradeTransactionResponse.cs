@@ -5,7 +5,7 @@ namespace xAPI.Responses
 {
     public class TradeTransactionResponse : BaseResponse
     {
-        private long? order;
+        private readonly long? order;
 
         public TradeTransactionResponse(string body)
           : base(body)

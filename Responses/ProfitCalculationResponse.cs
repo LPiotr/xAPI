@@ -5,7 +5,7 @@ namespace xAPI.Responses
 {
     public class ProfitCalculationResponse : BaseResponse
     {
-        private double? profit;
+        private readonly double? profit;
 
         public ProfitCalculationResponse(string body)
           : base(body)

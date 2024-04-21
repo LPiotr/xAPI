@@ -5,8 +5,8 @@ namespace xAPI.Responses
 {
     public class PingResponse : BaseResponse
     {
-        private long? time;
-        private string timeString;
+        private readonly long? time;
+        private readonly string timeString;
 
         public PingResponse(string body) : base(body)
         {

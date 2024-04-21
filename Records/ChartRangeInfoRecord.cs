@@ -31,23 +31,23 @@ namespace xAPI.Records
       {
         {
           "symbol",
-          (JToken) this.symbol
+          (JToken) symbol
         },
         {
           "period",
-          (JToken) new long?(this.period.Code)
+          (JToken) new long?(period.Code)
         },
         {
           "start",
-          (JToken) this.start
+          (JToken) start
         },
         {
           "end",
-          (JToken) this.end
+          (JToken) end
         },
         {
           "ticks",
-          (JToken) this.ticks
+          (JToken) ticks
         }
       };
         }

@@ -3,14 +3,9 @@
 
 namespace xAPI.Streaming
 {
-    internal class BalanceRecordsSubscribe
+    internal class BalanceRecordsSubscribe(string streamSessionId)
     {
-        private string streamSessionId;
-
-        public BalanceRecordsSubscribe(string streamSessionId)
-        {
-            this.streamSessionId = streamSessionId;
-        }
+        private string streamSessionId = streamSessionId;
 
         public override string ToString()
         {
@@ -22,7 +17,7 @@ namespace xAPI.Streaming
         },
         {
           "streamSessionId",
-          (JToken) this.streamSessionId
+          (JToken) streamSessionId
         }
       }.ToString();
         }

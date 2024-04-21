@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class ProfitCalculationCommand : BaseCommand
+    public class ProfitCalculationCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public ProfitCalculationCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getProfitCalculation";
 
         public override string[] RequiredArguments

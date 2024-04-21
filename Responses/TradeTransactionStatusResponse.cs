@@ -15,49 +15,49 @@ namespace xAPI.Responses
         public TradeTransactionStatusResponse(string body)
           : base(body)
         {
-            JObject returnData = (JObject)this.ReturnData;
-            this.ask = (double?)returnData[nameof(ask)];
-            this.bid = (double?)returnData[nameof(bid)];
-            this.customComment = (string)returnData[nameof(customComment)];
-            this.message = (string)returnData[nameof(message)];
-            this.order = (long?)returnData[nameof(order)];
-            this.requestStatus = new REQUEST_STATUS((long)returnData[nameof(requestStatus)]);
+            JObject returnData = (JObject)ReturnData;
+            ask = (double?)returnData[nameof(ask)];
+            bid = (double?)returnData[nameof(bid)];
+            customComment = (string)returnData[nameof(customComment)];
+            message = (string)returnData[nameof(message)];
+            order = (long?)returnData[nameof(order)];
+            requestStatus = new REQUEST_STATUS((long)returnData[nameof(requestStatus)]);
         }
 
         public virtual double? Ask
         {
-            get => this.ask;
-            set => this.ask = value;
+            get => ask;
+            set => ask = value;
         }
 
         public virtual double? Bid
         {
-            get => this.bid;
-            set => this.bid = value;
+            get => bid;
+            set => bid = value;
         }
 
         public virtual string CustomComment
         {
-            get => this.customComment;
-            set => this.customComment = value;
+            get => customComment;
+            set => customComment = value;
         }
 
         public virtual string Message
         {
-            get => this.message;
-            set => this.message = value;
+            get => message;
+            set => message = value;
         }
 
         public virtual long? Order
         {
-            get => this.order;
-            set => this.order = value;
+            get => order;
+            set => order = value;
         }
 
         public virtual REQUEST_STATUS RequestStatus
         {
-            get => this.requestStatus;
-            set => this.requestStatus = value;
+            get => requestStatus;
+            set => requestStatus = value;
         }
     }
 }

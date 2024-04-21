@@ -24,16 +24,18 @@ namespace xAPI.Sync
 
         private static void SetUpList()
         {
-            ServerData.xapiList = new Dictionary<string, string>();
-            ServerData.xapiList.Add("A", ServerData.XAPI_A);
-            ServerData.xapiList.Add("B", ServerData.XAPI_B);
+            ServerData.xapiList = new Dictionary<string, string>
+            {
+                { "A", ServerData.XAPI_A },
+                { "B", ServerData.XAPI_B }
+            };
         }
 
         public static Dictionary<string, Server> ProductionServers
         {
             get
             {
-                return AddServers(AddServers(new Dictionary<string, Server>(), ServerData.PORTS_DEMO, "DEMO"), PORTS_REAL, "REAL");
+                return AddServers(AddServers([], ServerData.PORTS_DEMO, "DEMO"), PORTS_REAL, "REAL");
             }
         }
 

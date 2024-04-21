@@ -1,6 +1,6 @@
 ﻿namespace xAPI.Codes
 {
-    public class TRADE_OPERATION_CODE : BaseCode
+    public class TRADE_OPERATION_CODE(long code) : BaseCode(code)
     {
         public static readonly TRADE_OPERATION_CODE BUY = new(0L);
         public static readonly TRADE_OPERATION_CODE SELL = new(1L);
@@ -10,11 +10,6 @@
         public static readonly TRADE_OPERATION_CODE SELL_STOP = new(5L);
         public static readonly TRADE_OPERATION_CODE BALANCE = new(6L);
 
-        public TRADE_OPERATION_CODE(long code)
-          : base(code)
-        {
-        }
-
-        public override string ToString() => this.Code.ToString();
+        public override string ToString() => Code.ToString();
     }
 }

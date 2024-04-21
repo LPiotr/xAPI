@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class MarginLevelCommand : BaseCommand
+    public class MarginLevelCommand(bool? prettyPrint) : BaseCommand([], prettyPrint)
     {
-        public MarginLevelCommand(bool? prettyPrint)
-          : base(new JObject(), prettyPrint)
-        {
-        }
-
         public override string CommandName => "getMarginLevel";
 
         public override string[] RequiredArguments => new string[0];

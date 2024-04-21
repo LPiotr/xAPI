@@ -24,20 +24,20 @@ namespace xAPI.Records
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.Close = (double?)value["close"];
-            this.Ctm = (long?)value["ctm"];
-            this.CtmString = (string)value["ctmString"];
-            this.High = (double?)value["high"];
-            this.Low = (double?)value["low"];
-            this.Open = (double?)value["open"];
-            this.QuoteId = (long?)value["quoteId"];
-            this.Symbol = (string)value["symbol"];
-            this.Vol = (double?)value["vol"];
+            Close = (double?)value["close"];
+            Ctm = (long?)value["ctm"];
+            CtmString = (string)value["ctmString"];
+            High = (double?)value["high"];
+            Low = (double?)value["low"];
+            Open = (double?)value["open"];
+            QuoteId = (long?)value["quoteId"];
+            Symbol = (string)value["symbol"];
+            Vol = (double?)value["vol"];
         }
 
         public override string ToString()
         {
-            return "StreamingCandleRecord {  close: " + (object)this.Close + " ctm: " + (object)this.Ctm + " ctmString: " + this.CtmString + " high: " + (object)this.High + " low: " + (object)this.Low + " open: " + (object)this.Open + " quoteId: " + (object)this.QuoteId + " symbol: " + this.Symbol + " vol: " + (object)this.Vol + " }";
+            return "StreamingCandleRecord {  close: " + (object)Close + " ctm: " + (object)Ctm + " ctmString: " + CtmString + " high: " + (object)High + " low: " + (object)Low + " open: " + (object)Open + " quoteId: " + (object)QuoteId + " symbol: " + Symbol + " vol: " + (object)Vol + " }";
         }
     }
 }

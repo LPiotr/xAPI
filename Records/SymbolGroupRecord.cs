@@ -15,17 +15,17 @@ namespace xAPI.Records
         {
         }
 
-        public virtual long? Type => this.type;
+        public virtual long? Type => type;
 
-        public virtual string Description => this.description;
+        public virtual string Description => description;
 
-        public virtual string Name => this.name;
+        public virtual string Name => name;
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.type = (long?)value["type"];
-            this.description = (string)value["description"];
-            this.name = (string)value["name"];
+            type = (long?)value["type"];
+            description = (string)value["description"];
+            name = (string)value["name"];
         }
     }
 }

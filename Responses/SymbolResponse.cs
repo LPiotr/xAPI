@@ -11,11 +11,11 @@ namespace xAPI.Responses
         public SymbolResponse(string body)
           : base(body)
         {
-            JObject returnData = (JObject)this.ReturnData;
-            this.symbol = new SymbolRecord();
-            this.symbol.FieldsFromJSONObject(returnData);
+            JObject returnData = (JObject)ReturnData;
+            symbol = new SymbolRecord();
+            symbol.FieldsFromJSONObject(returnData);
         }
 
-        public virtual SymbolRecord Symbol => this.symbol;
+        public virtual SymbolRecord Symbol => symbol;
     }
 }

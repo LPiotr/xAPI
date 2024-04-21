@@ -2,35 +2,29 @@
 
 namespace xAPI.Streaming
 {
-    internal class TickPricesSubscribe
+    internal class TickPricesSubscribe(
+      string symbol,
+      string streamSessionId,
+      long? minArrivalTime = null,
+      long? maxLevel = null)
     {
-        private string symbol;
-        private long? minArrivalTime;
-        private long? maxLevel;
-        private string streamSessionId;
-
-        public TickPricesSubscribe(
-          string symbol,
-          string streamSessionId,
-          long? minArrivalTime = null,
-          long? maxLevel = null)
-        {
-            this.symbol = symbol;
-            this.minArrivalTime = minArrivalTime;
-            this.streamSessionId = streamSessionId;
-            this.maxLevel = maxLevel;
-        }
+        private string symbol = symbol;
+        private long? minArrivalTime = minArrivalTime;
+        private long? maxLevel = maxLevel;
+        private string streamSessionId = streamSessionId;
 
         public override string ToString()
         {
-            JObject jobject = new JObject();
-            jobject.Add("command", (JToken)"getTickPrices");
-            jobject.Add("symbol", (JToken)this.symbol);
-            if (this.minArrivalTime.HasValue)
-                jobject.Add("minArrivalTime", (JToken)this.minArrivalTime);
-            if (this.maxLevel.HasValue)
-                jobject.Add("maxLevel", (JToken)this.maxLevel);
-            jobject.Add("streamSessionId", (JToken)this.streamSessionId);
+            JObject jobject = new()
+            {
+                { "command", (JToken)"getTickPrices" },
+                { "symbol", (JToken)symbol }
+            };
+            if (minArrivalTime.HasValue)
+                jobject.Add("minArrivalTime", (JToken)minArrivalTime);
+            if (maxLevel.HasValue)
+                jobject.Add("maxLevel", (JToken)maxLevel);
+            jobject.Add("streamSessionId", (JToken)streamSessionId);
             return jobject.ToString();
         }
     }

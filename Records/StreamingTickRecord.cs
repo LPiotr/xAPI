@@ -20,95 +20,95 @@ namespace xAPI.Records
 
         public double? Ask
         {
-            get => this.ask;
-            set => this.ask = value;
+            get => ask;
+            set => ask = value;
         }
 
         public double? Bid
         {
-            get => this.bid;
-            set => this.bid = value;
+            get => bid;
+            set => bid = value;
         }
 
         public long? AskVolume
         {
-            get => this.askVolume;
-            set => this.askVolume = value;
+            get => askVolume;
+            set => askVolume = value;
         }
 
         public long? BidVolume
         {
-            get => this.bidVolume;
-            set => this.bidVolume = value;
+            get => bidVolume;
+            set => bidVolume = value;
         }
 
         public double? High
         {
-            get => this.high;
-            set => this.high = value;
+            get => high;
+            set => high = value;
         }
 
         public double? Low
         {
-            get => this.low;
-            set => this.low = value;
+            get => low;
+            set => low = value;
         }
 
         public string Symbol
         {
-            get => this.symbol;
-            set => this.symbol = value;
+            get => symbol;
+            set => symbol = value;
         }
 
         public double? SpreadRaw
         {
-            get => this.spreadRaw;
-            set => this.spreadRaw = value;
+            get => spreadRaw;
+            set => spreadRaw = value;
         }
 
         public double? SpreadTable
         {
-            get => this.spreadTable;
-            set => this.spreadTable = value;
+            get => spreadTable;
+            set => spreadTable = value;
         }
 
         public long? Timestamp
         {
-            get => this.timestamp;
-            set => this.timestamp = value;
+            get => timestamp;
+            set => timestamp = value;
         }
 
         public long? Level
         {
-            get => this.level;
-            set => this.level = value;
+            get => level;
+            set => level = value;
         }
 
         public long? QuoteId
         {
-            get => this.quoteId;
-            set => this.quoteId = value;
+            get => quoteId;
+            set => quoteId = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.ask = (double?)value["ask"];
-            this.bid = (double?)value["bid"];
-            this.askVolume = (long?)value["askVolume"];
-            this.bidVolume = (long?)value["bidVolume"];
-            this.high = (double?)value["high"];
-            this.low = (double?)value["low"];
-            this.symbol = (string)value["symbol"];
-            this.timestamp = (long?)value["timestamp"];
-            this.level = (long?)value["level"];
-            this.quoteId = (long?)value["quoteId"];
-            this.spreadRaw = (double?)value["spreadRaw"];
-            this.spreadTable = (double?)value["spreadTable"];
+            ask = (double?)value["ask"];
+            bid = (double?)value["bid"];
+            askVolume = (long?)value["askVolume"];
+            bidVolume = (long?)value["bidVolume"];
+            high = (double?)value["high"];
+            low = (double?)value["low"];
+            symbol = (string)value["symbol"];
+            timestamp = (long?)value["timestamp"];
+            level = (long?)value["level"];
+            quoteId = (long?)value["quoteId"];
+            spreadRaw = (double?)value["spreadRaw"];
+            spreadTable = (double?)value["spreadTable"];
         }
 
         public override string ToString()
         {
-            return "StreamingTickRecord{ask=" + (object)this.ask + ", bid=" + (object)this.bid + ", askVolume=" + (object)this.askVolume + ", bidVolume=" + (object)this.bidVolume + ", high=" + (object)this.high + ", low=" + (object)this.low + ", symbol=" + this.symbol + ", timestamp=" + (object)this.timestamp + ", level=" + (object)this.level + ", quoteId=" + (object)this.quoteId + ", spreadRaw=" + (object)this.spreadRaw + ", spreadTable=" + (object)this.spreadTable + (object)'}';
+            return "StreamingTickRecord{ask=" + (object)ask + ", bid=" + (object)bid + ", askVolume=" + (object)askVolume + ", bidVolume=" + (object)bidVolume + ", high=" + (object)high + ", low=" + (object)low + ", symbol=" + symbol + ", timestamp=" + (object)timestamp + ", level=" + (object)level + ", quoteId=" + (object)quoteId + ", spreadRaw=" + (object)spreadRaw + ", spreadTable=" + (object)spreadTable + (object)'}';
         }
     }
 }

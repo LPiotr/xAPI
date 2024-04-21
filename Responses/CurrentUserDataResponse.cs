@@ -16,29 +16,29 @@ namespace xAPI.Responses
         public CurrentUserDataResponse(string body)
           : base(body)
         {
-            JObject returnData = (JObject)this.ReturnData;
-            this.currency = (string)returnData[nameof(currency)];
-            this.leverage = (long?)returnData[nameof(leverage)];
-            this.leverageMultiplier = (double?)returnData[nameof(leverageMultiplier)];
-            this.group = (string)returnData[nameof(group)];
-            this.companyUnit = (int?)returnData[nameof(companyUnit)];
-            this.spreadType = (string)returnData[nameof(spreadType)];
-            this.ibAccount = (bool?)returnData[nameof(ibAccount)];
+            JObject returnData = (JObject)ReturnData;
+            currency = (string)returnData[nameof(currency)];
+            leverage = (long?)returnData[nameof(leverage)];
+            leverageMultiplier = (double?)returnData[nameof(leverageMultiplier)];
+            group = (string)returnData[nameof(group)];
+            companyUnit = (int?)returnData[nameof(companyUnit)];
+            spreadType = (string)returnData[nameof(spreadType)];
+            ibAccount = (bool?)returnData[nameof(ibAccount)];
         }
 
-        public virtual string Currency => this.currency;
+        public virtual string Currency => currency;
 
         [Obsolete("Use LeverageMultiplier instead")]
-        public virtual long? Leverage => this.leverage;
+        public virtual long? Leverage => leverage;
 
-        public virtual double? LeverageMultiplier => this.leverageMultiplier;
+        public virtual double? LeverageMultiplier => leverageMultiplier;
 
-        public virtual string Group => this.group;
+        public virtual string Group => group;
 
-        public virtual int? CompanyUnit => this.companyUnit;
+        public virtual int? CompanyUnit => companyUnit;
 
-        public virtual string SpreadType => this.spreadType;
+        public virtual string SpreadType => spreadType;
 
-        public virtual bool? IbAccount => this.ibAccount;
+        public virtual bool? IbAccount => ibAccount;
     }
 }

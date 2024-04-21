@@ -4,7 +4,7 @@
     {
         private static int lastTag = 0;
         private static int maxTag = 1000000;
-        private static object locker = new object();
+        private static object locker = new();
 
         public static string Next()
         {

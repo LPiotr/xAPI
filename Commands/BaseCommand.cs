@@ -10,19 +10,19 @@ namespace xAPI.Commands
         protected internal JObject arguments;
 
         public BaseCommand(bool? prettyPrint)
-          : this(new JObject(), prettyPrint)
+          : this([], prettyPrint)
         {
         }
 
         public BaseCommand(JObject arguments, bool? prettyPrint, string customTag = "")
         {
-            this.commandName = this.CommandName;
+            commandName = CommandName;
             this.arguments = arguments;
             this.prettyPrint = prettyPrint;
             if (customTag == "")
                 customTag = xAPI.Utils.CustomTag.Next();
-            this.CustomTag = customTag;
-            this.ValidateArguments();
+            CustomTag = customTag;
+            ValidateArguments();
         }
 
         public abstract string CommandName { get; }
@@ -33,11 +33,11 @@ namespace xAPI.Commands
 
         public virtual bool ValidateArguments()
         {
-            this.SelfCheck();
-            foreach (string requiredArgument in this.RequiredArguments)
+            SelfCheck();
+            foreach (string requiredArgument in RequiredArguments)
             {
-                if (!this.arguments.TryGetValue(requiredArgument, out JToken _))
-                    throw new APICommandConstructionException("Arguments of [" + this.commandName + "] Command must contain \"" + requiredArgument + "\" field!");
+                if (!arguments.TryGetValue(requiredArgument, out JToken _))
+                    throw new APICommandConstructionException("Arguments of [" + commandName + "] Command must contain \"" + requiredArgument + "\" field!");
             }
             return true;
         }
@@ -48,28 +48,28 @@ namespace xAPI.Commands
       {
         {
           "command",
-          (JToken) this.commandName
+          (JToken) commandName
         },
         {
           "prettyPrint",
-          (JToken) this.prettyPrint
+          (JToken) prettyPrint
         },
         {
           "arguments",
-          (JToken) this.arguments
+          (JToken) arguments
         },
         {
           "customTag",
-          (JToken) this.CustomTag
+          (JToken) CustomTag
         }
       }.ToString();
         }
 
         private void SelfCheck()
         {
-            if (this.commandName == null)
+            if (commandName == null)
                 throw new APICommandConstructionException("commandName cannot be null");
-            if (this.arguments == null)
+            if (arguments == null)
                 throw new APICommandConstructionException("arguments cannot be null");
         }
     }

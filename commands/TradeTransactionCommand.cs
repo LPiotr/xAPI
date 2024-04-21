@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class TradeTransactionCommand : BaseCommand
+    public class TradeTransactionCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public TradeTransactionCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "tradeTransaction";
 
         public override string[] RequiredArguments

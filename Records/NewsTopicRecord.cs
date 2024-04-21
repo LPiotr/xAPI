@@ -32,23 +32,23 @@ namespace xAPI.Records
         [Obsolete("Field removed from API")]
         public virtual bool? Read => new bool?();
 
-        public virtual long? Time => this.time;
+        public virtual long? Time => time;
 
-        public virtual string TimeString => this.timeString;
+        public virtual string TimeString => timeString;
 
-        public virtual string Title => this.title;
+        public virtual string Title => title;
 
         [Obsolete("Use Title instead")]
-        public virtual string Topic => this.title;
+        public virtual string Topic => title;
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.body = (string)value["body"];
-            this.bodylen = (long?)value["bodylen"];
-            this.key = (string)value["key"];
-            this.time = (long?)value["time"];
-            this.timeString = (string)value["timeString"];
-            this.title = (string)value["title"];
+            body = (string)value["body"];
+            bodylen = (long?)value["bodylen"];
+            key = (string)value["key"];
+            time = (long?)value["time"];
+            timeString = (string)value["timeString"];
+            title = (string)value["title"];
         }
     }
 }

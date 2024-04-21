@@ -56,10 +56,10 @@ namespace xAPI.Sync
 
         public void Connect(StreamingListener streamingListener)
         {
-            Connect(streamingListener, this.streamSessionId);
+            Connect(streamingListener, streamSessionId);
         }
 
-        public void Connect() => Connect((StreamingListener)null, this.streamSessionId);
+        public void Connect() => Connect((StreamingListener)null, streamSessionId);
 
         public void Connect(StreamingListener streamingListener, string streamSessionId)
         {
@@ -83,7 +83,7 @@ namespace xAPI.Sync
             }
             else
             {
-                NetworkStream stream = this.apiSocket.GetStream();
+                NetworkStream stream = apiSocket.GetStream();
                 apiWriteStream = new StreamWriter(stream);
                 apiReadStream = new StreamReader(stream);
             }
@@ -158,10 +158,9 @@ namespace xAPI.Sync
                 switch (jobject["command"].ToString())
                 {
                     case "tickPrices":
-                        StreamingTickRecord tickRecord = new StreamingTickRecord();
+                        StreamingTickRecord tickRecord = new();
                         tickRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (TickRecordReceived != null)
-                            TickRecordReceived(tickRecord);
+                        TickRecordReceived?.Invoke(tickRecord);
                         if (sl != null)
                         {
                             sl.ReceiveTickRecord(tickRecord);
@@ -171,8 +170,7 @@ namespace xAPI.Sync
                     case "trade":
                         StreamingTradeRecord tradeRecord = new();
                         tradeRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (TradeRecordReceived != null)
-                            TradeRecordReceived(tradeRecord);
+                        TradeRecordReceived?.Invoke(tradeRecord);
                         if (sl != null)
                         {
                             sl.ReceiveTradeRecord(tradeRecord);
@@ -180,10 +178,9 @@ namespace xAPI.Sync
                         }
                         break;
                     case "balance":
-                        StreamingBalanceRecord balanceRecord = new StreamingBalanceRecord();
+                        StreamingBalanceRecord balanceRecord = new();
                         balanceRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (BalanceRecordReceived != null)
-                            BalanceRecordReceived(balanceRecord);
+                        BalanceRecordReceived?.Invoke(balanceRecord);
                         if (sl != null)
                         {
                             sl.ReceiveBalanceRecord(balanceRecord);
@@ -191,10 +188,9 @@ namespace xAPI.Sync
                         }
                         break;
                     case "tradeStatus":
-                        StreamingTradeStatusRecord tradeStatusRecord = new StreamingTradeStatusRecord();
+                        StreamingTradeStatusRecord tradeStatusRecord = new();
                         tradeStatusRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (TradeStatusRecordReceived != null)
-                            TradeStatusRecordReceived(tradeStatusRecord);
+                        TradeStatusRecordReceived?.Invoke(tradeStatusRecord);
                         if (sl != null)
                         {
                             sl.ReceiveTradeStatusRecord(tradeStatusRecord);
@@ -202,10 +198,9 @@ namespace xAPI.Sync
                         }
                         break;
                     case "profit":
-                        StreamingProfitRecord profitRecord = new StreamingProfitRecord();
+                        StreamingProfitRecord profitRecord = new();
                         profitRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (ProfitRecordReceived != null)
-                            ProfitRecordReceived(profitRecord);
+                        ProfitRecordReceived?.Invoke(profitRecord);
                         if (sl != null)
                         {
                             sl.ReceiveProfitRecord(profitRecord);
@@ -213,10 +208,9 @@ namespace xAPI.Sync
                         }
                         break;
                     case "news":
-                        StreamingNewsRecord newsRecord = new StreamingNewsRecord();
+                        StreamingNewsRecord newsRecord = new();
                         newsRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (NewsRecordReceived != null)
-                            NewsRecordReceived(newsRecord);
+                        NewsRecordReceived?.Invoke(newsRecord);
                         if (sl != null)
                         {
                             sl.ReceiveNewsRecord(newsRecord);
@@ -224,10 +218,9 @@ namespace xAPI.Sync
                         }
                         break;
                     case "keepAlive":
-                        StreamingKeepAliveRecord keepAliveRecord = new StreamingKeepAliveRecord();
+                        StreamingKeepAliveRecord keepAliveRecord = new();
                         keepAliveRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (KeepAliveRecordReceived != null)
-                            KeepAliveRecordReceived(keepAliveRecord);
+                        KeepAliveRecordReceived?.Invoke(keepAliveRecord);
                         if (sl != null)
                         {
                             sl.ReceiveKeepAliveRecord(keepAliveRecord);
@@ -235,10 +228,9 @@ namespace xAPI.Sync
                         }
                         break;
                     case "candle":
-                        StreamingCandleRecord candleRecord = new StreamingCandleRecord();
+                        StreamingCandleRecord candleRecord = new();
                         candleRecord.FieldsFromJSONObject((JObject)jobject["data"]);
-                        if (CandleRecordReceived != null)
-                            CandleRecordReceived(candleRecord);
+                        CandleRecordReceived?.Invoke(candleRecord);
                         if (sl != null)
                         {
                             sl.ReceiveCandleRecord(candleRecord);

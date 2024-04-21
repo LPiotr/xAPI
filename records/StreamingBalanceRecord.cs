@@ -13,53 +13,53 @@ namespace xAPI.Records
 
         public double? Balance
         {
-            get => this.balance;
-            set => this.balance = value;
+            get => balance;
+            set => balance = value;
         }
 
         public double? Margin
         {
-            get => this.margin;
-            set => this.margin = value;
+            get => margin;
+            set => margin = value;
         }
 
         public double? MarginFree
         {
-            get => this.marginFree;
-            set => this.marginFree = value;
+            get => marginFree;
+            set => marginFree = value;
         }
 
         public double? MarginLevel
         {
-            get => this.marginLevel;
-            set => this.marginLevel = value;
+            get => marginLevel;
+            set => marginLevel = value;
         }
 
         public double? Equity
         {
-            get => this.equity;
-            set => this.equity = value;
+            get => equity;
+            set => equity = value;
         }
 
         public double? Credit
         {
-            get => this.credit;
-            set => this.credit = value;
+            get => credit;
+            set => credit = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.Balance = (double?)value["balance"];
-            this.Margin = (double?)value["margin"];
-            this.MarginFree = (double?)value["marginFree"];
-            this.MarginLevel = (double?)value["marginLevel"];
-            this.Equity = (double?)value["equity"];
-            this.Credit = (double?)value["credit"];
+            Balance = (double?)value["balance"];
+            Margin = (double?)value["margin"];
+            MarginFree = (double?)value["marginFree"];
+            MarginLevel = (double?)value["marginLevel"];
+            Equity = (double?)value["equity"];
+            Credit = (double?)value["credit"];
         }
 
         public override string ToString()
         {
-            return "StreamingBalanceRecord{balance=" + (object)this.Balance + ", margin=" + (object)this.Margin + ", marginFree=" + (object)this.MarginFree + ", marginLevel=" + (object)this.MarginLevel + ", equity=" + (object)this.Equity + ", credit=" + (object)this.Credit + (object)'}';
+            return "StreamingBalanceRecord{balance=" + (object)Balance + ", margin=" + (object)Margin + ", marginFree=" + (object)MarginFree + ", marginLevel=" + (object)MarginLevel + ", equity=" + (object)Equity + ", credit=" + (object)Credit + (object)'}';
         }
     }
 }

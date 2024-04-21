@@ -1,26 +1,17 @@
 ﻿namespace xAPI.Sync
 {
-    public class Server
+    public class Server(
+      string address,
+      int mainPort,
+      int streamingPort,
+      bool secure,
+      string description)
     {
-        private string address;
-        private int mainPort;
-        private int streamingPort;
-        private string description;
-        private bool secure;
-
-        public Server(
-          string address,
-          int mainPort,
-          int streamingPort,
-          bool secure,
-          string description)
-        {
-            this.address = address;
-            this.mainPort = mainPort;
-            this.streamingPort = streamingPort;
-            this.secure = secure;
-            this.description = description;
-        }
+        private string address = address;
+        private int mainPort = mainPort;
+        private int streamingPort = streamingPort;
+        private string description = description;
+        private bool secure = secure;
 
         public string Address
         {

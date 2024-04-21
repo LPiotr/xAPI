@@ -22,7 +22,7 @@ namespace xAPI.Sync
 
         public event OnDisconnectCallback OnDisconnected;
 
-        public bool Connected() => this.apiConnected;
+        public bool Connected() => apiConnected;
 
         protected void WriteMessage(string message)
         {
@@ -40,13 +40,13 @@ namespace xAPI.Sync
                         Disconnect();
                         throw new APICommunicationException("Error while sending the data: " + ex.Message);
                     }
-                    if (this.OnMessageSended == null)
+                    if (OnMessageSended == null)
                         return;
                     OnMessageSended(message);
                 }
                 else
                 {
-                    this.Disconnect();
+                    Disconnect();
                     throw new APICommunicationException("Error while sending the data (socket disconnected)");
                 }
             }
@@ -54,7 +54,7 @@ namespace xAPI.Sync
 
         protected string ReadMessage()
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new();
             char ch = ' ';
             try
             {

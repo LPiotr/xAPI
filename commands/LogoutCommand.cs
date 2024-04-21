@@ -5,7 +5,7 @@ namespace xAPI.Commands
     public class LogoutCommand : BaseCommand
     {
         public LogoutCommand()
-          : base(new JObject(), new bool?(false))
+          : base([], new bool?(false))
         {
         }
 
@@ -15,7 +15,7 @@ namespace xAPI.Commands
       {
         {
           "command",
-          (JToken) this.commandName
+          (JToken) commandName
         }
       }.ToString();
         }

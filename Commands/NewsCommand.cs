@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class NewsCommand : BaseCommand
+    public class NewsCommand(JObject body, bool prettyPrint) : BaseCommand(body, new bool?(prettyPrint))
     {
-        public NewsCommand(JObject body, bool prettyPrint)
-          : base(body, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getNews";
 
         public override string[] RequiredArguments

@@ -21,7 +21,7 @@ namespace xAPI.Sync
         private const int TIMEOUT = 5000;
         private StreamingAPIConnector streamingConnector;
         private long lastCommandTimestamp = 0;
-        private object locker = new object();
+        private object locker = new();
 
         public event OnConnectedCallback OnConnected;
 
@@ -36,14 +36,14 @@ namespace xAPI.Sync
         private void Connect(Server server, bool lookForBackups = true)
         {
             this.server = server;
-            this.apiSocket = new TcpClient();
+            apiSocket = new TcpClient();
             bool flag = false;
-            while (!flag || !this.apiSocket.Connected)
+            while (!flag || !apiSocket.Connected)
             {
-                flag = this.apiSocket.BeginConnect(this.server.Address, this.server.MainPort, (AsyncCallback)null, (object)null).AsyncWaitHandle.WaitOne(5000, true);
-                if (!flag || !this.apiSocket.Connected)
+                flag = apiSocket.BeginConnect(this.server.Address, this.server.MainPort, (AsyncCallback)null, (object)null).AsyncWaitHandle.WaitOne(5000, true);
+                if (!flag || !apiSocket.Connected)
                 {
-                    this.apiSocket.Close();
+                    apiSocket.Close();
                     if (lookForBackups)
                     {
                         this.server = Servers.GetBackup(this.server);
@@ -55,10 +55,10 @@ namespace xAPI.Sync
             }
             if (server.Secure)
             {
-                SslStream sl = new SslStream(apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
+                SslStream sl = new(apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
                 
                 if (!ExecuteWithTimeLimit.Execute(TimeSpan.FromMilliseconds(5000.0), (Action)(() => 
-                    sl.AuthenticateAsClient(server.Address, new X509CertificateCollection(), SslProtocols.Default, false))))
+                    sl.AuthenticateAsClient(server.Address, [], SslProtocols.Default, false))))
                     
                     throw new APICommunicationException("Error during SSL handshaking (timed out?)");
                 
@@ -105,7 +105,7 @@ namespace xAPI.Sync
         {
             try
             {
-                return JObject.Parse(this.ExecuteCommand(cmd.ToJSONString()));
+                return JObject.Parse(ExecuteCommand(cmd.ToJSONString()));
             }
             catch (Exception ex)
             {
@@ -115,19 +115,19 @@ namespace xAPI.Sync
 
         public string ExecuteCommand(string message)
         {
-            lock (this.locker)
+            lock (locker)
             {
                 DateTime now = DateTime.Now;
-                long num = now.Ticks / 10000L - this.lastCommandTimestamp;
+                long num = now.Ticks / 10000L - lastCommandTimestamp;
                 if (num < 200L)
                     Thread.Sleep((int)(200L - num));
-                this.WriteMessage(message);
+                WriteMessage(message);
                 now = DateTime.Now;
-                this.lastCommandTimestamp = now.Ticks / 10000L;
-                string str = this.ReadMessage();
+                lastCommandTimestamp = now.Ticks / 10000L;
+                string str = ReadMessage();
                 if (str == null || str.Equals(""))
                 {
-                    this.Disconnect();
+                    Disconnect();
                     throw new APICommunicationException("Server not responding");
                 }
                 return str;

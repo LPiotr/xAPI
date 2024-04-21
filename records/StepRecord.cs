@@ -9,8 +9,8 @@ namespace xAPI.Records
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.FromValue = (double)value["fromValue"];
-            this.Step = (double)value["step"];
+            FromValue = (double)value["fromValue"];
+            Step = (double)value["step"];
         }
     }
 }

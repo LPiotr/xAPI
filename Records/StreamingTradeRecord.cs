@@ -32,172 +32,172 @@ namespace xAPI.Records
 
         public double? Close_price
         {
-            get => this.close_price;
-            set => this.close_price = value;
+            get => close_price;
+            set => close_price = value;
         }
 
         public long? Close_time
         {
-            get => this.close_time;
-            set => this.close_time = value;
+            get => close_time;
+            set => close_time = value;
         }
 
         public bool? Closed
         {
-            get => this.closed;
-            set => this.closed = value;
+            get => closed;
+            set => closed = value;
         }
 
         public long? Cmd
         {
-            get => this.cmd;
-            set => this.cmd = value;
+            get => cmd;
+            set => cmd = value;
         }
 
         public string Comment
         {
-            get => this.comment;
-            set => this.comment = value;
+            get => comment;
+            set => comment = value;
         }
 
         public double? Commision
         {
-            get => this.commision;
-            set => this.commision = value;
+            get => commision;
+            set => commision = value;
         }
 
         public string CustomComment
         {
-            get => this.customComment;
-            set => this.customComment = value;
+            get => customComment;
+            set => customComment = value;
         }
 
         public long? Expiration
         {
-            get => this.expiration;
-            set => this.expiration = value;
+            get => expiration;
+            set => expiration = value;
         }
 
         public double? Margin_rate
         {
-            get => this.margin_rate;
-            set => this.margin_rate = value;
+            get => margin_rate;
+            set => margin_rate = value;
         }
 
         public double? Open_price
         {
-            get => this.open_price;
-            set => this.open_price = value;
+            get => open_price;
+            set => open_price = value;
         }
 
         public long? Open_time
         {
-            get => this.open_time;
-            set => this.open_time = value;
+            get => open_time;
+            set => open_time = value;
         }
 
         public long? Order
         {
-            get => this.order;
-            set => this.order = value;
+            get => order;
+            set => order = value;
         }
 
         public long? Order2
         {
-            get => this.order2;
-            set => this.order2 = value;
+            get => order2;
+            set => order2 = value;
         }
 
         public long? Position
         {
-            get => this.position;
-            set => this.position = value;
+            get => position;
+            set => position = value;
         }
 
         public double? Profit
         {
-            get => this.profit;
-            set => this.profit = value;
+            get => profit;
+            set => profit = value;
         }
 
         public double? Sl
         {
-            get => this.sl;
-            set => this.sl = value;
+            get => sl;
+            set => sl = value;
         }
 
         public string State
         {
-            get => this.state;
-            set => this.state = value;
+            get => state;
+            set => state = value;
         }
 
         public double? Storage
         {
-            get => this.storage;
-            set => this.storage = value;
+            get => storage;
+            set => storage = value;
         }
 
         public string Symbol
         {
-            get => this.symbol;
-            set => this.symbol = value;
+            get => symbol;
+            set => symbol = value;
         }
 
         public double? Tp
         {
-            get => this.tp;
-            set => this.tp = value;
+            get => tp;
+            set => tp = value;
         }
 
         public STREAMING_TRADE_TYPE Type
         {
-            get => this.type;
-            set => this.type = value;
+            get => type;
+            set => type = value;
         }
 
         public double? Volume
         {
-            get => this.volume;
-            set => this.volume = value;
+            get => volume;
+            set => volume = value;
         }
 
         public int? Digits
         {
-            get => this.digits;
-            set => this.digits = value;
+            get => digits;
+            set => digits = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.close_price = (double?)value["close_price"];
-            this.close_time = (long?)value["close_time"];
-            this.closed = (bool?)value["closed"];
-            this.cmd = new long?((long)value["cmd"]);
-            this.comment = (string)value["comment"];
-            this.commision = (double?)value["commision"];
-            this.customComment = (string)value["customComment"];
-            this.expiration = (long?)value["expiration"];
-            this.margin_rate = (double?)value["margin_rate"];
-            this.open_price = (double?)value["open_price"];
-            this.open_time = (long?)value["open_time"];
-            this.order = (long?)value["order"];
-            this.order2 = (long?)value["order2"];
-            this.position = (long?)value["position"];
-            this.profit = (double?)value["profit"];
-            this.type = new STREAMING_TRADE_TYPE((long)value["type"]);
-            this.sl = (double?)value["sl"];
-            this.state = (string)value["state"];
-            this.storage = (double?)value["storage"];
-            this.symbol = (string)value["symbol"];
-            this.tp = (double?)value["tp"];
-            this.volume = (double?)value["volume"];
-            this.digits = (int?)value["digits"];
+            close_price = (double?)value["close_price"];
+            close_time = (long?)value["close_time"];
+            closed = (bool?)value["closed"];
+            cmd = new long?((long)value["cmd"]);
+            comment = (string)value["comment"];
+            commision = (double?)value["commision"];
+            customComment = (string)value["customComment"];
+            expiration = (long?)value["expiration"];
+            margin_rate = (double?)value["margin_rate"];
+            open_price = (double?)value["open_price"];
+            open_time = (long?)value["open_time"];
+            order = (long?)value["order"];
+            order2 = (long?)value["order2"];
+            position = (long?)value["position"];
+            profit = (double?)value["profit"];
+            type = new STREAMING_TRADE_TYPE((long)value["type"]);
+            sl = (double?)value["sl"];
+            state = (string)value["state"];
+            storage = (double?)value["storage"];
+            symbol = (string)value["symbol"];
+            tp = (double?)value["tp"];
+            volume = (double?)value["volume"];
+            digits = (int?)value["digits"];
         }
 
         public override string ToString()
         {
-            return "StreamingTradeRecord{symbol=" + this.symbol + ", close_time=" + (object)this.close_time + ", closed=" + (object)this.closed + ", cmd=" + (object)this.cmd + ", comment=" + this.comment + ", commision=" + (object)this.commision + ", customComment=" + this.customComment + ", expiration=" + (object)this.expiration + ", margin_rate=" + (object)this.margin_rate + ", open_price=" + (object)this.open_price + ", open_time=" + (object)this.open_time + ", order=" + (object)this.order + ", order2=" + (object)this.order2 + ", position=" + (object)this.position + ", profit=" + (object)this.profit + ", sl=" + (object)this.sl + ", state=" + this.state + ", storage=" + (object)this.storage + ", symbol=" + this.symbol + ", tp=" + (object)this.tp + ", type=" + (object)this.type.Code + ", volume=" + (object)this.volume + ", digits=" + (object)this.digits + (object)'}';
+            return "StreamingTradeRecord{symbol=" + symbol + ", close_time=" + (object)close_time + ", closed=" + (object)closed + ", cmd=" + (object)cmd + ", comment=" + comment + ", commision=" + (object)commision + ", customComment=" + customComment + ", expiration=" + (object)expiration + ", margin_rate=" + (object)margin_rate + ", open_price=" + (object)open_price + ", open_time=" + (object)open_time + ", order=" + (object)order + ", order2=" + (object)order2 + ", position=" + (object)position + ", profit=" + (object)profit + ", sl=" + (object)sl + ", state=" + state + ", storage=" + (object)storage + ", symbol=" + symbol + ", tp=" + (object)tp + ", type=" + (object)type.Code + ", volume=" + (object)volume + ", digits=" + (object)digits + (object)'}';
         }
     }
 }

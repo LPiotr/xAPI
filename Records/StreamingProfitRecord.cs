@@ -11,37 +11,37 @@ namespace xAPI.Records
 
         public long? Order
         {
-            get => this.order;
-            set => this.order = value;
+            get => order;
+            set => order = value;
         }
 
         public long? Order2
         {
-            get => this.order2;
-            set => this.order2 = value;
+            get => order2;
+            set => order2 = value;
         }
 
         public long? Position
         {
-            get => this.position;
-            set => this.position = value;
+            get => position;
+            set => position = value;
         }
 
         public double? Profit
         {
-            get => this.profit;
-            set => this.profit = value;
+            get => profit;
+            set => profit = value;
         }
 
         public void FieldsFromJSONObject(JObject value)
         {
-            this.profit = (double?)value["profit"];
-            this.order = (long?)value["order"];
+            profit = (double?)value["profit"];
+            order = (long?)value["order"];
         }
 
         public override string ToString()
         {
-            return "StreamingProfitRecord{profit=" + (object)this.profit + ", order=" + (object)this.order + (object)'}';
+            return "StreamingProfitRecord{profit=" + (object)profit + ", order=" + (object)order + (object)'}';
         }
     }
 }

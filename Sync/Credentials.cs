@@ -38,19 +38,19 @@ namespace xAPI.Sync
 
         public string AppId
         {
-            get => this.appId;
-            set => this.appId = value;
+            get => appId;
+            set => appId = value;
         }
 
         public string AppName
         {
-            get => this.appName;
-            set => this.appName = value;
+            get => appName;
+            set => appName = value;
         }
 
         public override string ToString()
         {
-            return "Credentials [login=" + this.Login + ", password=" + this.Password + "]";
+            return "Credentials [login=" + Login + ", password=" + Password + "]";
         }
     }
 }

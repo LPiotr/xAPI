@@ -10,12 +10,12 @@ namespace xAPI.Responses
         public TradeTransactionResponse(string body)
           : base(body)
         {
-            this.order = (long?)((JObject)this.ReturnData)[nameof(order)];
+            order = (long?)((JObject)ReturnData)[nameof(order)];
         }
 
         [Obsolete("Use Order instead")]
-        public virtual long? RequestId => this.Order;
+        public virtual long? RequestId => Order;
 
-        public long? Order => this.order;
+        public long? Order => order;
     }
 }

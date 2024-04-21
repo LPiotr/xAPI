@@ -10,13 +10,13 @@ namespace xAPI.Responses
         public ServerTimeResponse(string body)
           : base(body)
         {
-            JObject returnData = (JObject)this.ReturnData;
-            this.time = (long?)returnData[nameof(time)];
-            this.timeString = (string)returnData[nameof(timeString)];
+            JObject returnData = (JObject)ReturnData;
+            time = (long?)returnData[nameof(time)];
+            timeString = (string)returnData[nameof(timeString)];
         }
 
-        public virtual long? Time => this.time;
+        public virtual long? Time => time;
 
-        public virtual string TimeString => this.timeString;
+        public virtual string TimeString => timeString;
     }
 }

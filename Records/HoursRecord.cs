@@ -8,11 +8,11 @@ namespace xAPI.Records
         private long? fromT;
         private long? toT;
 
-        public virtual long? Day => this.day;
+        public virtual long? Day => day;
 
-        public virtual long? FromT => this.fromT;
+        public virtual long? FromT => fromT;
 
-        public virtual long? ToT => this.toT;
+        public virtual long? ToT => toT;
 
         public void FieldsFromJSONObject(JObject value)
         {
@@ -23,7 +23,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "HoursRecord{day=" + (object)this.day + ", fromT=" + (object)this.fromT + ", toT=" + (object)this.toT + (object)'}';
+            return "HoursRecord{day=" + (object)day + ", fromT=" + (object)fromT + ", toT=" + (object)toT + (object)'}';
         }
     }
 }

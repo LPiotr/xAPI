@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class TradingHoursCommand : BaseCommand
+    public class TradingHoursCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public TradingHoursCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "getTradingHours";
 
         public override string[] RequiredArguments

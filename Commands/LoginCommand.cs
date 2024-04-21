@@ -2,13 +2,8 @@
 
 namespace xAPI.Commands
 {
-    public class LoginCommand : BaseCommand
+    public class LoginCommand(JObject arguments, bool prettyPrint) : BaseCommand(arguments, new bool?(prettyPrint))
     {
-        public LoginCommand(JObject arguments, bool prettyPrint)
-          : base(arguments, new bool?(prettyPrint))
-        {
-        }
-
         public override string CommandName => "login";
 
         public override string[] RequiredArguments

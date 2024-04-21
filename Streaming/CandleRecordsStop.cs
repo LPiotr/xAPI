@@ -2,11 +2,9 @@
 
 namespace xAPI.Streaming
 {
-    internal class CandleRecordsStop
+    internal class CandleRecordsStop(string symbol)
     {
-        private string symbol;
-
-        public CandleRecordsStop(string symbol) => this.symbol = symbol;
+        private string symbol = symbol;
 
         public override string ToString()
         {
@@ -18,7 +16,7 @@ namespace xAPI.Streaming
         },
         {
           "symbol",
-          (JToken) this.symbol
+          (JToken) symbol
         }
       }.ToString();
         }

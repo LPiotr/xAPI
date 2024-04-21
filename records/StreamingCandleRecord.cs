@@ -37,7 +37,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingCandleRecord {  close: " + (object)Close + " ctm: " + (object)Ctm + " ctmString: " + CtmString + " high: " + (object)High + " low: " + (object)Low + " open: " + (object)Open + " quoteId: " + (object)QuoteId + " symbol: " + Symbol + " vol: " + (object)Vol + " }";
+            return "StreamingCandleRecord {  close: " + Close + " ctm: " + Ctm + " ctmString: " + CtmString + " high: " + High + " low: " + Low + " open: " + Open + " quoteId: " + QuoteId + " symbol: " + Symbol + " vol: " + Vol + " }";
         }
     }
 }

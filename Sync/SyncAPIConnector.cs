@@ -40,7 +40,7 @@ namespace xAPI.Sync
             bool flag = false;
             while (!flag || !apiSocket.Connected)
             {
-                flag = apiSocket.BeginConnect(this.server.Address, this.server.MainPort, (AsyncCallback)null, (object)null).AsyncWaitHandle.WaitOne(5000, true);
+                flag = apiSocket.BeginConnect(this.server.Address, this.server.MainPort, null, null).AsyncWaitHandle.WaitOne(5000, true);
                 if (!flag || !apiSocket.Connected)
                 {
                     apiSocket.Close();
@@ -50,15 +50,15 @@ namespace xAPI.Sync
                         apiSocket = new TcpClient();
                     }
                     else
-                        throw new APICommunicationException("Cannot connect to: " + server.Address + ":" + (object)server.MainPort);
+                        throw new APICommunicationException("Cannot connect to: " + server.Address + ":" + server.MainPort);
                 }
             }
             if (server.Secure)
             {
                 SslStream sl = new(apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
                 
-                if (!ExecuteWithTimeLimit.Execute(TimeSpan.FromMilliseconds(5000.0), (Action)(() => 
-                    sl.AuthenticateAsClient(server.Address, [], SslProtocols.Default, false))))
+                if (!ExecuteWithTimeLimit.Execute(TimeSpan.FromMilliseconds(5000.0), () =>
+                    sl.AuthenticateAsClient(server.Address, [], SslProtocols.Default, false)))
                     
                     throw new APICommunicationException("Error during SSL handshaking (timed out?)");
                 

@@ -27,7 +27,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "CalendarRecord[country=" + country + ", current=" + current + ", forecast=" + forecast + ", impact=" + impact + ", period=" + period + ", previous=" + previous + ", time=" + (object)time + ", title=" + title + "]";
+            return "CalendarRecord[country=" + country + ", current=" + current + ", forecast=" + forecast + ", impact=" + impact + ", period=" + period + ", previous=" + previous + ", time=" + time + ", title=" + title + "]";
         }
 
         public string Country => country;

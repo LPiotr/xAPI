@@ -40,7 +40,7 @@ namespace xAPI.Records
 
         public void FieldsFromJSONObject(JObject value)
         {
-            FieldsFromJSONObject(value, (string)null);
+            FieldsFromJSONObject(value, null);
         }
 
         public bool FieldsFromJSONObject(JObject value, string str)
@@ -61,7 +61,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "TickRecord{ask=" + (object)ask + ", bid=" + (object)bid + ", askVolume=" + (object)askVolume + ", bidVolume=" + (object)bidVolume + ", high=" + (object)high + ", low=" + (object)low + ", symbol=" + symbol + ", timestamp=" + (object)timestamp + ", level=" + (object)level + ", spreadRaw=" + (object)spreadRaw + ", spreadTable=" + (object)spreadTable + (object)'}';
+            return "TickRecord{ask=" + ask + ", bid=" + bid + ", askVolume=" + askVolume + ", bidVolume=" + bidVolume + ", high=" + high + ", low=" + low + ", symbol=" + symbol + ", timestamp=" + timestamp + ", level=" + level + ", spreadRaw=" + spreadRaw + ", spreadTable=" + spreadTable + '}';
         }
     }
 }

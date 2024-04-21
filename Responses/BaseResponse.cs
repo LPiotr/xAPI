@@ -45,7 +45,7 @@ namespace xAPI.Responses
                 errorDescr = errorDescr == null ? ERR_CODE.getErrorDescription(errCode.StringValue) : throw new APIErrorResponse(errCode, errorDescr, body);
         }
 
-        public virtual object ReturnData => (object)returnData;
+        public virtual object ReturnData => returnData;
 
         public virtual bool? Status => status;
 

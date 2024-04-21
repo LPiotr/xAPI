@@ -12,7 +12,7 @@
             return code == 1 ? SELL : null;
         }
 
-        private Side(int code) : base((long)code)
+        private Side(int code) : base(code)
         {
         }
     }

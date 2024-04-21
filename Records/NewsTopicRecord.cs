@@ -19,12 +19,12 @@ namespace xAPI.Records
         public virtual long? Bodylen => bodylen;
 
         [Obsolete("Field removed from API")]
-        public virtual string Category => (string)null;
+        public virtual string Category => null;
 
         public virtual string Key => key;
 
         [Obsolete("Field removed from API")]
-        public virtual LinkedList<string> Keywords => (LinkedList<string>)null;
+        public virtual LinkedList<string> Keywords => null;
 
         [Obsolete("Field removed from API")]
         public virtual long? Priority => new long?();

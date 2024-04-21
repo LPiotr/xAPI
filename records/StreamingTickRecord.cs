@@ -108,7 +108,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingTickRecord{ask=" + (object)ask + ", bid=" + (object)bid + ", askVolume=" + (object)askVolume + ", bidVolume=" + (object)bidVolume + ", high=" + (object)high + ", low=" + (object)low + ", symbol=" + symbol + ", timestamp=" + (object)timestamp + ", level=" + (object)level + ", quoteId=" + (object)quoteId + ", spreadRaw=" + (object)spreadRaw + ", spreadTable=" + (object)spreadTable + (object)'}';
+            return "StreamingTickRecord{ask=" + ask + ", bid=" + bid + ", askVolume=" + askVolume + ", bidVolume=" + bidVolume + ", high=" + high + ", low=" + low + ", symbol=" + symbol + ", timestamp=" + timestamp + ", level=" + level + ", quoteId=" + quoteId + ", spreadRaw=" + spreadRaw + ", spreadTable=" + spreadTable + '}';
         }
     }
 }

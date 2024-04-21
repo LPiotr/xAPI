@@ -197,7 +197,7 @@ namespace xAPI.Records
 
         public override string ToString()
         {
-            return "StreamingTradeRecord{symbol=" + symbol + ", close_time=" + (object)close_time + ", closed=" + (object)closed + ", cmd=" + (object)cmd + ", comment=" + comment + ", commision=" + (object)commision + ", customComment=" + customComment + ", expiration=" + (object)expiration + ", margin_rate=" + (object)margin_rate + ", open_price=" + (object)open_price + ", open_time=" + (object)open_time + ", order=" + (object)order + ", order2=" + (object)order2 + ", position=" + (object)position + ", profit=" + (object)profit + ", sl=" + (object)sl + ", state=" + state + ", storage=" + (object)storage + ", symbol=" + symbol + ", tp=" + (object)tp + ", type=" + (object)type.Code + ", volume=" + (object)volume + ", digits=" + (object)digits + (object)'}';
+            return "StreamingTradeRecord{symbol=" + symbol + ", close_time=" + close_time + ", closed=" + closed + ", cmd=" + cmd + ", comment=" + comment + ", commision=" + commision + ", customComment=" + customComment + ", expiration=" + expiration + ", margin_rate=" + margin_rate + ", open_price=" + open_price + ", open_time=" + open_time + ", order=" + order + ", order2=" + order2 + ", position=" + position + ", profit=" + profit + ", sl=" + sl + ", state=" + state + ", storage=" + storage + ", symbol=" + symbol + ", tp=" + tp + ", type=" + type.Code + ", volume=" + volume + ", digits=" + digits + '}';
         }
     }
 }

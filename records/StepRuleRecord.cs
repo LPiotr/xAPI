@@ -19,7 +19,7 @@ namespace xAPI.Records
             Steps = new LinkedList<StepRecord>();
             if (value["steps"] == null)
                 return;
-            foreach (JObject jobject in ((IEnumerable<JToken>)value["steps"]).Cast<JObject>())
+            foreach (JObject jobject in value["steps"].Cast<JObject>())
             {
                 StepRecord stepRecord = new ();
                 stepRecord.FieldsFromJSONObject(jobject);

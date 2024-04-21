@@ -243,6 +243,7 @@ namespace xAPI.Sync
             }
             catch (Exception ex)
             {
+                throw new APICommunicationException("Error while reading the data: " + ex.Message);
             }
         }
 

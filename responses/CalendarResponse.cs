@@ -7,7 +7,7 @@ namespace xAPI.Responses
 {
     public class CalendarResponse : BaseResponse
     {
-        private List<CalendarRecord> calendarRecords = [];
+        private readonly List<CalendarRecord> calendarRecords = [];
 
         public CalendarResponse(string body)
           : base(body)

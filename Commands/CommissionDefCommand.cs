@@ -7,24 +7,25 @@ namespace xAPI.Commands
         public override string ToJSONString()
         {
             return new JObject()
-      {
-        {
-          "command",
-          (JToken) commandName
-        },
-        {
-          "prettyPrint",
-          (JToken) prettyPrint
-        },
-        {
-          "arguments",
-          (JToken) arguments
-        },
-        {
-          "extended",
-          (JToken) true
-        }
-      }.ToString();
+            {
+                {
+                    "command",
+                    (JToken) commandName
+                },
+                
+                {
+                    "prettyPrint",
+                    (JToken) prettyPrint
+                },
+                {
+                    "arguments",
+                    (JToken) arguments
+                },
+                {
+                    "extended",
+                    (JToken) true
+                }   
+            }.ToString();
         }
 
         public override string CommandName => "getCommissionDef";

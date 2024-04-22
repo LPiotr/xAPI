@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace xAPI.Commands
+﻿namespace xAPI.Commands
 {
     public class ServerTimeCommand(bool? prettyPrint) : BaseCommand([], prettyPrint)
     {

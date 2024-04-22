@@ -16,7 +16,7 @@ namespace xAPI.Records
             this.start = start;
         }
 
-        public virtual JObject toJSONObject()
+        public virtual JObject ToJSONObject()
         {
             return new JObject()
       {

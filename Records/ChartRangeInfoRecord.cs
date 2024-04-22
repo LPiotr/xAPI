@@ -25,7 +25,7 @@ namespace xAPI.Records
             this.ticks = ticks;
         }
 
-        public virtual JObject toJSONObject()
+        public virtual JObject ToJSONObject()
         {
             return new JObject()
       {

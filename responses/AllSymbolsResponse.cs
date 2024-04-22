@@ -30,7 +30,5 @@ namespace xAPI.Responses
                 .OrderBy(symbolRecord => symbolRecord.Symbol)
                 .ToList();
         }
-
-
     }
 }

@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-
-namespace xAPI.Commands
+﻿namespace xAPI.Commands
 {
     public class CurrentUserDataCommand(bool prettyPrint) : BaseCommand([], new bool?(prettyPrint))
     {

@@ -85,7 +85,7 @@ namespace xAPI.Commands
       {
         {
           "info",
-           new ChartLastInfoRecord(symbol, period, start).toJSONObject()
+           new ChartLastInfoRecord(symbol, period, start).ToJSONObject()
         }
       }, prettyPrint);
         }
@@ -98,7 +98,7 @@ namespace xAPI.Commands
       {
         {
           nameof (info),
-           info.toJSONObject()
+           info.ToJSONObject()
         }
       }, prettyPrint);
         }
@@ -111,7 +111,7 @@ namespace xAPI.Commands
       {
         {
           nameof (info),
-           info.toJSONObject()
+           info.ToJSONObject()
         }
       }, prettyPrint);
         }
@@ -128,7 +128,7 @@ namespace xAPI.Commands
       {
         {
           "info",
-           new ChartRangeInfoRecord(symbol, period, start, end, ticks).toJSONObject()
+           new ChartRangeInfoRecord(symbol, period, start, end, ticks).ToJSONObject()
         }
       }, prettyPrint);
         }

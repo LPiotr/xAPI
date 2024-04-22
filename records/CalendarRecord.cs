@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public record CalendarRecord : BaseResponseRecord
+    public record CalendarRecord : IBaseResponseRecord
     {
         private string country;
         private string current;

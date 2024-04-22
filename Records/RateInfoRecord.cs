@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public record RateInfoRecord : BaseResponseRecord
+    public record RateInfoRecord : IBaseResponseRecord
     {
         private long? ctm;
         private double? open;

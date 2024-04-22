@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace xAPI.Records
 {
-    public record StepRuleRecord : BaseResponseRecord
+    public record StepRuleRecord : IBaseResponseRecord
     {
         private int Id { get; set; }
 

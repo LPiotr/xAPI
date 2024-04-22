@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace xAPI.Records
 {
-    public record TradingHoursRecord : BaseResponseRecord
+    public record TradingHoursRecord : IBaseResponseRecord
     {
         private string symbol;
         private LinkedList<HoursRecord> quotes = new();

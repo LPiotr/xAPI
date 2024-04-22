@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public class HoursRecord : BaseResponseRecord
+    public class HoursRecord : IBaseResponseRecord
     {
         private long? day;
         private long? fromT;

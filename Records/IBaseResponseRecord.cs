@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public interface BaseResponseRecord
+    public interface IBaseResponseRecord
     {
         void FieldsFromJSONObject(JObject value);
     }

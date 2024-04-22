@@ -3,7 +3,7 @@
 
 namespace xAPI.Records
 {
-    public record StreamingTickRecord : BaseResponseRecord
+    public record StreamingTickRecord : IBaseResponseRecord
     {
         private double? ask;
         private double? bid;

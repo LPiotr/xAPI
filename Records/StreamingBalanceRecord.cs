@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public record StreamingBalanceRecord : BaseResponseRecord
+    public record StreamingBalanceRecord : IBaseResponseRecord
     {
         private double? balance;
         private double? margin;

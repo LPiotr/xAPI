@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace xAPI.Records
 {
-    public record NewsTopicRecord : BaseResponseRecord
+    public record NewsTopicRecord : IBaseResponseRecord
     {
         private string body;
         private long? bodylen;

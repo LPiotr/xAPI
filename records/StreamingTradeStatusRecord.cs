@@ -3,7 +3,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-    public record StreamingTradeStatusRecord : BaseResponseRecord
+    public record StreamingTradeStatusRecord : IBaseResponseRecord
     {
         private string customComment;
         private string message;

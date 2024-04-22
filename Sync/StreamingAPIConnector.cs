@@ -15,7 +15,7 @@ namespace xAPI.Sync
 {
     public class StreamingAPIConnector : Connector, IDisposable
     {
-        private StreamingListener sl;
+        private IStreamingListener sl;
         private string streamSessionId;
         [Obsolete("Used only in older method")]
         private readonly bool running = false;
@@ -47,21 +47,21 @@ namespace xAPI.Sync
         public StreamingAPIConnector(
           Server server,
           string streamSessionId,
-          StreamingListener streamingListner)
+          IStreamingListener streamingListner)
         {
             this.server = server;
             this.streamSessionId = streamSessionId;
             Connect(streamingListner, streamSessionId);
         }
 
-        public void Connect(StreamingListener streamingListener)
+        public void Connect(IStreamingListener streamingListener)
         {
             Connect(streamingListener, streamSessionId);
         }
 
         public void Connect() => Connect(null, streamSessionId);
 
-        public void Connect(StreamingListener streamingListener, string streamSessionId)
+        public void Connect(IStreamingListener streamingListener, string streamSessionId)
         {
             this.streamSessionId = streamSessionId;
             if (this.streamSessionId == null)
@@ -102,7 +102,7 @@ namespace xAPI.Sync
 
         [Obsolete("Use StreamingAPIConnector(Server server) instead")]
         private StreamingAPIConnector(
-          StreamingListener sl,
+          IStreamingListener sl,
           string ip,
           int port,
           LoginResponse lr,
@@ -136,13 +136,13 @@ namespace xAPI.Sync
         }
 
         [Obsolete("Use StreamingAPIConnector(Server server) instead")]
-        private StreamingAPIConnector(StreamingListener sl, string ip, int port, LoginResponse lr)
+        private StreamingAPIConnector(IStreamingListener sl, string ip, int port, LoginResponse lr)
           : this(sl, ip, port, lr, false)
         {
         }
 
         [Obsolete("Use StreamingAPIConnector(Server server) instead")]
-        public StreamingAPIConnector(StreamingListener sl, Server dt, LoginResponse lr)
+        public StreamingAPIConnector(IStreamingListener sl, Server dt, LoginResponse lr)
           : this(sl, dt.Address, dt.StreamingPort, lr, dt.Secure)
         {
         }

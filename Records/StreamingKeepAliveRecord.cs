@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public record StreamingKeepAliveRecord : BaseResponseRecord
+    public record StreamingKeepAliveRecord : IBaseResponseRecord
     {
         public long? Timestamp { get; set; }
 

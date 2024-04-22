@@ -2,7 +2,7 @@
 
 namespace xAPI.Streaming
 {
-    public interface StreamingListener
+    public interface IStreamingListener
     {
         void ReceiveTradeRecord(StreamingTradeRecord tradeRecord);
 

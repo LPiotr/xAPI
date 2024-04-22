@@ -5,7 +5,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-    public record SymbolRecord : BaseResponseRecord
+    public record SymbolRecord : IBaseResponseRecord
     {
         private double? ask;
         private double? bid;

@@ -3,7 +3,7 @@ using xAPI.Codes;
 
 namespace xAPI.Records
 {
-    public record IbRecord : BaseResponseRecord
+    public record IbRecord : IBaseResponseRecord
     {
         public double ClosePrice { get; set; }
         public string Login { get; set; }

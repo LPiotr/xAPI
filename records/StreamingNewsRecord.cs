@@ -2,7 +2,7 @@
 
 namespace xAPI.Records
 {
-    public record StreamingNewsRecord : BaseResponseRecord
+    public record StreamingNewsRecord : IBaseResponseRecord
     {
         public string Body { get; set; }
 

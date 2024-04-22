@@ -5,7 +5,6 @@ using System.IO;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Authentication;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using xAPI.Commands;
 using xAPI.Errors;
@@ -15,7 +14,7 @@ namespace xAPI.Sync
 {
     public class SyncAPIConnector : Connector
     {
-        public const string VERSION = "2.5.0"; 
+        public const string VERSION = "2.5.0";
         private const long COMMAND_TIME_SPACE = 200;
         public const long MAX_REDIRECTS = 3;
         private const int TIMEOUT = 5000;
@@ -40,7 +39,7 @@ namespace xAPI.Sync
             bool flag = false;
             while (!flag || !apiSocket.Connected)
             {
-                flag = apiSocket.BeginConnect(this.server.Address, this.server.MainPort, null, null).AsyncWaitHandle.WaitOne(5000, true);
+                flag = apiSocket.BeginConnect(this.server.Address, this.server.MainPort, null, null).AsyncWaitHandle.WaitOne(TIMEOUT, true);
                 if (!flag || !apiSocket.Connected)
                 {
                     apiSocket.Close();
@@ -56,12 +55,12 @@ namespace xAPI.Sync
             if (server.Secure)
             {
                 SslStream sl = new(apiSocket.GetStream(), false, new RemoteCertificateValidationCallback(SSLHelper.TrustAllCertificatesCallback));
-                
-                if (!ExecuteWithTimeLimit.Execute(TimeSpan.FromMilliseconds(5000.0), () =>
+
+                if (!ExecuteWithTimeLimit.Execute(TimeSpan.FromSeconds(TIMEOUT), () =>
                     sl.AuthenticateAsClient(server.Address, [], SslProtocols.Default, false)))
-                    
+
                     throw new APICommunicationException("Error during SSL handshaking (timed out?)");
-                
+
                 apiWriteStream = new StreamWriter(sl);
                 apiReadStream = new StreamReader(sl);
             }
@@ -97,7 +96,7 @@ namespace xAPI.Sync
 
             if (apiConnected)
                 Disconnect(true);
-            
+
             Connect(server);
         }
 
@@ -130,7 +129,7 @@ namespace xAPI.Sync
                     Disconnect();
                     throw new APICommunicationException("Server not responding");
                 }
-                
+
                 return str;
             }
         }
@@ -140,7 +139,7 @@ namespace xAPI.Sync
         {
             streamingConnector?.Disconnect();
             streamingConnector = new StreamingAPIConnector(server);
-            
+
             return streamingConnector;
         }
 

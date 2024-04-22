@@ -51,7 +51,7 @@ namespace xAPI.Sync
                 if (realServers == null)
                 {
                     realServers = [];
-                    foreach (ApiAddress apiAddress in Servers.ADDRESSES)
+                    foreach (ApiAddress apiAddress in ADDRESSES)
                         realServers.Add(new Server(apiAddress.Address, REAL_PORTS.MainPort, REAL_PORTS.StreamingPort, true, apiAddress.Name + " REAL SSL"));
                         realServers.Shuffle();
                 }

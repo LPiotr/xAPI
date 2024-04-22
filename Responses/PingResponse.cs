@@ -10,7 +10,7 @@ namespace xAPI.Responses
 
         public PingResponse(string body) : base(body)
         {
-            JObject returnData = (JObject)ReturnData;
+            _ = (JObject)ReturnData;
         }
     }
 }

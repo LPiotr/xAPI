@@ -16,14 +16,11 @@ namespace xAPI.Sync
         {
             get
             {
-                if (addresses == null)
-                {
-                    addresses =
+                addresses ??=
                     [
                         new ApiAddress("xapi.xtb.com", "xAPI A"),
                         new ApiAddress("xapi.xtb.com", "xAPI B"),
                     ];
-                }
                 return addresses;
             }
         }
@@ -41,9 +38,9 @@ namespace xAPI.Sync
                     demoServers = [];
                     foreach (ApiAddress apiAddress in ADDRESSES)
                         demoServers.Add(new Server(apiAddress.Address, DEMO_PORTS.MainPort, DEMO_PORTS.StreamingPort, true, apiAddress.Name + " DEMO SSL"));
-                    demoServers.Shuffle<Server>();
+                    demoServers.Shuffle();
                 }
-                return Servers.demoServers;
+                return demoServers;
             }
         }
 

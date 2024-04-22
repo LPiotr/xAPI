@@ -8,16 +8,16 @@ namespace xAPI.Sync
     {
         private static readonly string XAPI_A = "xapi.xtb.com";
         private static readonly string XAPI_B = "xapi.xtb.com";
-        private static readonly int[] PORTS_REAL = new int[2]
-        {
+        private static readonly int[] PORTS_REAL =
+        [
       5112,
       5113
-        };
-        private static readonly int[] PORTS_DEMO = new int[2]
-        {
+        ];
+        private static readonly int[] PORTS_DEMO =
+        [
       5124,
       5125
-        };
+        ];
         private static Dictionary<string, string> xapiList;
 
         public ServerData() => SetUpList();

@@ -1,10 +1,13 @@
-﻿using System;
-
-namespace xAPI.Codes
+﻿namespace xAPI.Codes
 {
-    public class BaseCode(long code)
+    public class BaseCode
     {
-        private long code = code;
+        private long code;
+
+        public BaseCode(long code)
+        {
+            this.code = code;
+        }
 
         public long Code
         {
@@ -16,7 +19,7 @@ namespace xAPI.Codes
         {
             if (ReferenceEquals(baseCode1, baseCode2))
                 return true;
-            return (object)baseCode1 != null && (object)baseCode2 != null && baseCode1.Code == baseCode2.Code;
+            return baseCode1 != null && baseCode2 != null && baseCode1.Code == baseCode2.Code;
         }
 
         public static bool operator !=(BaseCode baseCode1, BaseCode baseCode2)
@@ -31,17 +34,24 @@ namespace xAPI.Codes
 
             BaseCode baseCode = target as BaseCode;
 
-            return (object)baseCode != null && Code == baseCode.Code;
+            return baseCode != null && Code == baseCode.Code;
         }
 
         public override int GetHashCode() => base.GetHashCode();
 
+        /// <summary>
+        /// Gets or sets the long value of the base code.
+        /// </summary>
         public long LongValue
         {
             get => code;
             set => code = value;
         }
 
-        public long longValue() => code;
+        /// <summary>
+        /// Gets the long value of the base code.
+        /// </summary>
+        /// <returns>The long value of the base code.</returns>
+        public long GetLongValue() => code;
     }
 }

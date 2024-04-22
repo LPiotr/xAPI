@@ -8,7 +8,7 @@ namespace xAPI.Commands
 
         public override string[] RequiredArguments
         {
-            get => new string[2] { "userId", "password" };
+            get => ["userId", "password"];
         }
     }
 }

@@ -128,7 +128,7 @@ namespace xAPI.Records
             customComment = comment;
         }
 
-        public virtual JObject toJSONObject()
+        public virtual JObject ToJSONObject()
         {
             return new JObject()
       {

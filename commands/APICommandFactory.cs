@@ -314,7 +314,7 @@ namespace xAPI.Commands
       {
         {
           nameof (tradeTransInfo),
-           tradeTransInfo.toJSONObject()
+           tradeTransInfo.ToJSONObject()
         }
       }, prettyPrint);
         }
@@ -336,7 +336,7 @@ namespace xAPI.Commands
       {
         {
           "tradeTransInfo",
-          new TradeTransInfoRecord(cmd, type, price, sl, tp, symbol, volume, order, customComment, expiration).toJSONObject()
+          new TradeTransInfoRecord(cmd, type, price, sl, tp, symbol, volume, order, customComment, expiration).ToJSONObject()
         }
       }, prettyPrint);
         }

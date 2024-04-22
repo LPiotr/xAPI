@@ -10,14 +10,14 @@ namespace xAPI.Commands
         {
             get
             {
-                return new string[5]
-                {
+                return
+                [
           "cmd",
           "symbol",
           "volume",
           "openPrice",
           "closePrice"
-                };
+                ];
             }
         }
     }
